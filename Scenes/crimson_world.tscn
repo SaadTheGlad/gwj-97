@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://c7f3mkf52uia0"]
+
+[ext_resource type="Script" uid="uid://cq6pw4ef01ri2" path="res://Scripts/World.cs" id="1_pwu75"]
+[ext_resource type="PackedScene" uid="uid://dbnr15k3atkp3" path="res://Scenes/world_portal.tscn" id="2_ppip7"]
+[ext_resource type="Texture2D" uid="uid://nqybihsps5vk" path="res://Art/Images/saadtheglx-final-face.jpg" id="3_hayco"]
+
+[node name="CrimsonWorld" type="Node2D" unique_id=2101248957 node_paths=PackedStringArray("spawnPos")]
+script = ExtResource("1_pwu75")
+spawnPos = NodePath("SpawnPos")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1089424841]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1840350340]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5137255, 0.20784314, 0.28235295, 1)
+
+[node name="WorldPortal" parent="." unique_id=994139881 instance=ExtResource("2_ppip7")]
+position = Vector2(834, 334)
+WorldName = "BlueWorld"
+
+[node name="Sprite2D" parent="WorldPortal" index="0" unique_id=836251691]
+modulate = Color(0.1254902, 0.33333334, 0.33333334, 1)
+
+[node name="SpawnPos" type="Marker2D" parent="." unique_id=1293212799]
+position = Vector2(834, 334)
+
+[node name="SaadtheglxFinalFace" type="Sprite2D" parent="." unique_id=579473617]
+position = Vector2(334, 334)
+scale = Vector2(0.1489583, 0.1489583)
+texture = ExtResource("3_hayco")
+
+[editable path="WorldPortal"]

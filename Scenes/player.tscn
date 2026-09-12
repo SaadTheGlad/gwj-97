@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://kb1j238ceko1"]
+
+[ext_resource type="Texture2D" uid="uid://dlk6sa4adjpci" path="res://icon.svg" id="1_khaq0"]
+[ext_resource type="Script" uid="uid://bjvpyfkdbltcf" path="res://Scripts/TopDownMovement.cs" id="1_qkid2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5tygf"]
+size = Vector2(60, 60)
+
+[node name="Player" type="CharacterBody2D" unique_id=1201004403 groups=["Player"]]
+z_index = 1
+motion_mode = 1
+script = ExtResource("1_qkid2")
+speed = 300.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=37494773]
+scale = Vector2(0.46875, 0.46875)
+texture = ExtResource("1_khaq0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1811491850]
+shape = SubResource("RectangleShape2D_5tygf")

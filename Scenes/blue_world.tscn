@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://ycsfbj1offl4"]
+
+[ext_resource type="Script" uid="uid://cq6pw4ef01ri2" path="res://Scripts/World.cs" id="1_htv5s"]
+[ext_resource type="PackedScene" uid="uid://dbnr15k3atkp3" path="res://Scenes/world_portal.tscn" id="2_epncx"]
+
+[node name="BlueWorld" type="Node2D" unique_id=2101248957 node_paths=PackedStringArray("spawnPos")]
+script = ExtResource("1_htv5s")
+spawnPos = NodePath("SpawnPos")
+
+[node name="SpawnPos" type="Marker2D" parent="." unique_id=1556135920]
+position = Vector2(834, 334)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1089424841]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1840350340]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1254902, 0.33333334, 0.33333334, 1)
+
+[node name="CrimsonWorldPortal" parent="." unique_id=994139881 instance=ExtResource("2_epncx")]
+position = Vector2(834, 334)
+WorldName = "CrimsonWorld"
+
+[node name="Sprite2D" parent="CrimsonWorldPortal" index="0" unique_id=836251691]
+modulate = Color(0.5137255, 0.20784314, 0.28235295, 1)
+
+[editable path="CrimsonWorldPortal"]

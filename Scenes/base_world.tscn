@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://d0rpsualgqagm"]
+
+[ext_resource type="PackedScene" uid="uid://c6nn26vq0ummm" path="res://Scenes/world_manager.tscn" id="2_1wmeh"]
+[ext_resource type="PackedScene" uid="uid://kb1j238ceko1" path="res://Scenes/player.tscn" id="2_aqfjg"]
+
+[node name="BaseWorld" type="Node" unique_id=951264320]
+
+[node name="Player" parent="." unique_id=1201004403 instance=ExtResource("2_aqfjg")]
+position = Vector2(298, 330)
+
+[node name="WorldManager" parent="." unique_id=2144744180 node_paths=PackedStringArray("player") instance=ExtResource("2_1wmeh")]
+player = NodePath("../Player")

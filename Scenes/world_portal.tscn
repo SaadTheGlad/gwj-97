@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dbnr15k3atkp3"]
+
+[ext_resource type="Script" uid="uid://hov2f53cjenp" path="res://Scripts/WorldPortal.cs" id="1_n7ww6"]
+
+[sub_resource type="Gradient" id="Gradient_a02cp"]
+offsets = PackedFloat32Array(0.28605768, 0.4158654)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yp4wr"]
+gradient = SubResource("Gradient_a02cp")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5tygf"]
+
+[node name="WorldPortal" type="Node2D" unique_id=994139881]
+scale = Vector2(6, 6)
+script = ExtResource("1_n7ww6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=836251691]
+scale = Vector2(0.359375, 0.359375)
+texture = SubResource("GradientTexture2D_yp4wr")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1584393610]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=668357484]
+shape = SubResource("CircleShape2D_5tygf")
+
+[connection signal="body_entered" from="Area2D" to="." method="BodyEntered"]
