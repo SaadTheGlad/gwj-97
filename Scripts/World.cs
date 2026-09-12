@@ -1,17 +1,16 @@
 using Godot;
 using System;
 
+[GlobalClass]
 public partial class World : Node2D
 {
-	[Export] private Marker2D spawnPos;
-	
-	public Vector2 GetMarkerPos()
-	{
-		return spawnPos.GlobalPosition;
-	}
+    [Export] private float timeScale = 1;
+    [Export] private WorldPortal[] portals;
 
-	public bool IsMarkerThere()
-	{
-		return spawnPos != null;
-	}
+    public WorldPortal[] GetPortals()
+    {
+        return portals;
+    }
+
+	public float GetTimeScale() => timeScale;
 }

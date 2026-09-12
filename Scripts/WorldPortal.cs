@@ -4,10 +4,26 @@ using System;
 public partial class WorldPortal : Node2D
 {
 	[Export] private string WorldName;
+    [Export] private Marker2D spawnPos;
 
-	private bool playerNear = false;
+    private bool playerNear = false;
 
-	private void BodyEntered(Node2D node)
+    public Vector2 GetSpawnPos()
+    {
+        return spawnPos.GlobalPosition;
+    }
+
+    public string GetWorldName()
+    {
+        return WorldName;
+    }
+
+    public bool IsMarkerThere()
+    {
+        return spawnPos != null;
+    }
+
+    private void BodyEntered(Node2D node)
 	{
 		if (node.IsInGroup("Player"))
 		{
@@ -25,7 +41,7 @@ public partial class WorldPortal : Node2D
 
     public override void _Process(double delta)
     {
-        if (Input.IsActionJustPressed("action"))
+        if (Input.IsActionJustPressed("action") && playerNear)
         {
             CallDeferred("EnterWorld");
         }

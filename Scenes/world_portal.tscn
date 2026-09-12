@@ -15,9 +15,10 @@ fill_to = Vector2(1, 0.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5tygf"]
 
-[node name="WorldPortal" type="Node2D" unique_id=994139881]
+[node name="WorldPortal" type="Node2D" unique_id=994139881 node_paths=PackedStringArray("spawnPos")]
 scale = Vector2(6, 6)
 script = ExtResource("1_n7ww6")
+spawnPos = NodePath("SpawnPos")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=836251691]
 scale = Vector2(0.359375, 0.359375)
@@ -28,4 +29,7 @@ texture = SubResource("GradientTexture2D_yp4wr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=668357484]
 shape = SubResource("CircleShape2D_5tygf")
 
+[node name="SpawnPos" type="Marker2D" parent="." unique_id=972242467]
+
 [connection signal="body_entered" from="Area2D" to="." method="BodyEntered"]
+[connection signal="body_exited" from="Area2D" to="." method="BodyExited"]
