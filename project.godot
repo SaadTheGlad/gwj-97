@@ -15,10 +15,16 @@ run/main_scene="uid://d0rpsualgqagm"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://qede3b75qmtt"
+
 [autoload]
 
 SceneManager="*uid://dp0fikctft4vb"
 DialogueManager="*uid://c3rodes2l3gxb"
+GameState="*uid://dxfldm4f6xqj5"
+AudioManager="*uid://c1lwo60pp5m84"
 
 [dialogue_manager]
 
@@ -127,7 +133,7 @@ restart={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Dialogue/Dialogue Resources/test.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogue/Dialogue Resources/test.dialogue", "res://Dialogue/Test Dialogue/test.dialogue", "res://Dialogue/Dialogue Resources/slumped_man.dialogue")
 
 [physics]
 

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://d1pfg241pjl3v"
+path="res://.godot/imported/slumped_man.dialogue-53a098ff4cda44d0b58bd4ed6e1f20dd.tres"
+
+[deps]
+
+source_file="res://Dialogue/Dialogue Resources/slumped_man.dialogue"
+dest_files=["res://.godot/imported/slumped_man.dialogue-53a098ff4cda44d0b58bd4ed6e1f20dd.tres"]
+
+[params]
+
+defaults=true

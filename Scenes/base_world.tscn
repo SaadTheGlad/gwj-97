@@ -8,6 +8,100 @@
 [sub_resource type="LabelSettings" id="LabelSettings_1wmeh"]
 font_size = 30
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5tygf"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_sujdc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/PanelContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/PanelContainer/CenterContainer/VBoxContainer/Label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/PanelContainer/CenterContainer/VBoxContainer/Label2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_dhkjg"]
+resource_name = "title_card"
+length = 6.366667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/PanelContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(5.1, 5.7666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/PanelContainer/CenterContainer/VBoxContainer/Label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.03333334, 0.93333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/PanelContainer/CenterContainer/VBoxContainer/Label2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.6, 3.1333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sujdc"]
+_data = {
+&"RESET": SubResource("Animation_sujdc"),
+&"title_card": SubResource("Animation_dhkjg")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_dhkjg"]
+font_size = 62
+
+[sub_resource type="LabelSettings" id="LabelSettings_sujdc"]
+font_size = 21
+
 [node name="BaseWorld" type="Node" unique_id=951264320]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=736484474]
@@ -17,6 +111,40 @@ offset_right = 166.0
 offset_bottom = 73.0
 text = "60"
 label_settings = SubResource("LabelSettings_1wmeh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer" unique_id=1165315686]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5tygf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/PanelContainer" unique_id=161575389]
+root_node = NodePath("../../..")
+libraries/ = SubResource("AnimationLibrary_sujdc")
+autoplay = &"title_card"
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/PanelContainer" unique_id=1331876805]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/CenterContainer" unique_id=616421745]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/CenterContainer/VBoxContainer" unique_id=780695238]
+layout_mode = 2
+text = "THE WORLD ENDS IN 60 SECONDS*"
+label_settings = SubResource("LabelSettings_dhkjg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/PanelContainer/CenterContainer/VBoxContainer" unique_id=2037406862]
+visible = false
+layout_mode = 2
+text = "*time is relative"
+label_settings = SubResource("LabelSettings_sujdc")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -34,4 +162,5 @@ timeManager = NodePath("../TimeManager")
 
 [node name="TimeManager" type="Node" parent="." unique_id=624107518 node_paths=PackedStringArray("timeLabel")]
 script = ExtResource("3_1wmeh")
+totalTime = 60.0
 timeLabel = NodePath("../CanvasLayer/TimeLabel")

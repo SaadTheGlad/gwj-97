@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c1lwo60pp5m84"]
+
+[ext_resource type="Script" uid="uid://bqeh62aryu6lw" path="res://modules/AudioManager/AudioManager.cs" id="1_tbsdu"]
+[ext_resource type="AudioStream" uid="uid://v7vy3nwp5sa2" path="res://Audio/SFX/old tick tocks/tick tock 1.wav" id="2_j1goe"]
+[ext_resource type="AudioStream" uid="uid://ciax1duaerhd5" path="res://Audio/SFX/old tick tocks/tick tock 2.wav" id="3_6o2l2"]
+[ext_resource type="Script" uid="uid://2hdc4e5l7fuh" path="res://modules/AudioManager/Sound.cs" id="4_f6ntu"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xw0pe"]
+playback_mode = 2
+streams_count = 2
+stream_0/stream = ExtResource("2_j1goe")
+stream_1/stream = ExtResource("3_6o2l2")
+
+[sub_resource type="Resource" id="Resource_x8n3i"]
+script = ExtResource("4_f6ntu")
+name = "ticktock"
+AudioStream = SubResource("AudioStreamRandomizer_xw0pe")
+volume = -27.0
+bus = 4
+metadata/_custom_type_script = "uid://2hdc4e5l7fuh"
+
+[node name="AudioManager" type="Node" unique_id=1921231180]
+script = ExtResource("1_tbsdu")
+sounds = Array[Object]([SubResource("Resource_x8n3i")])
