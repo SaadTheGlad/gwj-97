@@ -1,20 +1,49 @@
 [gd_scene format=3 uid="uid://kb1j238ceko1"]
 
-[ext_resource type="Texture2D" uid="uid://dlk6sa4adjpci" path="res://icon.svg" id="1_khaq0"]
 [ext_resource type="Script" uid="uid://bjvpyfkdbltcf" path="res://Scripts/TopDownMovement.cs" id="1_qkid2"]
+[ext_resource type="Texture2D" uid="uid://chps5pboj207s" path="res://Art/Images/TestPlayer/test_player0001.png" id="2_fkybt"]
+[ext_resource type="PackedScene" uid="uid://db5o5ycvbgv03" path="res://Scenes/TestNode.tscn" id="2_x3wgy"]
+[ext_resource type="Texture2D" uid="uid://bpcwbsxmechy7" path="res://Art/Images/TestPlayer/test_player0002.png" id="3_x3wgy"]
+[ext_resource type="Texture2D" uid="uid://do4e6oj17682q" path="res://Art/Images/TestPlayer/test_player0003.png" id="4_3smsa"]
+[ext_resource type="Texture2D" uid="uid://14f28rleuusi" path="res://Art/Images/TestPlayer/test_player0004.png" id="5_8erm5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cvnsp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fkybt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_x3wgy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3smsa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8erm5")
+}],
+"loop": 1,
+"name": &"poses",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tygf"]
-size = Vector2(60, 60)
+size = Vector2(28, 43)
 
-[node name="Player" type="CharacterBody2D" unique_id=1201004403 groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1201004403 node_paths=PackedStringArray("animatedSprite") groups=["Player"]]
 z_index = 1
 motion_mode = 1
 script = ExtResource("1_qkid2")
 speed = 300.0
+animatedSprite = NodePath("Sprite2D")
+testNode = ExtResource("2_x3wgy")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=37494773]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1078226564]
+position = Vector2(0, -27.640625)
 scale = Vector2(0.46875, 0.46875)
-texture = ExtResource("1_khaq0")
+sprite_frames = SubResource("SpriteFrames_cvnsp")
+animation = &"poses"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1811491850]
+position = Vector2(0, -0.140625)
 shape = SubResource("RectangleShape2D_5tygf")

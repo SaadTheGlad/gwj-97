@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cq6pw4ef01ri2" path="res://Scripts/World.cs" id="1_htv5s"]
 [ext_resource type="PackedScene" uid="uid://dbnr15k3atkp3" path="res://Scenes/world_portal.tscn" id="2_epncx"]
+[ext_resource type="PackedScene" uid="uid://pfbs26dh6j8j" path="res://Scenes/test_npc.tscn" id="3_epncx"]
 
 [node name="BlueWorld" type="Node2D" unique_id=2101248957 node_paths=PackedStringArray("portals")]
 script = ExtResource("1_htv5s")
@@ -22,7 +23,10 @@ color = Color(0.1254902, 0.33333334, 0.33333334, 1)
 position = Vector2(563, 333)
 WorldName = "CrimsonWorld"
 
-[node name="Sprite2D" parent="CrimsonPortal" index="0" unique_id=836251691]
+[node name="BG" parent="CrimsonPortal" index="0" unique_id=2090716909]
 modulate = Color(0.5137255, 0.20784314, 0.28235295, 1)
+
+[node name="SadBoi" parent="." unique_id=64990111 instance=ExtResource("3_epncx")]
+position = Vector2(564, 155)
 
 [editable path="CrimsonPortal"]

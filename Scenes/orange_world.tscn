@@ -23,7 +23,7 @@ color = Color(0.649952, 0.29133907, 0.012470773, 1)
 position = Vector2(571, 326)
 WorldName = "CrimsonWorld"
 
-[node name="Sprite2D" parent="CrimsonPortal" index="0" unique_id=836251691]
+[node name="BG" parent="CrimsonPortal" index="0" unique_id=2090716909]
 modulate = Color(0.5137255, 0.20784314, 0.28235295, 1)
 
 [editable path="CrimsonPortal"]

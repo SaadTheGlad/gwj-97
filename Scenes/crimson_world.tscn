@@ -23,15 +23,13 @@ color = Color(0.5137255, 0.20784314, 0.28235295, 1)
 position = Vector2(290, 334)
 WorldName = "BlueWorld"
 
-[node name="Sprite2D" parent="BluePortal" index="0" unique_id=836251691]
+[node name="BG" parent="BluePortal" index="0" unique_id=2090716909]
 modulate = Color(0.1254902, 0.33333334, 0.33333334, 1)
 
 [node name="OrangePortal" parent="." unique_id=1753450651 instance=ExtResource("2_ppip7")]
+modulate = Color(0.6509804, 0.2901961, 0.011764706, 1)
 position = Vector2(846, 336)
 WorldName = "OrangeWorld"
-
-[node name="Sprite2D" parent="OrangePortal" index="0" unique_id=836251691]
-modulate = Color(0.9208001, 0.32872057, 0, 1)
 
 [editable path="BluePortal"]
 [editable path="OrangePortal"]
