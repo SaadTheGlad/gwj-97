@@ -19,6 +19,13 @@
 [ext_resource type="Texture2D" uid="uid://cqp241jd0aa3y" path="res://Art/Images/TestPortal/portal0015.png" id="17_0uqpy"]
 [ext_resource type="PackedScene" uid="uid://bb3crtvugn41p" path="res://Scenes/interaction_area.tscn" id="18_tjbjq"]
 [ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Pickable.cs" id="19_alfoa"]
+[ext_resource type="Script" uid="uid://6ggdbwi8lhvs" path="res://Scripts/CanTakeDamage.cs" id="20_ctbuo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5tygf"]
+radius = 59.55
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_alfoa"]
+radius = 10.5
 
 [sub_resource type="Gradient" id="Gradient_ivkqk"]
 offsets = PackedFloat32Array(0.26744187, 0.43868923)
@@ -87,46 +94,44 @@ animations = [{
 "speed": 24.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5tygf"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_alfoa"]
-radius = 10.5
-
-[node name="WorldPortal" type="Node2D" unique_id=994139881 node_paths=PackedStringArray("spawnPos")]
+[node name="Area2D" type="Area2D" unique_id=1584393610 node_paths=PackedStringArray("spawnPos")]
 z_index = -1
-scale = Vector2(6, 6)
 script = ExtResource("1_n7ww6")
 spawnPos = NodePath("SpawnPos")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=668357484]
+shape = SubResource("CircleShape2D_5tygf")
+
+[node name="InteractionArea" parent="." unique_id=253216721 instance=ExtResource("18_tjbjq")]
+scale = Vector2(6, 6)
+
+[node name="CollisionShape2D" parent="InteractionArea" index="0" unique_id=72547211]
+shape = SubResource("CircleShape2D_alfoa")
+
 [node name="BG" type="Sprite2D" parent="." unique_id=2090716909]
-scale = Vector2(0.11328124, 0.11328126)
+scale = Vector2(0.67968744, 0.67968756)
 texture = SubResource("GradientTexture2D_ivkqk")
 
 [node name="Whirl" type="AnimatedSprite2D" parent="." unique_id=760310801]
-scale = Vector2(0.04, 0.040000018)
+scale = Vector2(0.24, 0.2400001)
 sprite_frames = SubResource("SpriteFrames_n7ww6")
 autoplay = "default"
 frame = 14
 frame_progress = 0.35747346
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1584393610]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=668357484]
-shape = SubResource("CircleShape2D_5tygf")
-
 [node name="SpawnPos" type="Marker2D" parent="." unique_id=972242467]
-
-[node name="InteractionArea" parent="." unique_id=253216721 instance=ExtResource("18_tjbjq")]
-
-[node name="CollisionShape2D" parent="InteractionArea" index="0" unique_id=72547211]
-shape = SubResource("CircleShape2D_alfoa")
+scale = Vector2(6, 6)
 
 [node name="Pickable" type="Node" parent="." unique_id=1486927777 node_paths=PackedStringArray("colliderShapes")]
 script = ExtResource("19_alfoa")
-colliderShapes = [NodePath("../Area2D/CollisionShape2D")]
+colliderShapes = [NodePath("../CollisionShape2D")]
 metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
 
-[connection signal="body_entered" from="Area2D" to="." method="BodyEntered"]
-[connection signal="body_exited" from="Area2D" to="." method="BodyExited"]
+[node name="CanTakeDamage" type="Node" parent="." unique_id=341760966]
+script = ExtResource("20_ctbuo")
+metadata/_custom_type_script = "uid://6ggdbwi8lhvs"
+
+[connection signal="body_entered" from="." to="." method="EnteredBody"]
+[connection signal="body_exited" from="." to="." method="ExitedBody"]
 
 [editable path="InteractionArea"]

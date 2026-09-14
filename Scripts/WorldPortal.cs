@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class WorldPortal : Node2D
+public partial class WorldPortal : Area2D
 {
 	[Export] private string WorldName;
     [Export] private Marker2D spawnPos;
@@ -23,7 +23,7 @@ public partial class WorldPortal : Node2D
         return spawnPos != null;
     }
 
-    private void BodyEntered(Node2D node)
+    private void EnteredBody(Node2D node)
 	{
 		if (node.IsInGroup("Player"))
 		{
@@ -31,7 +31,7 @@ public partial class WorldPortal : Node2D
         }
     }
 
-    private void BodyExited(Node2D node)
+    private void ExitedBody(Node2D node)
     {
         if (node.IsInGroup("Player"))
         {

@@ -49,7 +49,10 @@ grow_vertical = 2
 color = Color(0.1254902, 0.33333334, 0.33333334, 1)
 
 [node name="Robot" parent="." unique_id=1069949394 instance=ExtResource("6_vesm1")]
-position = Vector2(655, 410)
+position = Vector2(647, 377)
+
+[node name="DamageZone" parent="Robot" index="5" unique_id=1752915568]
+worksWithAreas = true
 
 [node name="Terminal" parent="." unique_id=64990111 instance=ExtResource("6_2eqo0")]
 position = Vector2(2287, 440)

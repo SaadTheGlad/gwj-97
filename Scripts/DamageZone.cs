@@ -25,14 +25,15 @@ public partial class DamageZone : Area2D
         }
     }
 
-    public void AreaEnteredZone(Area2D body)
+    public void AreaEnteredZone(Area2D area)
     {
         if (worksWithAreas)
         {
             CanTakeDamage canTakeDamage;
 
             //blow up object in cantake damage
-            foreach (Node node in body.GetChildren())
+            //this assumes that the area is the parent ugh...
+            foreach (Node node in area.GetChildren())
             {
                 if (node is CanTakeDamage)
                 {

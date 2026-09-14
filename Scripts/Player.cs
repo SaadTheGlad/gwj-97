@@ -20,6 +20,8 @@ public partial class Player : CharacterBody2D
 
     public Vector2 GetLatestLookDirection() => latestDirection;
 
+    public void SetHoldingSomething(bool flag) => isHoldingSomething = flag;
+
     public override void _UnhandledInput(InputEvent @event)
     {
         base._UnhandledInput(@event);
@@ -67,6 +69,8 @@ public partial class Player : CharacterBody2D
                 Drop();
             }
         }
+
+        GD.Print(isHoldingSomething);
     }
 
     async private void StartDropGraceTimer()
@@ -98,8 +102,11 @@ public partial class Player : CharacterBody2D
         if(hitInfo != null)
         {
             Node node = hitInfo.collider as Node;
+
             if(node is InteractionArea interact)
             {
+                GD.Print(interact.GetParent().Name);
+
                 pickable = interact.GetPickable();
                 if(pickable != null)
                 {

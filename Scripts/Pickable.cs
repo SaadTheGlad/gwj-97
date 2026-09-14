@@ -47,13 +47,23 @@ public partial class Pickable : Node
         {
             Vector2 lookDir = player.GetLatestLookDirection();
             Ray2D ray = new Ray2D(player.GlobalPosition, lookDir);
-            parentObject.GlobalPosition = ray.GetPoint(50f) - new Vector2(0, 25f);
+            if(parentObject != null)
+                parentObject.GlobalPosition = ray.GetPoint(50f) - new Vector2(0, 25f);
         }
 
         //should probably check if there is a collider here so you can't place it inside colliders
 
         picker = null;
 
+    }
+
+    public override void _ExitTree()
+    {
+        //this is to ensure that the player flag isn't still set
+        if(picker is Player player)
+        {
+            player.SetHoldingSomething(false);
+        }
     }
 
     public override void _Process(double delta)

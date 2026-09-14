@@ -8,4 +8,5 @@ script = ExtResource("1_lf2kq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=694617257]
 debug_color = Color(0.9943357, 0, 0.23098016, 0.41960785)
 
+[connection signal="area_entered" from="." to="." method="AreaEnteredZone"]
 [connection signal="body_entered" from="." to="." method="BodyEnteredZone"]
