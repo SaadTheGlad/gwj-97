@@ -58,7 +58,4 @@ position = Vector2(2283, 368)
 [node name="Robot" parent="." unique_id=64990111 instance=ExtResource("4_dynsa")]
 position = Vector2(854, 224)
 
-[node name="WillPersist" parent="Robot" index="3" unique_id=923821361 node_paths=PackedStringArray("world")]
-world = NodePath("../..")
-
 [editable path="Robot"]

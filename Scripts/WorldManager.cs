@@ -1,9 +1,13 @@
 using Godot;
 using System;
+using System.Reflection.Metadata.Ecma335;
 using System.Security;
 
 public partial class WorldManager : Node
 {
+    //Singleton
+    public static WorldManager Instance { get; private set; }
+
     //World related variables
     World currentWorld;
     [Export] private Node2D player;
@@ -11,12 +15,20 @@ public partial class WorldManager : Node
     //Time related variables
     [Export] private float timeLoopTime;
     [Export] private Label timeLabel;
-    private float timeScale;
-    private float currentTime;
+    private float currentTimeLeft;
     private int secondCounter;
 
     public override void _EnterTree()
     {
+        if (Instance != null)
+        {
+            GD.Print("More than one ", Instance.Name);
+        }
+        else
+        {
+            Instance = this;
+        }
+
         EventManager.WorldEntered += LoadWorld;
     }
 
@@ -29,29 +41,34 @@ public partial class WorldManager : Node
     {
         CallDeferred("LoadWorld", "BlueWorld", true);
 
-        currentTime = timeLoopTime;
+        currentTimeLeft = timeLoopTime;
         secondCounter = (int)timeLoopTime;
+    }
+
+    public float GetCurrentTime()
+    {
+        return timeLoopTime - currentTimeLeft;
     }
 
     public override void _Process(double delta)
     {
-        if (currentTime <= 0)
+        if (currentTimeLeft <= 0)
         {
             //restart game.
             GetTree().ReloadCurrentScene();
         }
 
-        if (currentTime <= secondCounter)
+        if (currentTimeLeft <= secondCounter)
         {
             //play audio
             AudioManager.Instance.Play("ticktock");
             //decrement second counter
             secondCounter--;
         }
-        currentTime -= (float)delta * timeScale;
+        currentTimeLeft -= (float)delta * GameState.Instance.timeScale;
 
 
-        timeLabel.Text = "DEBUG\nTime Left: " + currentTime.ToString("0") + "\nTime Scale: " + timeScale.ToString();
+        timeLabel.Text = "DEBUG\nTime Left: " + currentTimeLeft.ToString("0") + "\nTime Scale: " + GameState.Instance.timeScale.ToString();
     }
 
     void LoadWorld(string levelName, bool useSpawnPos)
@@ -89,6 +106,6 @@ public partial class WorldManager : Node
 
     public void SetTimeScale(float newTimeScale)
     {
-        timeScale = newTimeScale;
+        GameState.Instance.timeScale = newTimeScale;
     }
 }

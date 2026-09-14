@@ -4,21 +4,13 @@ using System;
 
 public partial class Robot : NPC
 {
-    [Export] private float totalTimeTillSelfDestruct;
-    private float timeRemaining;
+    [Export] private float timeInSecondsForSelfDestruct;
     //This variable is purely for the dialogue manager to display correctly
     public int timeRemainingInt;
 
     public override void _Ready()
     {
-        timeRemaining = GameState.Instance.robotTimeRemaining;
-
-        //We check if we haven't sent the game state remaining time first, if not, we do it
-        if (timeRemaining == -1)
-        {
-            timeRemaining = totalTimeTillSelfDestruct;
-        }
-        else if(timeRemaining <= 0)
+        if (WorldManager.Instance.GetCurrentTime() >= timeInSecondsForSelfDestruct)
         {
             QueueFree();
         }
@@ -26,22 +18,19 @@ public partial class Robot : NPC
 
     public override void _Process(double delta)
     {
-        timeRemaining -= (float)delta;
-        timeRemaining = Mathf.Clamp(timeRemaining, 0, totalTimeTillSelfDestruct);
+        float currentTime = WorldManager.Instance.GetCurrentTime();
 
-        timeRemainingInt = (int)timeRemaining;
-
-        if(timeRemaining <= 0)
+        if (currentTime >= timeInSecondsForSelfDestruct)
         {
             BlowUp();
         }
 
-        GameState.Instance.robotTimeRemaining = timeRemaining;
+        timeRemainingInt = (int)(timeInSecondsForSelfDestruct - currentTime);
     }
 
     private void BlowUp()
     {
-        //close speech bubble
+        balloon.QueueFree();
         QueueFree();
     }
 }

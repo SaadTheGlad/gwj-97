@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://dkr5r44oaptdv"]
-
-[ext_resource type="Script" uid="uid://dcyepo1jfkokc" path="res://Scripts/WillPersist.cs" id="1_mvpam"]
-
-[node name="WillPersist" type="Node" unique_id=1325749032]
-script = ExtResource("1_mvpam")
