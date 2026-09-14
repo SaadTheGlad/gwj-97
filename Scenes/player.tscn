@@ -31,7 +31,6 @@ animations = [{
 size = Vector2(28, 43)
 
 [node name="Player" type="CharacterBody2D" unique_id=1201004403 node_paths=PackedStringArray("animatedSprite") groups=["Player"]]
-z_index = 1
 motion_mode = 1
 script = ExtResource("1_qkid2")
 speed = 300.0

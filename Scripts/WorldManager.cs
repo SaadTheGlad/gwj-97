@@ -4,9 +4,16 @@ using System.Security;
 
 public partial class WorldManager : Node
 {
+    //World related variables
     World currentWorld;
     [Export] private Node2D player;
-    [Export] private TimeManager timeManager;
+
+    //Time related variables
+    [Export] private float timeLoopTime;
+    [Export] private Label timeLabel;
+    private float timeScale;
+    private float currentTime;
+    private int secondCounter;
 
     public override void _EnterTree()
     {
@@ -21,6 +28,30 @@ public partial class WorldManager : Node
     public override void _Ready()
     {
         CallDeferred("LoadWorld", "BlueWorld", true);
+
+        currentTime = timeLoopTime;
+        secondCounter = (int)timeLoopTime;
+    }
+
+    public override void _Process(double delta)
+    {
+        if (currentTime <= 0)
+        {
+            //restart game.
+            GetTree().ReloadCurrentScene();
+        }
+
+        if (currentTime <= secondCounter)
+        {
+            //play audio
+            AudioManager.Instance.Play("ticktock");
+            //decrement second counter
+            secondCounter--;
+        }
+        currentTime -= (float)delta * timeScale;
+
+
+        timeLabel.Text = "DEBUG\nTime Left: " + currentTime.ToString("0") + "\nTime Scale: " + timeScale.ToString();
     }
 
     void LoadWorld(string levelName, bool useSpawnPos)
@@ -31,6 +62,7 @@ public partial class WorldManager : Node
         if (currentWorld != null) {
             previousWorldName = currentWorld.Name;
             currentWorld.QueueFree();
+            currentWorld = null;
         }
 
         //load the level
@@ -51,8 +83,12 @@ public partial class WorldManager : Node
             }
         }
 
-        //change time scale
-        timeManager.ChangeTimeScale(currentWorld.GetTimeScale());
+        SetTimeScale(currentWorld.GetTimeScale());
 
+    }
+
+    public void SetTimeScale(float newTimeScale)
+    {
+        timeScale = newTimeScale;
     }
 }

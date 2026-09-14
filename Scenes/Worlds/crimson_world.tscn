@@ -5,8 +5,8 @@
 
 [node name="CrimsonWorld" type="Node2D" unique_id=2101248957 node_paths=PackedStringArray("portals")]
 script = ExtResource("1_pwu75")
-timeScale = 0.5
-portals = [NodePath("BluePortal"), NodePath("OrangePortal")]
+worldTimeScale = 0.5
+portals = [NodePath("BluePortal")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1089424841]
 layer = -1
@@ -20,16 +20,10 @@ grow_vertical = 2
 color = Color(0.5137255, 0.20784314, 0.28235295, 1)
 
 [node name="BluePortal" parent="." unique_id=994139881 instance=ExtResource("2_ppip7")]
-position = Vector2(290, 334)
+position = Vector2(547, 320)
 WorldName = "BlueWorld"
 
 [node name="BG" parent="BluePortal" index="0" unique_id=2090716909]
 modulate = Color(0.1254902, 0.33333334, 0.33333334, 1)
 
-[node name="OrangePortal" parent="." unique_id=1753450651 instance=ExtResource("2_ppip7")]
-modulate = Color(0.6509804, 0.2901961, 0.011764706, 1)
-position = Vector2(846, 336)
-WorldName = "OrangeWorld"
-
 [editable path="BluePortal"]
-[editable path="OrangePortal"]

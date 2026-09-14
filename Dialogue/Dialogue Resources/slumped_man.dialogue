@@ -5,7 +5,7 @@ else
 	A man sits slumped against a wall, staring off into nothingness.
 	???: Come and sit down.
 	???: No?
-	???: Suit yourself
+	???: Suit yourself.
 	The man goes back to sleep.
 	$> GameState.hasMetSlumpedMan = true
 => END

@@ -6,8 +6,12 @@ public partial class GameState : Node
     public static GameState Instance { get; private set; }
 
     public bool hasMetSlumpedMan;
+    public bool playerCanMove = true;
+    public float robotTimeRemaining = -1f;
 
-    public bool playerCanMove;
+
+    public void EnablePlayerMove() => playerCanMove = true;
+    public void DisablePlayerMove() => playerCanMove = false;
 
     public override void _EnterTree()
     {

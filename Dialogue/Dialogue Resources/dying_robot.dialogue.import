@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://clyej8il0xv5p"
+path="res://.godot/imported/dying_robot.dialogue-b11a4c26ee6be2483a1f42e2b97a9bd9.tres"
+
+[deps]
+
+source_file="res://Dialogue/Dialogue Resources/dying_robot.dialogue"
+dest_files=["res://.godot/imported/dying_robot.dialogue-b11a4c26ee6be2483a1f42e2b97a9bd9.tres"]
+
+[params]
+
+defaults=true

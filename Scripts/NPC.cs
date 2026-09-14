@@ -1,7 +1,7 @@
 using DialogueManagerRuntime;
 using Godot;
-using System;
 
+[GlobalClass]
 public partial class NPC : StaticBody2D
 {
 	[Export] private Resource dialogueResource;

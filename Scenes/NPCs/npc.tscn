@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cp16mh07f6430"]
+
+[ext_resource type="Script" uid="uid://dhh8yqb5c8bdq" path="res://Scripts/NPC.cs" id="1_g6unj"]
+[ext_resource type="Resource" uid="uid://b4e4p3cb04wm0" path="res://Dialogue/Dialogue Resources/test.dialogue" id="2_h1ryf"]
+
+[node name="NPC" type="StaticBody2D" unique_id=64990111 groups=["NPC"]]
+script = ExtResource("1_g6unj")
+dialogueResource = ExtResource("2_h1ryf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=969637244]
+scale = Vector2(0.04479167, 0.044791672)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=503925633]

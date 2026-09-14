@@ -88,6 +88,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_5tygf"]
 
 [node name="WorldPortal" type="Node2D" unique_id=994139881 node_paths=PackedStringArray("spawnPos")]
+z_index = -1
 scale = Vector2(6, 6)
 script = ExtResource("1_n7ww6")
 spawnPos = NodePath("SpawnPos")

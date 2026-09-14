@@ -7,12 +7,9 @@ public partial class TopDownMovement : CharacterBody2D
 	[Export] private AnimatedSprite2D animatedSprite;
 	[Export] private PackedScene testNode;
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-
 	Vector2 latestDirection;
-	float maxRayDistance = 30f;
-
-	Vector2 direction;
+    Vector2 direction;
+    float maxRayDistance = 30f;
 
     public override void _UnhandledInput(InputEvent @event)
     {
@@ -54,7 +51,6 @@ public partial class TopDownMovement : CharacterBody2D
         }
     }
 
-
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 oldDir = Vector2.Down;
@@ -63,7 +59,6 @@ public partial class TopDownMovement : CharacterBody2D
 		{
 			animatedSprite.Frame = 2;
             latestDirection = direction;
-
         }
         else if (direction == Vector2.Right) 
 		{
