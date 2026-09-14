@@ -107,7 +107,6 @@ frame_progress = 0.35747346
 [node name="Area2D" type="Area2D" parent="." unique_id=1584393610]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=668357484]
-visible = false
 shape = SubResource("CircleShape2D_5tygf")
 
 [node name="SpawnPos" type="Marker2D" parent="." unique_id=972242467]

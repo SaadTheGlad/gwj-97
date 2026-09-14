@@ -9,6 +9,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_83kjc"]
 size = Vector2(38, 19)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n58mx"]
+size = Vector2(60, 68)
+
 [node name="Robot" unique_id=64990111 instance=ExtResource("1_u5bia")]
 script = ExtResource("2_k18oe")
 timeInSecondsForSelfDestruct = 10.0
@@ -28,3 +31,9 @@ script = ExtResource("4_k18oe")
 alias = "robot"
 target = NodePath("..")
 metadata/_custom_type_script = "uid://cd3222nx3y3k5"
+
+[node name="DialogueInteractionArea" parent="." index="3" unique_id=1471325584]
+collision_layer = 2
+
+[node name="CollisionShape2D" parent="DialogueInteractionArea" index="0" unique_id=1815712560]
+shape = SubResource("RectangleShape2D_n58mx")

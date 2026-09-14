@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://kb1j238ceko1"]
 
-[ext_resource type="Script" uid="uid://bjvpyfkdbltcf" path="res://Scripts/TopDownMovement.cs" id="1_qkid2"]
+[ext_resource type="Script" uid="uid://bjvpyfkdbltcf" path="res://Scripts/Player.cs" id="1_qkid2"]
 [ext_resource type="Texture2D" uid="uid://chps5pboj207s" path="res://Art/Images/TestPlayer/test_player0001.png" id="2_fkybt"]
 [ext_resource type="PackedScene" uid="uid://db5o5ycvbgv03" path="res://Scenes/TestNode.tscn" id="2_x3wgy"]
 [ext_resource type="Texture2D" uid="uid://bpcwbsxmechy7" path="res://Art/Images/TestPlayer/test_player0002.png" id="3_x3wgy"]

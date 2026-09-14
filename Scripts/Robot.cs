@@ -30,7 +30,8 @@ public partial class Robot : NPC
 
     private void BlowUp()
     {
-        balloon.QueueFree();
+        if(balloon != null)
+            balloon.QueueFree();
         QueueFree();
     }
 }

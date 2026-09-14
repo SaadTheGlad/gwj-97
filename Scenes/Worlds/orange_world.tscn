@@ -2,11 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cq6pw4ef01ri2" path="res://Scripts/World.cs" id="1_4n7ss"]
 [ext_resource type="PackedScene" uid="uid://dbnr15k3atkp3" path="res://Scenes/world_portal.tscn" id="2_r3iun"]
-[ext_resource type="PackedScene" uid="uid://c6dxb3ton1t5s" path="res://Scenes/NPCs/slumped_over_man.tscn" id="3_r3iun"]
 
 [node name="OrangeWorld" type="Node2D" unique_id=2101248957 node_paths=PackedStringArray("portals")]
 script = ExtResource("1_4n7ss")
-timeScale = 0.25
 portals = [NodePath("CrimsonPortal")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1089424841]
@@ -26,8 +24,5 @@ WorldName = "CrimsonWorld"
 
 [node name="BG" parent="CrimsonPortal" index="0" unique_id=2090716909]
 modulate = Color(0.5137255, 0.20784314, 0.28235295, 1)
-
-[node name="SlumpedOverMan" parent="." unique_id=792083301 instance=ExtResource("3_r3iun")]
-position = Vector2(575, 136)
 
 [editable path="CrimsonPortal"]

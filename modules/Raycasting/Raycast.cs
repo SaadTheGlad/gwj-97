@@ -162,7 +162,39 @@ public static class Raycast
         //use global coordinates, not local to node
         var query = PhysicsRayQueryParameters2D.Create(from, to);
         query.Exclude = new Godot.Collections.Array<Rid> { toIgnore };
+        var result = spaceState.IntersectRay(query);
+
+        hitInfo = new HitInfo2D();
+
+        if (result.Count > 0)
+        {
+            hitInfo.point = (Vector2)result["position"];
+            hitInfo.normal = (Vector2)result["normal"];
+            hitInfo.colliderVariant = result["collider"];
+            hitInfo.RID = toIgnore;
+            hitInfo.shapeIndex = (int)result["shape"];
+
+            hitInfo.collider = hitInfo.colliderVariant.As<GodotObject>();
+            hitInfo.colliderNode = hitInfo.collider as Node2D;
+        }
+        else
+        {
+            hitInfo = null;
+        }
+
+    }
+
+    //using a ray and allowing ignoring RID and using a mask
+    public static void Raycast2D(Ray2D ray, out HitInfo2D hitInfo, PhysicsDirectSpaceState2D spaceState, float maxRayLength, Rid toIgnore, uint collisionMask)
+    {
+        Vector2 from = ray.origin;
+        Vector2 to = from + ray.direction * maxRayLength;
+
+        //use global coordinates, not local to node
+        var query = PhysicsRayQueryParameters2D.Create(from, to);
+        query.Exclude = new Godot.Collections.Array<Rid> { toIgnore };
         query.CollideWithAreas = true;
+        query.CollisionMask = collisionMask;
         var result = spaceState.IntersectRay(query);
 
         hitInfo = new HitInfo2D();
@@ -253,7 +285,7 @@ public static class Raycast
         Ray ray = new Ray(from, direction);
 
         //Does the raycast
-        Raycast.Raycast3D(ray, out hitInfo, player.GetWorld3D().DirectSpaceState, maxRayLength, player.GetRid());
+        Raycast3D(ray, out hitInfo, player.GetWorld3D().DirectSpaceState, maxRayLength, player.GetRid());
 
         if (hitInfo != null)
         {

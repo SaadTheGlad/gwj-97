@@ -4,8 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://brbe12jcx3y5x" path="res://Art/Images/TileSets/TitleAtlas.png" id="2_gs30c"]
 [ext_resource type="PackedScene" uid="uid://dbnr15k3atkp3" path="res://Scenes/world_portal.tscn" id="3_vesm1"]
 [ext_resource type="PackedScene" uid="uid://clcnjsoqnwovn" path="res://Scenes/NPCs/robot.tscn" id="4_dynsa"]
-[ext_resource type="PackedScene" uid="uid://c6dxb3ton1t5s" path="res://Scenes/NPCs/slumped_over_man.tscn" id="5_gs30c"]
-[ext_resource type="PackedScene" uid="uid://f56cfjvuw84c" path="res://Scenes/terminal.tscn" id="6_vesm1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_epncx"]
 texture = ExtResource("2_gs30c")
@@ -49,13 +47,5 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.1254902, 0.33333334, 0.33333334, 1)
 
-[node name="SlumpedOverMan" parent="." unique_id=792083301 instance=ExtResource("5_gs30c")]
-position = Vector2(1767, 147)
-
-[node name="Terminal" parent="." unique_id=830793128 instance=ExtResource("6_vesm1")]
-position = Vector2(2283, 368)
-
 [node name="Robot" parent="." unique_id=64990111 instance=ExtResource("4_dynsa")]
-position = Vector2(854, 224)
-
-[editable path="Robot"]
+position = Vector2(652, 218)

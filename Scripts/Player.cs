@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class TopDownMovement : CharacterBody2D
+public partial class Player : CharacterBody2D
 {
 	[Export] private float speed = 15f;
 	[Export] private AnimatedSprite2D animatedSprite;
@@ -30,6 +30,9 @@ public partial class TopDownMovement : CharacterBody2D
     {
         Ray2D ray = new Ray2D(GlobalPosition, latestDirection);
         HitInfo2D hitInfo = new HitInfo2D();
+
+        uint mask = 1 << 1;
+
         Raycast.Raycast2D(ray, out hitInfo, GetWorld2D().DirectSpaceState, maxRayDistance, GetRid());
 
         #region raycast_debugging
@@ -44,9 +47,10 @@ public partial class TopDownMovement : CharacterBody2D
         if (hitInfo != null)
         {
             Node node = hitInfo.collider as Node;
-            if (node is NPC NPCNode)
+
+            if (node is NPC npc)
             {
-                NPCNode.StartDialogue();
+                npc.StartDialogue();
             }
         }
     }
