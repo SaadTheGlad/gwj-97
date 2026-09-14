@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://brbe12jcx3y5x" path="res://Art/Images/TileSets/TitleAtlas.png" id="2_gs30c"]
 [ext_resource type="PackedScene" uid="uid://dbnr15k3atkp3" path="res://Scenes/world_portal.tscn" id="3_vesm1"]
 [ext_resource type="PackedScene" uid="uid://egu4loo13gxr" path="res://Scenes/NPCs/slumped_man.tscn" id="4_dynsa"]
+[ext_resource type="PackedScene" uid="uid://bsanjpifg12st" path="res://Scenes/NPCs/terminal.tscn" id="6_2eqo0"]
 [ext_resource type="PackedScene" uid="uid://7mowvo1dwstu" path="res://Scenes/NPCs/robot.tscn" id="6_vesm1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_epncx"]
@@ -53,3 +54,6 @@ position = Vector2(1269, 147)
 
 [node name="Robot2" parent="." unique_id=1996222757 instance=ExtResource("6_vesm1")]
 position = Vector2(988, 270)
+
+[node name="Terminal" parent="." unique_id=1329637526 instance=ExtResource("6_2eqo0")]
+position = Vector2(1763, 417)

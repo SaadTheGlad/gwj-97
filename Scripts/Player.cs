@@ -3,13 +3,22 @@ using System;
 
 public partial class Player : CharacterBody2D
 {
-	[Export] private float speed = 15f;
 	[Export] private AnimatedSprite2D animatedSprite;
-	[Export] private PackedScene testNode;
 
-	Vector2 latestDirection;
+    //movement and raycast vars
+    [Export] private float speed = 15f;
+    [Export] private PackedScene testNode;
+    Vector2 latestDirection;
     Vector2 direction;
     float maxRayDistance = 30f;
+
+    //dropping variables
+    Pickable pickable = null;
+    private float droppingGracePeriod = 0.1f;
+    private bool canDropObject = true;
+    private bool isHoldingSomething;
+
+    public Vector2 GetLatestLookDirection() => latestDirection;
 
     public override void _UnhandledInput(InputEvent @event)
     {
@@ -20,7 +29,7 @@ public partial class Player : CharacterBody2D
             if (Input.IsActionJustPressed("action"))
             {
                 InitiateDialogue();
-            }else if (Input.IsActionJustPressed("pick_up"))
+            }else if (Input.IsActionJustPressed("pick_up") && !isHoldingSomething)
             {
                 PickUp();
             }
@@ -48,6 +57,24 @@ public partial class Player : CharacterBody2D
         return hitInfo;
     }
 
+    public override void _Process(double delta)
+    {
+        //dropping the object
+        if(pickable != null)
+        {
+            if (pickable.isPickedUp && Input.IsActionJustPressed("pick_up") && canDropObject)
+            {
+                Drop();
+            }
+        }
+    }
+
+    async private void StartDropGraceTimer()
+    {
+        await ToSignal(GetTree().CreateTimer(droppingGracePeriod), SceneTreeTimer.SignalName.Timeout);
+        canDropObject = true;
+    }
+
     private void InitiateDialogue()
     {
         uint mask = 1 << 1;
@@ -73,12 +100,23 @@ public partial class Player : CharacterBody2D
             Node node = hitInfo.collider as Node;
             if(node is InteractionArea interact)
             {
-                if (node.GetParent() is IPickable pickable)
+                pickable = interact.GetPickable();
+                if(pickable != null)
                 {
-                    pickable.PickUp(this);
+                    pickable.PickUpBy(this);
+                    isHoldingSomething = true;
+                    canDropObject = false;
+                    StartDropGraceTimer();
                 }
             }
         }
+    }
+
+    private void Drop()
+    {
+        pickable.DropDown();
+        pickable = null;
+        isHoldingSomething = false;
     }
 
 	public override void _PhysicsProcess(double delta)

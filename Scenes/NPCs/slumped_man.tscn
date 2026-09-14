@@ -3,12 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://cp16mh07f6430" path="res://Scenes/NPCs/npc.tscn" id="1_hqwjp"]
 [ext_resource type="Resource" uid="uid://d1pfg241pjl3v" path="res://Dialogue/Dialogue Resources/slumped_man.dialogue" id="2_2kqtc"]
 [ext_resource type="Texture2D" uid="uid://c8a45pnlr6qb7" path="res://Art/Images/TestSlumpedOverMan/Slumped Over Man.png" id="2_rfx7w"]
+[ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Pickable.cs" id="4_e7v00"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2kqtc"]
 size = Vector2(93, 33)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q0ilr"]
-size = Vector2(120, 134)
+size = Vector2(93, 108)
 
 [node name="SlumpedMan" unique_id=64990111 instance=ExtResource("1_hqwjp")]
 dialogueResource = ExtResource("2_2kqtc")
@@ -22,4 +23,10 @@ position = Vector2(2.5, 37.5)
 shape = SubResource("RectangleShape2D_2kqtc")
 
 [node name="CollisionShape2D" parent="InteractionArea" parent_id_path=PackedInt32Array(1471325584) index="0" unique_id=1815712560]
+position = Vector2(2.5, -1)
 shape = SubResource("RectangleShape2D_q0ilr")
+
+[node name="Pickable" type="Node" parent="." index="3" unique_id=964383604 node_paths=PackedStringArray("colliderShapes")]
+script = ExtResource("4_e7v00")
+colliderShapes = [NodePath("../CollisionShape")]
+metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
