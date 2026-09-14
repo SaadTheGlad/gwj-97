@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cp16mh07f6430" path="res://Scenes/NPCs/npc.tscn" id="1_6rdyl"]
 [ext_resource type="Resource" uid="uid://dwvnsqksqxqh1" path="res://Dialogue/Dialogue Resources/terminal.dialogue" id="2_56fcr"]
 [ext_resource type="Texture2D" uid="uid://cqowd00cpwot2" path="res://Art/Images/Render.png" id="2_g8lan"]
-[ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Pickable.cs" id="4_56fcr"]
+[ext_resource type="Script" uid="uid://6ggdbwi8lhvs" path="res://Scripts/CanTakeDamage.cs" id="4_56fcr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0dftn"]
 size = Vector2(86, 31)
@@ -23,12 +23,12 @@ offset = Vector2(0, -454.64)
 position = Vector2(0, -10.5)
 shape = SubResource("RectangleShape2D_0dftn")
 
-[node name="CollisionShape2D" parent="InteractionArea" parent_id_path=PackedInt32Array(1471325584) index="0" unique_id=1815712560]
+[node name="CollisionShape2D" parent="InteractionArea" parent_id_path=PackedInt32Array(253216721) index="0" unique_id=72547211]
 position = Vector2(0, -67)
 shape = SubResource("RectangleShape2D_q0ilr")
 
-[node name="Pickable" type="Node" parent="." index="3" unique_id=1003681381 node_paths=PackedStringArray("colliderShapes")]
+[node name="CanTakeDamage" type="Node" parent="." index="3" unique_id=1704651237]
 script = ExtResource("4_56fcr")
-colliderShapes = [NodePath("../CollisionShape2D")]
-pickUpOffset = 80.0
-metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
+metadata/_custom_type_script = "uid://6ggdbwi8lhvs"
+
+[editable path="InteractionArea"]

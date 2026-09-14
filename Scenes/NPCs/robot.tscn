@@ -3,19 +3,27 @@
 [ext_resource type="PackedScene" uid="uid://cp16mh07f6430" path="res://Scenes/NPCs/npc.tscn" id="1_u5bia"]
 [ext_resource type="Script" uid="uid://d0ny4w3151qag" path="res://Scripts/Robot.cs" id="2_k18oe"]
 [ext_resource type="Texture2D" uid="uid://y5i78kr1q8gg" path="res://Art/Images/robot.png" id="2_k87gx"]
+[ext_resource type="PackedScene" uid="uid://hbufimvf1n5q" path="res://Scenes/blow_up_effect.tscn" id="3_bvx5k"]
 [ext_resource type="Resource" uid="uid://clyej8il0xv5p" path="res://Dialogue/Dialogue Resources/dying_robot.dialogue" id="3_rfwpu"]
 [ext_resource type="Script" uid="uid://cd3222nx3y3k5" path="res://addons/dialogue_manager/nodes/context/dialogue_state_context.gd" id="4_k18oe"]
 [ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Pickable.cs" id="6_ggc2j"]
+[ext_resource type="PackedScene" uid="uid://btgj55cyd56v5" path="res://Scenes/DamageZone.tscn" id="8_6cvnh"]
+[ext_resource type="Script" uid="uid://6ggdbwi8lhvs" path="res://Scripts/CanTakeDamage.cs" id="9_fusnn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_byqip"]
 size = Vector2(50, 25)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7umrt"]
-size = Vector2(48, 75)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6cvnh"]
+size = Vector2(50, 76)
 
-[node name="Robot" unique_id=64990111 instance=ExtResource("1_u5bia")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_6cvnh"]
+radius = 76.05919
+
+[node name="Robot" unique_id=64990111 node_paths=PackedStringArray("damageZone") instance=ExtResource("1_u5bia")]
 script = ExtResource("2_k18oe")
-timeInSecondsForSelfDestruct = 60.0
+timeInSecondsForSelfDestruct = 10.0
+explosionEffect = ExtResource("3_bvx5k")
+damageZone = NodePath("DamageZone")
 dialogueResource = ExtResource("3_rfwpu")
 
 [node name="Sprite2D" parent="." index="0" unique_id=969637244]
@@ -27,9 +35,9 @@ texture = ExtResource("2_k87gx")
 position = Vector2(0, 27.5)
 shape = SubResource("RectangleShape2D_byqip")
 
-[node name="CollisionShape2D" parent="InteractionArea" parent_id_path=PackedInt32Array(1471325584) index="0" unique_id=1815712560]
-position = Vector2(0, 1.5)
-shape = SubResource("RectangleShape2D_7umrt")
+[node name="CollisionShape2D" parent="InteractionArea" parent_id_path=PackedInt32Array(253216721) index="0" unique_id=72547211]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_6cvnh")
 
 [node name="DialogueStateContext" type="Node" parent="." index="3" unique_id=666998739 node_paths=PackedStringArray("target")]
 script = ExtResource("4_k18oe")
@@ -41,3 +49,16 @@ metadata/_custom_type_script = "uid://cd3222nx3y3k5"
 script = ExtResource("6_ggc2j")
 colliderShapes = [NodePath("../CollisionShape2D")]
 metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
+
+[node name="DamageZone" parent="." index="5" unique_id=1752915568 instance=ExtResource("8_6cvnh")]
+monitoring = false
+
+[node name="CollisionShape2D" parent="DamageZone" index="0" unique_id=694617257]
+shape = SubResource("CircleShape2D_6cvnh")
+
+[node name="CanTakeDamage" type="Node" parent="." index="6" unique_id=2091448220]
+script = ExtResource("9_fusnn")
+metadata/_custom_type_script = "uid://6ggdbwi8lhvs"
+
+[editable path="InteractionArea"]
+[editable path="DamageZone"]

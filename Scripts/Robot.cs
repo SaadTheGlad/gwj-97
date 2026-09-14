@@ -8,6 +8,11 @@ public partial class Robot : NPC
     //This variable is purely for the dialogue manager to display correctly
     public int timeRemainingInt;
 
+    [Export] private PackedScene explosionEffect;
+    [Export] private DamageZone damageZone;
+
+    bool hasBlownUp = false;
+
     public override void _Ready()
     {
         if (WorldManager.Instance.GetCurrentTime() >= timeInSecondsForSelfDestruct)
@@ -22,7 +27,11 @@ public partial class Robot : NPC
 
         if (currentTime >= timeInSecondsForSelfDestruct)
         {
-            BlowUp();
+            if (!hasBlownUp)
+            {
+                BlowUp();
+                hasBlownUp = true;
+            }
         }
 
         timeRemainingInt = (int)(timeInSecondsForSelfDestruct - currentTime);
@@ -32,6 +41,14 @@ public partial class Robot : NPC
     {
         if(balloon != null)
             balloon.QueueFree();
-        QueueFree();
+
+        //spawning effect
+        OneShotParticleEffect particleEffect = explosionEffect.Instantiate() as OneShotParticleEffect;
+        particleEffect.GlobalPosition = GlobalPosition;
+        GetParent().AddChild(particleEffect);
+        particleEffect.EmitThenDestroy();
+
+        //enabling the damage zone
+        damageZone.Monitoring = true;
     }
 }

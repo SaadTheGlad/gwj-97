@@ -9,14 +9,7 @@ public partial class InteractionArea : Area2D
 
     public override void _Ready()
     {
-        foreach(Node node in GetParent().GetChildren())
-        {
-            if(node is Pickable _pickable)
-            {
-                pickable = _pickable;
-                break;
-            }
-        }
+        pickable = GetParent().GetNodeOrNull("Pickable") as Pickable;
     }
 
     public void StartDialogue()

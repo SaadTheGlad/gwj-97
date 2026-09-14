@@ -30,11 +30,13 @@ public partial class WorldManager : Node
         }
 
         EventManager.WorldEntered += LoadWorld;
+        EventManager.GameOver += RestartGame;
     }
 
     public override void _ExitTree()
     {
         EventManager.WorldEntered -= LoadWorld;
+        EventManager.GameOver -= RestartGame;
     }
 
     public override void _Ready()
@@ -54,8 +56,7 @@ public partial class WorldManager : Node
     {
         if (currentTimeLeft <= 0)
         {
-            //restart game.
-            GetTree().ReloadCurrentScene();
+            RestartGame();
         }
 
         if (currentTimeLeft <= secondCounter)
@@ -69,6 +70,13 @@ public partial class WorldManager : Node
 
 
         timeLabel.Text = "DEBUG\nTime Left: " + currentTimeLeft.ToString("0") + "\nTime Scale: " + GameState.Instance.timeScale.ToString();
+    }
+
+    private void RestartGame()
+    {
+        //restart game.
+        Instance = null;
+        GetTree().ReloadCurrentScene();
     }
 
     void LoadWorld(string levelName, bool useSpawnPos)

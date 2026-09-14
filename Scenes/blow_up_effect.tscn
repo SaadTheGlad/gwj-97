@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://hbufimvf1n5q"]
+
+[ext_resource type="Script" uid="uid://dcogfexnc70vv" path="res://Scripts/OneShotParticleEffect.cs" id="1_oud7q"]
+
+[sub_resource type="Gradient" id="Gradient_oud7q"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.1296729, 0.25817758)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tylot"]
+gradient = SubResource("Gradient_oud7q")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_tylot"]
+offsets = PackedFloat32Array(0.07640751, 0.41152814, 1)
+colors = PackedColorArray(0.33213586, 0.3321359, 0.3321359, 1, 0.36508784, 0.365088, 0.36508796, 1, 1, 0.84422374, 0.6758559, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_oud7q"]
+gradient = SubResource("Gradient_tylot")
+
+[sub_resource type="Curve" id="Curve_oud7q"]
+_data = [Vector2(0, 0.70142186), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tylot"]
+curve = SubResource("Curve_oud7q")
+
+[sub_resource type="Curve" id="Curve_tylot"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.030542057, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ekpop"]
+curve = SubResource("Curve_tylot")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tylot"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 37.73
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = -2.2351742e-06
+radial_accel_min = 59.999996
+radial_accel_max = 89.74999
+radial_accel_curve = SubResource("CurveTexture_tylot")
+scale_curve = SubResource("CurveTexture_ekpop")
+color_ramp = SubResource("GradientTexture1D_oud7q")
+
+[node name="BlowUpEffect" type="Node2D" unique_id=1750974364 node_paths=PackedStringArray("particles")]
+script = ExtResource("1_oud7q")
+particles = NodePath("GPUParticles2D")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1036066988]
+scale = Vector2(2.0120125, 2.0120125)
+emitting = false
+amount = 100
+texture = SubResource("GradientTexture2D_tylot")
+lifetime = 0.3
+one_shot = true
+collision_base_size = 0.0
+process_material = SubResource("ParticleProcessMaterial_tylot")

@@ -8,4 +8,5 @@ public static class EventManager
 
     public static Action<string, bool> WorldEntered;
 
+    public static Action GameOver;
 }
