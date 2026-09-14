@@ -20,20 +20,21 @@ public partial class Player : CharacterBody2D
             if (Input.IsActionJustPressed("action"))
             {
                 InitiateDialogue();
+            }else if (Input.IsActionJustPressed("pick_up"))
+            {
+                PickUp();
             }
 
             direction = Input.GetVector("left", "right", "forward", "backward").Normalized();
         }
     }
 
-    private void InitiateDialogue()
+    private HitInfo2D SendRaycastReturnHitinfo(uint mask)
     {
         Ray2D ray = new Ray2D(GlobalPosition, latestDirection);
         HitInfo2D hitInfo = new HitInfo2D();
 
-        uint mask = 1 << 1;
-
-        Raycast.Raycast2D(ray, out hitInfo, GetWorld2D().DirectSpaceState, maxRayDistance, GetRid());
+        Raycast.Raycast2D(ray, out hitInfo, GetWorld2D().DirectSpaceState, maxRayDistance, GetRid(), mask);
 
         #region raycast_debugging
         //Node2D testNode1 = testNode.Instantiate() as Node2D;
@@ -44,13 +45,38 @@ public partial class Player : CharacterBody2D
         //GetTree().Root.AddChild(testNode2);
         #endregion
 
+        return hitInfo;
+    }
+
+    private void InitiateDialogue()
+    {
+        uint mask = 1 << 1;
+        HitInfo2D hitInfo = SendRaycastReturnHitinfo(mask);
+
         if (hitInfo != null)
         {
             Node node = hitInfo.collider as Node;
-
-            if (node is NPC npc)
+            if (node is InteractionArea interact)
             {
-                npc.StartDialogue();
+                interact.StartDialogue();
+            }
+        }
+    }
+
+    private void PickUp()
+    {
+        uint mask = 1 << 1;
+        HitInfo2D hitInfo = SendRaycastReturnHitinfo(mask);
+
+        if(hitInfo != null)
+        {
+            Node node = hitInfo.collider as Node;
+            if(node is InteractionArea interact)
+            {
+                if (node.GetParent() is IPickable pickable)
+                {
+                    pickable.PickUp(this);
+                }
             }
         }
     }

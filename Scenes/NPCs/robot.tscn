@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://clcnjsoqnwovn"]
+[gd_scene format=3 uid="uid://7mowvo1dwstu"]
 
 [ext_resource type="PackedScene" uid="uid://cp16mh07f6430" path="res://Scenes/NPCs/npc.tscn" id="1_u5bia"]
 [ext_resource type="Script" uid="uid://d0ny4w3151qag" path="res://Scripts/Robot.cs" id="2_k18oe"]
@@ -6,34 +6,34 @@
 [ext_resource type="Resource" uid="uid://clyej8il0xv5p" path="res://Dialogue/Dialogue Resources/dying_robot.dialogue" id="3_rfwpu"]
 [ext_resource type="Script" uid="uid://cd3222nx3y3k5" path="res://addons/dialogue_manager/nodes/context/dialogue_state_context.gd" id="4_k18oe"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_83kjc"]
-size = Vector2(38, 19)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_byqip"]
+size = Vector2(50, 25)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n58mx"]
-size = Vector2(60, 68)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7umrt"]
+size = Vector2(74, 87)
 
-[node name="Robot" unique_id=64990111 instance=ExtResource("1_u5bia")]
+[node name="Robot" unique_id=64990111 node_paths=PackedStringArray("hardCollider", "interactCollider") instance=ExtResource("1_u5bia")]
 script = ExtResource("2_k18oe")
-timeInSecondsForSelfDestruct = 10.0
+timeInSecondsForSelfDestruct = 20.0
+hardCollider = NodePath("CollisionShape2D")
+interactCollider = NodePath("InteractionArea/CollisionShape2D")
 dialogueResource = ExtResource("3_rfwpu")
 
 [node name="Sprite2D" parent="." index="0" unique_id=969637244]
 texture_filter = 1
-scale = Vector2(3.75, 3.7500002)
+scale = Vector2(4.9999995, 5.0000005)
 texture = ExtResource("2_k87gx")
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=503925633]
-position = Vector2(0, 20.5)
-shape = SubResource("RectangleShape2D_83kjc")
+position = Vector2(0, 27.5)
+shape = SubResource("RectangleShape2D_byqip")
 
-[node name="DialogueStateContext" type="Node" parent="." index="2" unique_id=223764290 node_paths=PackedStringArray("target")]
+[node name="CollisionShape2D" parent="InteractionArea" parent_id_path=PackedInt32Array(1471325584) index="0" unique_id=1815712560]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_7umrt")
+
+[node name="DialogueStateContext" type="Node" parent="." index="3" unique_id=666998739 node_paths=PackedStringArray("target")]
 script = ExtResource("4_k18oe")
 alias = "robot"
 target = NodePath("..")
 metadata/_custom_type_script = "uid://cd3222nx3y3k5"
-
-[node name="DialogueInteractionArea" parent="." index="3" unique_id=1471325584]
-collision_layer = 2
-
-[node name="CollisionShape2D" parent="DialogueInteractionArea" index="0" unique_id=1815712560]
-shape = SubResource("RectangleShape2D_n58mx")

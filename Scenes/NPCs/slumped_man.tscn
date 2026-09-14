@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://egu4loo13gxr"]
+
+[ext_resource type="PackedScene" uid="uid://cp16mh07f6430" path="res://Scenes/NPCs/npc.tscn" id="1_hqwjp"]
+[ext_resource type="Resource" uid="uid://d1pfg241pjl3v" path="res://Dialogue/Dialogue Resources/slumped_man.dialogue" id="2_2kqtc"]
+[ext_resource type="Texture2D" uid="uid://c8a45pnlr6qb7" path="res://Art/Images/TestSlumpedOverMan/Slumped Over Man.png" id="2_rfx7w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2kqtc"]
+size = Vector2(93, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q0ilr"]
+size = Vector2(120, 134)
+
+[node name="SlumpedMan" unique_id=64990111 instance=ExtResource("1_hqwjp")]
+dialogueResource = ExtResource("2_2kqtc")
+
+[node name="Sprite2D" parent="." index="0" unique_id=969637244]
+scale = Vector2(0.40816325, 0.4081631)
+texture = ExtResource("2_rfx7w")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="." index="1" unique_id=503925633]
+position = Vector2(2.5, 37.5)
+shape = SubResource("RectangleShape2D_2kqtc")
+
+[node name="CollisionShape2D" parent="InteractionArea" parent_id_path=PackedInt32Array(1471325584) index="0" unique_id=1815712560]
+shape = SubResource("RectangleShape2D_q0ilr")

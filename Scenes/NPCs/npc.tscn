@@ -2,20 +2,21 @@
 
 [ext_resource type="Script" uid="uid://dhh8yqb5c8bdq" path="res://Scripts/NPC.cs" id="1_g6unj"]
 [ext_resource type="Resource" uid="uid://b4e4p3cb04wm0" path="res://Dialogue/Dialogue Resources/test.dialogue" id="2_h1ryf"]
-[ext_resource type="Script" uid="uid://ckq051nw7ycyj" path="res://Scripts/DialogueInteractionArea.cs" id="3_q0ilr"]
+[ext_resource type="Script" uid="uid://ckq051nw7ycyj" path="res://Scripts/InteractionArea.cs" id="3_q0ilr"]
 
-[node name="NPC" type="StaticBody2D" unique_id=64990111 groups=["NPC"]]
+[node name="NPC" type="StaticBody2D" unique_id=64990111 node_paths=PackedStringArray("interactArea") groups=["NPC"]]
 script = ExtResource("1_g6unj")
 dialogueResource = ExtResource("2_h1ryf")
+interactArea = NodePath("InteractionArea")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=969637244]
 scale = Vector2(0.04479167, 0.044791672)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=503925633]
 
-[node name="DialogueInteractionArea" type="Area2D" parent="." unique_id=1471325584 node_paths=PackedStringArray("npc")]
+[node name="InteractionArea" type="Area2D" parent="." unique_id=1471325584]
+collision_layer = 2
 script = ExtResource("3_q0ilr")
-npc = NodePath("..")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueInteractionArea" unique_id=1815712560]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1815712560]
 debug_color = Color(0.58510095, 0.37932217, 1, 0.41960785)
