@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Security;
 
-public partial class Player : CharacterBody2D
+public partial class Player : CharacterBody2D, IComponentable
 {
 	[Export] private AnimatedSprite2D animatedSprite;
 
@@ -27,10 +27,51 @@ public partial class Player : CharacterBody2D
 
     public void SetHoldingSomething(bool flag) => isHoldingSomething = flag;
 
-    public override void _Ready()
+    #region Component Related Code
+    [Export] private Node componentHolder;
+    private BaseComponent[] components;
+
+    //! Put InitComponents in _Ready() or _EnterTree() and add IComponentable interface!
+
+    public void InitComponents()
     {
-        currentSpeed = maxSpeed;
+        int componentCount = componentHolder.GetChildCount();
+
+        if (componentCount > 0)
+            components = new BaseComponent[componentCount];
+
+        for (int i = 0; i < componentCount; ++i)
+        {
+            components[i] = componentHolder.GetChild(i) as BaseComponent;
+        }
     }
+
+    public void BindComponents()
+    {
+        if (components == null) return;
+
+        foreach (BaseComponent component in components)
+        {
+            component.Bind(this);
+        }
+    }
+
+    public T GetComponent<T>()
+    {
+        if (components == null) return default(T);
+
+        foreach (BaseComponent component in components)
+        {
+            if (component is T confirmedComponent)
+            {
+                return confirmedComponent;
+            }
+        }
+
+        return default(T);
+    }
+    #endregion
+
 
     public override void _EnterTree()
     {
@@ -40,6 +81,13 @@ public partial class Player : CharacterBody2D
     public override void _ExitTree()
     {
         EventManager.ResetVelocity -= ResetDirection;
+    }
+
+    public override void _Ready()
+    {
+        currentSpeed = maxSpeed;
+        InitComponents();
+        BindComponents();
     }
 
     void ResetDirection()
@@ -155,13 +203,17 @@ public partial class Player : CharacterBody2D
         {
             if (area is InteractionArea interact)
             {
-                pickable = interact.GetPickable();
-                if (pickable != null)
+                Node owner = interact.GetOwnerNode();
+                if(owner is IComponentable componentable)
                 {
-                    pickable.PickUpBy(this);
-                    isHoldingSomething = true;
-                    canDropObject = false;
-                    StartDropGraceTimer();
+                    pickable = componentable.GetComponent<Pickable>();
+                    if (pickable != null)
+                    {
+                        pickable.PickUpBy(this);
+                        isHoldingSomething = true;
+                        canDropObject = false;
+                        StartDropGraceTimer();
+                    }
                 }
             }
 

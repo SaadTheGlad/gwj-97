@@ -5,20 +5,18 @@ using System;
 public partial class InteractionArea : Area2D
 {
     public Action HasStartedDialogue;
-    private Pickable pickable;
+    private Node owner;
 
     public override void _Ready()
     {
-        pickable = GetParent().GetNodeOrNull("Pickable") as Pickable;
+        owner = GetParent();
     }
+
+    //this is so we can see if it has any relevant components
+    public Node GetOwnerNode() => owner;
 
     public void StartDialogue()
     {
         HasStartedDialogue?.Invoke();
-    }
-
-    public Pickable GetPickable()
-    {
-        return pickable;
     }
 }

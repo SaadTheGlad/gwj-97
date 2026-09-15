@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://brbe12jcx3y5x" path="res://Art/Images/TileSets/TitleAtlas.png" id="2_gs30c"]
 [ext_resource type="PackedScene" uid="uid://dbnr15k3atkp3" path="res://Scenes/world_portal.tscn" id="3_vesm1"]
 [ext_resource type="PackedScene" uid="uid://bsanjpifg12st" path="res://Scenes/NPCs/terminal.tscn" id="6_2eqo0"]
-[ext_resource type="PackedScene" uid="uid://7mowvo1dwstu" path="res://Scenes/NPCs/robot.tscn" id="6_vesm1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_epncx"]
 texture = ExtResource("2_gs30c")
@@ -48,15 +47,5 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.1254902, 0.33333334, 0.33333334, 1)
 
-[node name="Robot" parent="." unique_id=1069949394 instance=ExtResource("6_vesm1")]
-position = Vector2(647, 377)
-
-[node name="DamageZone" parent="Robot" index="5" unique_id=1752915568]
-worksWithAreas = true
-
 [node name="Terminal" parent="." unique_id=64990111 instance=ExtResource("6_2eqo0")]
-position = Vector2(2287, 440)
-
-[editable path="Robot"]
-[editable path="Robot/InteractionArea"]
-[editable path="Robot/DamageZone"]
+position = Vector2(909, 330)

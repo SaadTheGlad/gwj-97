@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bpcwbsxmechy7" path="res://Art/Images/TestPlayer/test_player0002.png" id="3_x3wgy"]
 [ext_resource type="Texture2D" uid="uid://do4e6oj17682q" path="res://Art/Images/TestPlayer/test_player0003.png" id="4_3smsa"]
 [ext_resource type="Texture2D" uid="uid://14f28rleuusi" path="res://Art/Images/TestPlayer/test_player0004.png" id="5_8erm5"]
-[ext_resource type="Script" uid="uid://lhh0gmtkqfae" path="res://Scripts/PlayerCanTakeDamage.cs" id="7_3smsa"]
+[ext_resource type="Script" uid="uid://lhh0gmtkqfae" path="res://Scripts/Components/PlayerCanTakeDamage.cs" id="7_3smsa"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cvnsp"]
 animations = [{
@@ -43,7 +43,7 @@ size = Vector2(20, 30)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3smsa"]
 size = Vector2(20, 30)
 
-[node name="Player" type="CharacterBody2D" unique_id=1201004403 node_paths=PackedStringArray("animatedSprite", "leftPoint", "rightPoint", "downPoint", "topPoint") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1201004403 node_paths=PackedStringArray("animatedSprite", "leftPoint", "rightPoint", "downPoint", "topPoint", "componentHolder") groups=["Player"]]
 motion_mode = 1
 script = ExtResource("1_qkid2")
 animatedSprite = NodePath("Sprite2D")
@@ -53,6 +53,7 @@ leftPoint = NodePath("InteractionPoints/Left")
 rightPoint = NodePath("InteractionPoints/Right")
 downPoint = NodePath("InteractionPoints/Bottom")
 topPoint = NodePath("InteractionPoints/Top")
+componentHolder = NodePath("Components")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1078226564]
 position = Vector2(0, -27.640625)
@@ -63,9 +64,6 @@ animation = &"poses"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1811491850]
 position = Vector2(0, -0.140625)
 shape = SubResource("RectangleShape2D_5tygf")
-
-[node name="PlayerCanTakeDamage" type="Node" parent="." unique_id=1229153839]
-script = ExtResource("7_3smsa")
 
 [node name="InteractionPoints" type="Node2D" parent="." unique_id=217810541]
 
@@ -100,3 +98,8 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionPoints/Top" unique_id=1795147531]
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_3smsa")
+
+[node name="Components" type="Node" parent="." unique_id=804039001]
+
+[node name="PlayerCanTakeDamage" type="Node" parent="Components" unique_id=1229153839]
+script = ExtResource("7_3smsa")

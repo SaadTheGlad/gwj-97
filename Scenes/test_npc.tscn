@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://pfbs26dh6j8j"]
+
+[ext_resource type="PackedScene" uid="uid://cp16mh07f6430" path="res://Scenes/NPCs/npc.tscn" id="1_67lbl"]
+[ext_resource type="Texture2D" uid="uid://nqybihsps5vk" path="res://Art/Images/saadtheglx-final-face.jpg" id="2_tmxqn"]
+[ext_resource type="PackedScene" uid="uid://btgj55cyd56v5" path="res://Scenes/DamageZone.tscn" id="3_libae"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_libae"]
+size = Vector2(120, 120)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_srl7j"]
+radius = 102.239914
+
+[node name="NPC" unique_id=64990111 instance=ExtResource("1_67lbl")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=969637244]
+scale = Vector2(0.0625, 0.062499996)
+texture = ExtResource("2_tmxqn")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=503925633]
+shape = SubResource("RectangleShape2D_libae")
+
+[node name="DamageZone" parent="." index="4" unique_id=1752915568 instance=ExtResource("3_libae")]
+
+[node name="CollisionShape2D" parent="DamageZone" index="0" unique_id=694617257]
+shape = SubResource("CircleShape2D_srl7j")
+
+[editable path="DamageZone"]

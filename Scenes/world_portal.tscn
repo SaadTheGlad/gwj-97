@@ -18,8 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://ltp2o7qy53n0" path="res://Art/Images/TestPortal/portal0014.png" id="16_2nv5q"]
 [ext_resource type="Texture2D" uid="uid://cqp241jd0aa3y" path="res://Art/Images/TestPortal/portal0015.png" id="17_0uqpy"]
 [ext_resource type="PackedScene" uid="uid://bb3crtvugn41p" path="res://Scenes/interaction_area.tscn" id="18_tjbjq"]
-[ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Pickable.cs" id="19_alfoa"]
-[ext_resource type="Script" uid="uid://6ggdbwi8lhvs" path="res://Scripts/CanTakeDamage.cs" id="20_ctbuo"]
+[ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Components/Pickable.cs" id="19_alfoa"]
+[ext_resource type="Script" uid="uid://6ggdbwi8lhvs" path="res://Scripts/Components/CanTakeDamage.cs" id="20_ctbuo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5tygf"]
 radius = 59.55
@@ -122,12 +122,14 @@ frame_progress = 0.35747346
 [node name="SpawnPos" type="Marker2D" parent="." unique_id=972242467]
 scale = Vector2(6, 6)
 
-[node name="Pickable" type="Node" parent="." unique_id=1486927777 node_paths=PackedStringArray("colliderShapes")]
+[node name="Components" type="Node" parent="." unique_id=927054557]
+
+[node name="Pickable" type="Node" parent="Components" unique_id=1486927777 node_paths=PackedStringArray("colliderShapes")]
 script = ExtResource("19_alfoa")
-colliderShapes = [NodePath("../CollisionShape2D")]
+colliderShapes = [NodePath("../../CollisionShape2D")]
 metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
 
-[node name="CanTakeDamage" type="Node" parent="." unique_id=341760966]
+[node name="CanTakeDamage" type="Node" parent="Components" unique_id=341760966]
 script = ExtResource("20_ctbuo")
 metadata/_custom_type_script = "uid://6ggdbwi8lhvs"
 

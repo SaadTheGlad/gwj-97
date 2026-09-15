@@ -10,16 +10,13 @@ public partial class DamageZone : Area2D
     {
         if (worksWithBodies)
         {
-            CanTakeDamage canTakeDamage;
-
-            //blow up object in cantake damage
-            foreach (Node node in body.GetChildren())
+            if(body is IComponentable componentable)
             {
-                if (node is CanTakeDamage)
+                var canTakeDamage = componentable.GetComponent<CanTakeDamage>();
+
+                if (canTakeDamage != null)
                 {
-                    canTakeDamage = (CanTakeDamage)node;
                     canTakeDamage.TakeDamage(damageItDeals);
-                    break;
                 }
             }
         }
@@ -29,21 +26,15 @@ public partial class DamageZone : Area2D
     {
         if (worksWithAreas)
         {
-            CanTakeDamage canTakeDamage;
-
-            //blow up object in cantake damage
-            //this assumes that the area is the parent ugh...
-            foreach (Node node in area.GetChildren())
+            if (area is IComponentable componentable)
             {
-                if (node is CanTakeDamage)
+                var canTakeDamage = componentable.GetComponent<CanTakeDamage>();
+
+                if (canTakeDamage != null)
                 {
-                    canTakeDamage = (CanTakeDamage)node;
-                    canTakeDamage.TakeDamage(200f);
-                    break;
+                    canTakeDamage.TakeDamage(damageItDeals);
                 }
             }
         }
     }
-
-
 }

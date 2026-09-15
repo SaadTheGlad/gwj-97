@@ -3,7 +3,7 @@ using System;
 using System.Net;
 
 [GlobalClass]
-public partial class Pickable : Node
+public partial class Pickable : BaseComponent
 {
     //flag for being picked up
     public bool isPickedUp;
@@ -16,12 +16,6 @@ public partial class Pickable : Node
     [Export(PropertyHint.Range, "0, 100, 1")] private float movementPenalty = 0f;
 
     public Node2D picker;
-    public Node2D parentObject;
-
-    public override void _Ready()
-    {
-        parentObject = GetParent() as Node2D;
-    }
 
     public void PickUpBy(Node2D _picker)
     {
@@ -56,8 +50,8 @@ public partial class Pickable : Node
             player.RemoveMovementPenalty();
             Vector2 lookDir = player.GetLatestLookDirection();
             Ray2D ray = new Ray2D(player.GlobalPosition, lookDir);
-            if(parentObject != null)
-                parentObject.GlobalPosition = ray.GetPoint(50f) - new Vector2(0, 25f);
+            if(actor is Node2D actor2D)
+                actor2D.GlobalPosition = ray.GetPoint(50f) - new Vector2(0, 25f);
         }
 
         //should probably check if there is a collider here so you can't place it inside colliders
@@ -77,7 +71,7 @@ public partial class Pickable : Node
 
     public override void _Process(double delta)
     {
-        if (isPickedUp)
-            parentObject.GlobalPosition = picker.GlobalPosition - new Vector2(0f, pickUpOffset);
+        if (isPickedUp && actor is Node2D actor2D)
+            actor2D.GlobalPosition = picker.GlobalPosition - new Vector2(0f, pickUpOffset);
     }
 }

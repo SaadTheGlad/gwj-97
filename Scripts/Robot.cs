@@ -15,6 +15,8 @@ public partial class Robot : NPC
 
     public override void _Ready()
     {
+        base._Ready();
+
         if (WorldManager.Instance.GetCurrentTime() >= timeInSecondsForSelfDestruct)
         {
             QueueFree();

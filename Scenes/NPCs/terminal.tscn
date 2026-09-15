@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://cp16mh07f6430" path="res://Scenes/NPCs/npc.tscn" id="1_6rdyl"]
 [ext_resource type="Resource" uid="uid://dwvnsqksqxqh1" path="res://Dialogue/Dialogue Resources/terminal.dialogue" id="2_56fcr"]
 [ext_resource type="Texture2D" uid="uid://cqowd00cpwot2" path="res://Art/Images/Render.png" id="2_g8lan"]
-[ext_resource type="Script" uid="uid://6ggdbwi8lhvs" path="res://Scripts/CanTakeDamage.cs" id="4_56fcr"]
-[ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Pickable.cs" id="5_1lhdn"]
+[ext_resource type="Script" uid="uid://6ggdbwi8lhvs" path="res://Scripts/Components/CanTakeDamage.cs" id="4_56fcr"]
+[ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Components/Pickable.cs" id="5_1lhdn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0dftn"]
 size = Vector2(86, 31)
@@ -28,11 +28,11 @@ shape = SubResource("RectangleShape2D_0dftn")
 position = Vector2(0, -67)
 shape = SubResource("RectangleShape2D_q0ilr")
 
-[node name="CanTakeDamage" type="Node" parent="." index="3" unique_id=1704651237]
+[node name="CanTakeDamage" type="Node" parent="Components" parent_id_path=PackedInt32Array(230629070) index="0" unique_id=1704651237]
 script = ExtResource("4_56fcr")
 metadata/_custom_type_script = "uid://6ggdbwi8lhvs"
 
-[node name="Pickable" type="Node" parent="." index="4" unique_id=701135690 node_paths=PackedStringArray("colliderShapes")]
+[node name="Pickable" type="Node" parent="Components" parent_id_path=PackedInt32Array(230629070) index="1" unique_id=701135690 node_paths=PackedStringArray("colliderShapes")]
 script = ExtResource("5_1lhdn")
 colliderShapes = []
 movementPenalty = 50.0
