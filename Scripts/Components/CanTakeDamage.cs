@@ -28,6 +28,6 @@ public partial class CanTakeDamage : BaseComponent
 
     public void DeferredQueueFree()
     {
-        GetParent().QueueFree();
+        actor.QueueFree();
     }
 }

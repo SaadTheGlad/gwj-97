@@ -156,7 +156,15 @@ public partial class Player : CharacterBody2D, IComponentable
         {
             if (area is InteractionArea interact)
             {
-                interact.StartDialogue();
+                Node owner = interact.GetOwnerNode();
+                if (owner is IComponentable componentable)
+                {
+                    var dialogueComponent = componentable.GetComponent<DialogueComponent>();
+                    if (dialogueComponent != null)
+                    {
+                        dialogueComponent.StartDialogue();
+                    }
+                }
             }
 
             break;

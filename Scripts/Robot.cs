@@ -46,9 +46,15 @@ public partial class Robot : NPC
 
     private void BlowUp()
     {
-        if (balloon != null)
+        var dialogueComponent = GetComponent<DialogueComponent>();
+        if(dialogueComponent != null)
         {
-            balloon.QueueFree();
+            var balloon = dialogueComponent.GetBalloon();
+
+            if (balloon != null)
+            {
+                balloon.QueueFree();
+            }
         }
 
         //spawning effect

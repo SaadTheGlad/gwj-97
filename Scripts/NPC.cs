@@ -5,9 +5,6 @@ using System;
 [GlobalClass]
 public partial class NPC : StaticBody2D, IComponentable
 {
-	[Export] private Resource dialogueResource;
-    protected DialogueBalloon balloon;
-
     [Export] private InteractionArea interactArea;
 
     #region Component Related Code
@@ -57,30 +54,14 @@ public partial class NPC : StaticBody2D, IComponentable
 
     public override void _EnterTree()
     {
-		interactArea.HasStartedDialogue += StartDialogue;
-        DialogueManager.DialogueEnded += Test;
-    }
-
-    public override void _ExitTree()
-    {
-        interactArea.HasStartedDialogue -= StartDialogue;
-        DialogueManager.DialogueEnded -= Test;
-    }
-
-    public override void _Ready()
-    {
         InitComponents();
         BindComponents();
+
+        var dialogueComponent = GetComponent<DialogueComponent>();
+        if (dialogueComponent != null)
+        {
+            dialogueComponent.BindInteractArea(interactArea);
+        }
     }
 
-    public void StartDialogue()
-	{
-		balloon = (DialogueBalloon)DialogueManager.ShowDialogueBalloon(dialogueResource, "start");
-        EventManager.ResetVelocity?.Invoke();
-    }
-    private void Test(Resource endingDialogueResource)
-    {
-        //This prints twice for some reason
-        balloon = null;
-    }
 }

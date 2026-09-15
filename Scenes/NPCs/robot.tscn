@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Components/Pickable.cs" id="6_ggc2j"]
 [ext_resource type="PackedScene" uid="uid://btgj55cyd56v5" path="res://Scenes/DamageZone.tscn" id="8_6cvnh"]
 [ext_resource type="Script" uid="uid://6ggdbwi8lhvs" path="res://Scripts/Components/CanTakeDamage.cs" id="9_fusnn"]
+[ext_resource type="Script" uid="uid://dw687ssjn0exb" path="res://Scripts/Components/DialogueComponent.cs" id="9_xrtam"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_byqip"]
 size = Vector2(50, 25)
@@ -24,7 +25,6 @@ script = ExtResource("2_k18oe")
 timeInSecondsForSelfDestruct = 10.0
 explosionEffect = ExtResource("3_bvx5k")
 damageZone = NodePath("DamageZone")
-dialogueResource = ExtResource("3_rfwpu")
 
 [node name="Sprite2D" parent="." index="0" unique_id=969637244]
 texture_filter = 1
@@ -51,15 +51,20 @@ monitoring = false
 [node name="CollisionShape2D" parent="DamageZone" index="0" unique_id=694617257]
 shape = SubResource("CircleShape2D_6cvnh")
 
-[node name="Pickable" type="Node" parent="Components" parent_id_path=PackedInt32Array(230629070) index="0" unique_id=2056748283 node_paths=PackedStringArray("colliderShapes")]
+[node name="Pickable" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="0" unique_id=2056748283 node_paths=PackedStringArray("colliderShapes")]
 script = ExtResource("6_ggc2j")
 colliderShapes = [NodePath("../../CollisionShape2D")]
 movementPenalty = 20.0
 metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
 
-[node name="CanTakeDamage" type="Node" parent="Components" parent_id_path=PackedInt32Array(230629070) index="1" unique_id=2091448220]
+[node name="CanTakeDamage" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="1" unique_id=2091448220]
 script = ExtResource("9_fusnn")
 metadata/_custom_type_script = "uid://6ggdbwi8lhvs"
+
+[node name="DialogueComponent" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="2" unique_id=1037029739]
+script = ExtResource("9_xrtam")
+dialogueResource = ExtResource("3_rfwpu")
+metadata/_custom_type_script = "uid://dw687ssjn0exb"
 
 [editable path="InteractionArea"]
 [editable path="DamageZone"]
