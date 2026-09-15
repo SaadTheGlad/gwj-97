@@ -12,6 +12,9 @@ public partial class Pickable : Node
     //(optional)custom offset when putting it on top of head
     [Export] private float pickUpOffset = 50f;
 
+    //movement penalty for picking up
+    [Export(PropertyHint.Range, "0, 100, 1")] private float movementPenalty = 0f;
+
     public Node2D picker;
     public Node2D parentObject;
 
@@ -30,6 +33,11 @@ public partial class Pickable : Node
             shape.Disabled = true;
         }
 
+        //applying movement penalty
+        if(picker is Player player)
+        {
+            player.ApplyMovementPenalty(movementPenalty);
+        }
     }
 
     public void DropDown()
@@ -45,6 +53,7 @@ public partial class Pickable : Node
         //set its position to something sensible
         if(picker is Player player)
         {
+            player.RemoveMovementPenalty();
             Vector2 lookDir = player.GetLatestLookDirection();
             Ray2D ray = new Ray2D(player.GlobalPosition, lookDir);
             if(parentObject != null)

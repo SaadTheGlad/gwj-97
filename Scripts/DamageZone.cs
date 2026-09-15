@@ -4,7 +4,7 @@ using System;
 public partial class DamageZone : Area2D
 {
     [Export] private bool worksWithBodies = true, worksWithAreas = false;
-
+    [Export] private float damageItDeals = 200f;
 
     public void BodyEnteredZone(Node2D body)
     {
@@ -18,7 +18,7 @@ public partial class DamageZone : Area2D
                 if (node is CanTakeDamage)
                 {
                     canTakeDamage = (CanTakeDamage)node;
-                    canTakeDamage.TakeDamage(200f);
+                    canTakeDamage.TakeDamage(damageItDeals);
                     break;
                 }
             }

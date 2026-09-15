@@ -1,12 +1,14 @@
 using Godot;
 using System;
+using System.Security;
 
 public partial class Player : CharacterBody2D
 {
 	[Export] private AnimatedSprite2D animatedSprite;
 
     //movement and raycast vars
-    [Export] private float speed = 15f;
+    [Export] private float maxSpeed = 15f;
+    private float currentSpeed;
     [Export] private PackedScene testNode;
     Vector2 latestDirection;
     Vector2 direction;
@@ -24,6 +26,26 @@ public partial class Player : CharacterBody2D
     public Vector2 GetLatestLookDirection() => latestDirection;
 
     public void SetHoldingSomething(bool flag) => isHoldingSomething = flag;
+
+    public override void _Ready()
+    {
+        currentSpeed = maxSpeed;
+    }
+
+    public override void _EnterTree()
+    {
+        EventManager.ResetVelocity += ResetDirection;
+    }
+
+    public override void _ExitTree()
+    {
+        EventManager.ResetVelocity -= ResetDirection;
+    }
+
+    void ResetDirection()
+    {
+        //do stuff and things
+    }
 
     public override void _UnhandledInput(InputEvent @event)
     {
@@ -196,6 +218,16 @@ public partial class Player : CharacterBody2D
         isHoldingSomething = false;
     }
 
+    public void ApplyMovementPenalty(float movementPenalty)
+    {
+        currentSpeed = currentSpeed - currentSpeed * (movementPenalty / 100f);
+    }
+
+    public void RemoveMovementPenalty()
+    {
+        currentSpeed = maxSpeed;
+    }
+
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 oldDir = Vector2.Down;
@@ -221,7 +253,7 @@ public partial class Player : CharacterBody2D
             latestDirection = direction;
         }
 
-        Velocity = direction * speed;
+        Velocity = direction * currentSpeed;
 		MoveAndSlide();
 	}
 }

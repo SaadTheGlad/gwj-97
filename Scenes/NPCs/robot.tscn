@@ -48,6 +48,7 @@ metadata/_custom_type_script = "uid://cd3222nx3y3k5"
 [node name="Pickable" type="Node" parent="." index="4" unique_id=2056748283 node_paths=PackedStringArray("colliderShapes")]
 script = ExtResource("6_ggc2j")
 colliderShapes = [NodePath("../CollisionShape2D")]
+movementPenalty = 20.0
 metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
 
 [node name="DamageZone" parent="." index="5" unique_id=1752915568 instance=ExtResource("8_6cvnh")]

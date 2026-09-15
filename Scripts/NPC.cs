@@ -19,12 +19,12 @@ public partial class NPC : StaticBody2D
     {
         interactArea.HasStartedDialogue -= StartDialogue;
         DialogueManager.DialogueEnded -= Test;
-
     }
 
     public void StartDialogue()
 	{
 		balloon = (DialogueBalloon)DialogueManager.ShowDialogueBalloon(dialogueResource, "start");
+        EventManager.ResetVelocity?.Invoke();
     }
     private void Test(Resource endingDialogueResource)
     {

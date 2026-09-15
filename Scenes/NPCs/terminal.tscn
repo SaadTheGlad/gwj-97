@@ -35,6 +35,7 @@ metadata/_custom_type_script = "uid://6ggdbwi8lhvs"
 [node name="Pickable" type="Node" parent="." index="4" unique_id=701135690 node_paths=PackedStringArray("colliderShapes")]
 script = ExtResource("5_1lhdn")
 colliderShapes = []
+movementPenalty = 50.0
 metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
 
 [editable path="InteractionArea"]
