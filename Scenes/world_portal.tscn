@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://bb3crtvugn41p" path="res://Scenes/interaction_area.tscn" id="18_tjbjq"]
 [ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Components/Pickable.cs" id="19_alfoa"]
 [ext_resource type="Script" uid="uid://6ggdbwi8lhvs" path="res://Scripts/Components/CanTakeDamage.cs" id="20_ctbuo"]
+[ext_resource type="Script" uid="uid://2hu7d7pk4b23" path="res://Scripts/Components/PersistComponent.cs" id="21_b60qy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5tygf"]
 radius = 59.55
@@ -94,10 +95,11 @@ animations = [{
 "speed": 24.0
 }]
 
-[node name="Area2D" type="Area2D" unique_id=1584393610 node_paths=PackedStringArray("spawnPos")]
+[node name="WorldPortal" type="Area2D" unique_id=1584393610 node_paths=PackedStringArray("spawnPos", "componentHolder") groups=["Persistant"]]
 z_index = -1
 script = ExtResource("1_n7ww6")
 spawnPos = NodePath("SpawnPos")
+componentHolder = NodePath("Components")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=668357484]
 shape = SubResource("CircleShape2D_5tygf")
@@ -132,6 +134,10 @@ metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
 [node name="CanTakeDamage" type="Node" parent="Components" unique_id=341760966]
 script = ExtResource("20_ctbuo")
 metadata/_custom_type_script = "uid://6ggdbwi8lhvs"
+
+[node name="PersistComponent" type="Node" parent="Components" unique_id=790240289]
+script = ExtResource("21_b60qy")
+metadata/_custom_type_script = "uid://2hu7d7pk4b23"
 
 [connection signal="body_entered" from="." to="." method="EnteredBody"]
 [connection signal="body_exited" from="." to="." method="ExitedBody"]

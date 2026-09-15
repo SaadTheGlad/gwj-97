@@ -14,6 +14,7 @@ public partial class CanTakeDamage : BaseComponent
 
     public void TakeDamage(float damage)
     {
+        GD.Print($"{actor.Name} took {damage} damage.");
         currentHealth -= damage;
         if(currentHealth <= 0)
         {

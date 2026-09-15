@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://cp16mh07f6430"]
 
 [ext_resource type="Script" uid="uid://dhh8yqb5c8bdq" path="res://Scripts/NPC.cs" id="1_g6unj"]
+[ext_resource type="Script" uid="uid://2hu7d7pk4b23" path="res://Scripts/Components/PersistComponent.cs" id="3_bsvs8"]
 [ext_resource type="PackedScene" uid="uid://bb3crtvugn41p" path="res://Scenes/interaction_area.tscn" id="3_q0ilr"]
 
-[node name="NPC" type="StaticBody2D" unique_id=64990111 node_paths=PackedStringArray("interactArea", "componentHolder") groups=["NPC"]]
+[node name="NPC" type="StaticBody2D" unique_id=64990111 node_paths=PackedStringArray("interactArea", "componentHolder") groups=["NPC", "Persistant"]]
 script = ExtResource("1_g6unj")
 interactArea = NodePath("InteractionArea")
 componentHolder = NodePath("ComponentsHolder")
@@ -16,3 +17,7 @@ scale = Vector2(0.04479167, 0.044791672)
 [node name="InteractionArea" parent="." unique_id=253216721 instance=ExtResource("3_q0ilr")]
 
 [node name="ComponentsHolder" type="Node" parent="." unique_id=230629070]
+
+[node name="PersistComponent" type="Node" parent="ComponentsHolder" unique_id=685922651]
+script = ExtResource("3_bsvs8")
+metadata/_custom_type_script = "uid://2hu7d7pk4b23"

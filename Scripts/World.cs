@@ -10,6 +10,7 @@ public partial class World : Node2D
     public WorldPortal[] GetPortals()
     {
         return portals;
+
     }
 
 	public float GetTimeScale() => worldTimeScale;

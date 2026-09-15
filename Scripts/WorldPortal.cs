@@ -1,10 +1,62 @@
 using Godot;
 using System;
 
-public partial class WorldPortal : Area2D
+public partial class WorldPortal : Area2D, IComponentable
 {
 	[Export] private string WorldName;
     [Export] private Marker2D spawnPos;
+
+    #region Component Related Code
+    [Export] private Node componentHolder;
+    private BaseComponent[] components;
+
+    //! Put InitComponents and BindComponents() in _Ready() or _EnterTree(), also add the IComponentable interface!
+
+    public override void _Ready()
+    {
+        InitComponents();
+        BindComponents();
+    }
+
+    public void InitComponents()
+    {
+        int componentCount = componentHolder.GetChildCount();
+
+        if (componentCount > 0)
+            components = new BaseComponent[componentCount];
+
+        for (int i = 0; i < componentCount; ++i)
+        {
+            components[i] = componentHolder.GetChild(i) as BaseComponent;
+        }
+    }
+
+    public void BindComponents()
+    {
+        if (components == null) return;
+
+        foreach (BaseComponent component in components)
+        {
+            component.Bind(this);
+        }
+    }
+
+    public T GetComponent<T>()
+    {
+        if (components == null) return default(T);
+
+        foreach (BaseComponent component in components)
+        {
+            if (component is T confirmedComponent)
+            {
+                return confirmedComponent;
+            }
+        }
+
+        return default(T);
+    }
+    #endregion
+
 
     private bool playerNear = false;
 
