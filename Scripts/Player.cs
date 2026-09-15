@@ -18,6 +18,9 @@ public partial class Player : CharacterBody2D
     private bool canDropObject = true;
     private bool isHoldingSomething;
 
+    //interaction points
+    [Export] public Area2D leftPoint, rightPoint, downPoint, topPoint;
+
     public Vector2 GetLatestLookDirection() => latestDirection;
 
     public void SetHoldingSomething(bool flag) => isHoldingSomething = flag;
@@ -69,8 +72,6 @@ public partial class Player : CharacterBody2D
                 Drop();
             }
         }
-
-        GD.Print(isHoldingSomething);
     }
 
     async private void StartDropGraceTimer()
@@ -79,36 +80,61 @@ public partial class Player : CharacterBody2D
         canDropObject = true;
     }
 
-    private void InitiateDialogue()
+    private void SpeakWithOverlappedInteractables(Area2D areaToCheck)
     {
-        uint mask = 1 << 1;
-        HitInfo2D hitInfo = SendRaycastReturnHitinfo(mask);
-
-        if (hitInfo != null)
+        foreach (Area2D area in areaToCheck.GetOverlappingAreas())
         {
-            Node node = hitInfo.collider as Node;
-            if (node is InteractionArea interact)
+            if (area is InteractionArea interact)
             {
                 interact.StartDialogue();
             }
+
+            break;
         }
     }
 
-    private void PickUp()
+    private void InitiateDialogue()
     {
-        uint mask = 1 << 1;
-        HitInfo2D hitInfo = SendRaycastReturnHitinfo(mask);
-
-        if(hitInfo != null)
+        if(latestDirection == Vector2.Left)
         {
-            Node node = hitInfo.collider as Node;
+            SpeakWithOverlappedInteractables(leftPoint);
+        }
+        else if(latestDirection == Vector2.Right)
+        {
+            SpeakWithOverlappedInteractables(rightPoint);
+        }
+        else if(latestDirection == Vector2.Down)
+        {
+            SpeakWithOverlappedInteractables(downPoint);
+        }
+        else if(latestDirection == Vector2.Up)
+        {
+            SpeakWithOverlappedInteractables(topPoint);
+        }
 
-            if(node is InteractionArea interact)
+        #region Deprecated Raycast Code
+        //uint mask = 1 << 1;
+        //HitInfo2D hitInfo = SendRaycastReturnHitinfo(mask);
+
+        //if (hitInfo != null)
+        //{
+        //    Node node = hitInfo.collider as Node;
+        //    if (node is InteractionArea interact)
+        //    {
+        //        interact.StartDialogue();
+        //    }
+        //}
+        #endregion
+    }
+
+    private void PickUpOverlappedInteractables(Area2D areaToPickUp)
+    {
+        foreach (Area2D area in areaToPickUp.GetOverlappingAreas())
+        {
+            if (area is InteractionArea interact)
             {
-                GD.Print(interact.GetParent().Name);
-
                 pickable = interact.GetPickable();
-                if(pickable != null)
+                if (pickable != null)
                 {
                     pickable.PickUpBy(this);
                     isHoldingSomething = true;
@@ -116,7 +142,51 @@ public partial class Player : CharacterBody2D
                     StartDropGraceTimer();
                 }
             }
+
+            break;
         }
+    }
+
+    private void PickUp()
+    {
+        if (latestDirection == Vector2.Left)
+        {
+            PickUpOverlappedInteractables(leftPoint);
+        }
+        else if (latestDirection == Vector2.Right)
+        {
+            PickUpOverlappedInteractables(rightPoint);
+        }
+        else if (latestDirection == Vector2.Down)
+        {
+            PickUpOverlappedInteractables(downPoint);
+        }
+        else if (latestDirection == Vector2.Up)
+        {
+            PickUpOverlappedInteractables(topPoint);
+        }
+
+        #region Deprecated Raycast Code
+        //uint mask = 1 << 1;
+        //HitInfo2D hitInfo = SendRaycastReturnHitinfo(mask);
+
+        //if(hitInfo != null)
+        //{
+        //    Node node = hitInfo.collider as Node;
+
+        //    if(node is InteractionArea interact)
+        //    {
+        //        pickable = interact.GetPickable();
+        //        if(pickable != null)
+        //        {
+        //            pickable.PickUpBy(this);
+        //            isHoldingSomething = true;
+        //            canDropObject = false;
+        //            StartDropGraceTimer();
+        //        }
+        //    }
+        //}
+        #endregion
     }
 
     private void Drop()

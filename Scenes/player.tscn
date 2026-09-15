@@ -31,12 +31,28 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tygf"]
 size = Vector2(28, 43)
 
-[node name="Player" type="CharacterBody2D" unique_id=1201004403 node_paths=PackedStringArray("animatedSprite") groups=["Player"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8erm5"]
+size = Vector2(33, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1ek2"]
+size = Vector2(32, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tx1dd"]
+size = Vector2(20, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3smsa"]
+size = Vector2(20, 30)
+
+[node name="Player" type="CharacterBody2D" unique_id=1201004403 node_paths=PackedStringArray("animatedSprite", "leftPoint", "rightPoint", "downPoint", "topPoint") groups=["Player"]]
 motion_mode = 1
 script = ExtResource("1_qkid2")
 animatedSprite = NodePath("Sprite2D")
 speed = 300.0
 testNode = ExtResource("2_x3wgy")
+leftPoint = NodePath("InteractionPoints/Left")
+rightPoint = NodePath("InteractionPoints/Right")
+downPoint = NodePath("InteractionPoints/Bottom")
+topPoint = NodePath("InteractionPoints/Top")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1078226564]
 position = Vector2(0, -27.640625)
@@ -50,3 +66,37 @@ shape = SubResource("RectangleShape2D_5tygf")
 
 [node name="PlayerCanTakeDamage" type="Node" parent="." unique_id=1229153839]
 script = ExtResource("7_3smsa")
+
+[node name="InteractionPoints" type="Node2D" parent="." unique_id=217810541]
+
+[node name="Right" type="Area2D" parent="InteractionPoints" unique_id=1613442596]
+position = Vector2(37, -21)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionPoints/Right" unique_id=2090742645]
+position = Vector2(-6.5, 0)
+shape = SubResource("RectangleShape2D_8erm5")
+
+[node name="Left" type="Area2D" parent="InteractionPoints" unique_id=1285626034]
+position = Vector2(-38, -22)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionPoints/Left" unique_id=1284158871]
+position = Vector2(6, 0)
+shape = SubResource("RectangleShape2D_f1ek2")
+
+[node name="Bottom" type="Area2D" parent="InteractionPoints" unique_id=2081603537]
+position = Vector2(0, 42)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionPoints/Bottom" unique_id=676042202]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_tx1dd")
+
+[node name="Top" type="Area2D" parent="InteractionPoints" unique_id=1888377397]
+position = Vector2(0, -87)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionPoints/Top" unique_id=1795147531]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_3smsa")

@@ -12,15 +12,23 @@ public partial class NPC : StaticBody2D
     public override void _EnterTree()
     {
 		interactArea.HasStartedDialogue += StartDialogue;
+        DialogueManager.DialogueEnded += Test;
     }
 
     public override void _ExitTree()
     {
         interactArea.HasStartedDialogue -= StartDialogue;
+        DialogueManager.DialogueEnded -= Test;
+
     }
 
-	public void StartDialogue()
+    public void StartDialogue()
 	{
 		balloon = (DialogueBalloon)DialogueManager.ShowDialogueBalloon(dialogueResource, "start");
+    }
+    private void Test(Resource endingDialogueResource)
+    {
+        //This prints twice for some reason
+        balloon = null;
     }
 }

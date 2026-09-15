@@ -29,7 +29,7 @@ public partial class Robot : NPC
         {
             if (!hasBlownUp)
             {
-                BlowUp();
+                CallDeferred("DeferBlowUp");
                 hasBlownUp = true;
             }
         }
@@ -37,10 +37,17 @@ public partial class Robot : NPC
         timeRemainingInt = (int)(timeInSecondsForSelfDestruct - currentTime);
     }
 
+    private void DeferBlowUp()
+    {
+        BlowUp();
+    }
+
     private void BlowUp()
     {
-        if(balloon != null)
+        if (balloon != null)
+        {
             balloon.QueueFree();
+        }
 
         //spawning effect
         OneShotParticleEffect particleEffect = explosionEffect.Instantiate() as OneShotParticleEffect;
