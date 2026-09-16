@@ -13,11 +13,13 @@ public partial class PersistComponent : BaseComponent
         {
             actor2D = _actor2D;
         }
+
+        _actor.AddToGroup("Persistant");
     }
 
     public void SetPosition(Vector2 position)
     {
-        GD.Print($"Saved position: {position}");
+        //GD.Print($"Saved position: {position}");
         actor2D.GlobalPosition = position;
     }
 

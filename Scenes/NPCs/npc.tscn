@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://2hu7d7pk4b23" path="res://Scripts/Components/PersistComponent.cs" id="3_bsvs8"]
 [ext_resource type="PackedScene" uid="uid://bb3crtvugn41p" path="res://Scenes/interaction_area.tscn" id="3_q0ilr"]
 
-[node name="NPC" type="StaticBody2D" unique_id=64990111 node_paths=PackedStringArray("interactArea", "componentHolder") groups=["NPC", "Persistant"]]
+[node name="NPC" type="StaticBody2D" unique_id=64990111 node_paths=PackedStringArray("interactArea", "componentHolder") groups=["NPC"]]
 script = ExtResource("1_g6unj")
 interactArea = NodePath("InteractionArea")
 componentHolder = NodePath("ComponentsHolder")

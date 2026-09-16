@@ -274,6 +274,7 @@ public partial class Player : CharacterBody2D, IComponentable
     {
         if(pickable != null)
         {
+            GD.Print("dropping");
             pickable.DropDown();
             pickable = null;
         }
