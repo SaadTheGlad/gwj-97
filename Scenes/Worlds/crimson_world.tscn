@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" uid="uid://cq6pw4ef01ri2" path="res://Scripts/World.cs" id="1_pwu75"]
 [ext_resource type="PackedScene" uid="uid://dbnr15k3atkp3" path="res://Scenes/world_portal.tscn" id="2_ppip7"]
+[ext_resource type="PackedScene" uid="uid://c06bbsoplf7co" path="res://Scenes/NPCs/slumped_man.tscn" id="3_lwlab"]
 
 [node name="CrimsonWorld" type="Node2D" unique_id=2101248957 node_paths=PackedStringArray("portals")]
+y_sort_enabled = true
 script = ExtResource("1_pwu75")
 worldTimeScale = 0.5
-portals = [NodePath("BluePortal")]
+portals = [NodePath("BluePortal"), NodePath("OrangePortal")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1089424841]
 layer = -1
@@ -23,7 +25,20 @@ color = Color(0.5137255, 0.20784314, 0.28235295, 1)
 position = Vector2(547, 320)
 WorldName = "BlueWorld"
 
-[node name="BG" parent="BluePortal" index="0" unique_id=2090716909]
+[node name="BG" parent="BluePortal" index="2" unique_id=2090716909]
 modulate = Color(0.1254902, 0.33333334, 0.33333334, 1)
 
+[node name="SlumpedMan" parent="." unique_id=64990111 instance=ExtResource("3_lwlab")]
+position = Vector2(716, 311)
+
+[node name="OrangePortal" parent="." unique_id=1584393610 instance=ExtResource("2_ppip7")]
+position = Vector2(974, 326)
+WorldName = "OrangeWorld"
+
+[node name="BG" parent="OrangePortal" index="2" unique_id=2090716909]
+modulate = Color(0.6509804, 0.2901961, 0.011764706, 1)
+
 [editable path="BluePortal"]
+[editable path="BluePortal/InteractionArea"]
+[editable path="OrangePortal"]
+[editable path="OrangePortal/InteractionArea"]

@@ -13,6 +13,21 @@ size = Vector2(86, 31)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q0ilr"]
 size = Vector2(84, 142)
 
+[sub_resource type="Gradient" id="Gradient_lkodu"]
+offsets = PackedFloat32Array(0.26051402, 0.33761683)
+colors = PackedColorArray(1, 0, 0, 1, 0.41, 0.41, 0.41, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a8eau"]
+gradient = SubResource("Gradient_lkodu")
+width = 500
+height = 308
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1.865, -0.025)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lkodu"]
+size = Vector2(86, 54)
+
 [node name="Terminal" unique_id=64990111 instance=ExtResource("1_6rdyl")]
 
 [node name="Sprite2D" parent="." index="0" unique_id=969637244]
@@ -42,5 +57,16 @@ metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
 script = ExtResource("5_lkodu")
 dialogueResource = ExtResource("2_56fcr")
 metadata/_custom_type_script = "uid://dw687ssjn0exb"
+
+[node name="FixingArea" type="Area2D" parent="." index="4" unique_id=1778545198 groups=["FixingArea"]]
+position = Vector2(0, 32)
+
+[node name="Sprite2D" type="Sprite2D" parent="FixingArea" index="0" unique_id=1493375623]
+scale = Vector2(0.165, 0.165)
+texture = SubResource("GradientTexture2D_a8eau")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FixingArea" index="1" unique_id=1614364617]
+shape = SubResource("RectangleShape2D_lkodu")
+debug_color = Color(0.6814241, 0.49509633, 0.25800472, 0.41960785)
 
 [editable path="InteractionArea"]

@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cq6pw4ef01ri2" path="res://Scripts/World.cs" id="1_4n7ss"]
 [ext_resource type="PackedScene" uid="uid://dbnr15k3atkp3" path="res://Scenes/world_portal.tscn" id="2_r3iun"]
+[ext_resource type="PackedScene" uid="uid://bsanjpifg12st" path="res://Scenes/NPCs/terminal.tscn" id="3_ut5n5"]
 
 [node name="OrangeWorld" type="Node2D" unique_id=2101248957 node_paths=PackedStringArray("portals")]
+y_sort_enabled = true
 script = ExtResource("1_4n7ss")
 portals = [NodePath("CrimsonPortal")]
 
@@ -16,13 +18,20 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.649952, 0.29133907, 0.012470773, 1)
+color = Color(0.6509804, 0.2901961, 0.011764706, 1)
 
 [node name="CrimsonPortal" parent="." unique_id=994139881 instance=ExtResource("2_r3iun")]
 position = Vector2(571, 326)
 WorldName = "CrimsonWorld"
 
-[node name="BG" parent="CrimsonPortal" index="0" unique_id=2090716909]
+[node name="BG" parent="CrimsonPortal" index="2" unique_id=2090716909]
 modulate = Color(0.5137255, 0.20784314, 0.28235295, 1)
 
+[node name="Terminal" parent="." unique_id=64990111 instance=ExtResource("3_ut5n5")]
+position = Vector2(716, 290)
+
+[node name="Terminal2" parent="." unique_id=976163496 instance=ExtResource("3_ut5n5")]
+position = Vector2(434, 286)
+
 [editable path="CrimsonPortal"]
+[editable path="CrimsonPortal/InteractionArea"]

@@ -12,6 +12,7 @@ public partial class Robot : NPC
     [Export] private DamageZone damageZone;
 
     bool hasBlownUp = false;
+    public bool defused;
 
     public override void _Ready()
     {
@@ -19,11 +20,22 @@ public partial class Robot : NPC
 
         if (WorldManager.Instance.GetCurrentTime() >= timeInSecondsForSelfDestruct)
         {
-            QueueFree();
+            CallDeferred("DeferredQueueFree");
         }
     }
 
+    void DeferredQueueFree()
+    {
+        QueueFree();
+    }
+
     public override void _Process(double delta)
+    {
+        if(!defused)
+            RunDownClock();
+    }
+
+    private void RunDownClock()
     {
         float currentTime = WorldManager.Instance.GetCurrentTime();
 
@@ -37,6 +49,29 @@ public partial class Robot : NPC
         }
 
         timeRemainingInt = (int)(timeInSecondsForSelfDestruct - currentTime);
+    }
+
+    public void AreaEntered(Area2D area)
+    {
+        if (area.IsInGroup("FixingArea"))
+        {
+            Defuse(area);
+        }
+    }
+
+    private void Defuse(Area2D area)
+    {
+        CallDeferred("DeferDefuse", area);
+    }
+
+    void DeferDefuse(Area2D area)
+    {
+        defused = true;
+        var pickable = GetComponent<Pickable>();
+        if (pickable != null)
+        {
+            pickable.DropDown(area.GlobalPosition);
+        }
     }
 
     private void DeferBlowUp()

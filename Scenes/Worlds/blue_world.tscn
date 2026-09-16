@@ -49,10 +49,11 @@ grow_vertical = 2
 color = Color(0.1254902, 0.33333334, 0.33333334, 1)
 
 [node name="Terminal" parent="." unique_id=64990111 instance=ExtResource("6_2eqo0")]
-position = Vector2(726, 337)
+position = Vector2(2362, 403)
 
-[node name="Robot" parent="." unique_id=1157753492 instance=ExtResource("6_vesm1")]
-position = Vector2(435, 218)
+[node name="Robot" parent="." unique_id=1032934518 instance=ExtResource("6_vesm1")]
+position = Vector2(747, 181)
+timeInSecondsForSelfDestruct = 8.0
 
 [editable path="WorldPortal"]
 [editable path="WorldPortal/InteractionArea"]

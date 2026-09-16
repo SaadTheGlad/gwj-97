@@ -30,6 +30,7 @@ public partial class Pickable : BaseComponent
         //applying movement penalty
         if(picker is Player player)
         {
+            player.SetHoldingSomething(true);
             player.ApplyMovementPenalty(movementPenalty);
         }
     }
@@ -37,7 +38,6 @@ public partial class Pickable : BaseComponent
     public void DropDown()
     {
         isPickedUp = false;
-
 
         foreach (CollisionShape2D shape in colliderShapes)
         {
@@ -47,11 +47,38 @@ public partial class Pickable : BaseComponent
         //set its position to something sensible
         if(picker is Player player)
         {
+            player.SetHoldingSomething(false);
             player.RemoveMovementPenalty();
             Vector2 lookDir = player.GetLatestLookDirection();
             Ray2D ray = new Ray2D(player.GlobalPosition, lookDir);
             if(actor is Node2D actor2D)
                 actor2D.GlobalPosition = ray.GetPoint(50f) - new Vector2(0, 25f);
+        }
+
+        //should probably check if there is a collider here so you can't place it inside colliders
+
+        picker = null;
+
+    }
+
+    public void DropDown(Vector2 customDropPosition)
+    {
+        isPickedUp = false;
+
+        foreach (CollisionShape2D shape in colliderShapes)
+        {
+            shape.Disabled = false;
+        }
+
+        //set its position to something sensible
+        if (picker is Player player)
+        {
+            player.SetHoldingSomething(false);
+            player.RemoveMovementPenalty();
+            Vector2 lookDir = player.GetLatestLookDirection();
+            Ray2D ray = new Ray2D(player.GlobalPosition, lookDir);
+            if (actor is Node2D actor2D)
+                actor2D.GlobalPosition = customDropPosition;
         }
 
         //should probably check if there is a collider here so you can't place it inside colliders
@@ -66,6 +93,7 @@ public partial class Pickable : BaseComponent
         if(picker is Player player)
         {
             player.SetHoldingSomething(false);
+            player.RemoveMovementPenalty();
         }
     }
 

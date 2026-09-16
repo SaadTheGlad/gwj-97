@@ -39,8 +39,7 @@ public partial class DialogueComponent : BaseComponent
     }
     private void NullBalloon(Resource endingDialogueResource)
     {
-        //This prints twice for some reason
-        GD.Print("brother");
+        //This runs twice for some reason
         balloon = null;
     }
 

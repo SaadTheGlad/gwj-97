@@ -26,7 +26,7 @@ class_name DialogueResource extends Resource
 ## the first dialogue line encountered.
 func get_next_dialogue_line(cue: String = "", extra_game_states: Array = [], mutation_behaviour: DMConstants.MutationBehaviour = DMConstants.MutationBehaviour.Wait) -> DialogueLine:
 	return await Engine.get_singleton("DialogueManager").get_next_dialogue_line(self, cue, extra_game_states, mutation_behaviour)
-
+	print_stack()
 
 ## Get the list of any cues found in the file.
 func get_cues() -> PackedStringArray:

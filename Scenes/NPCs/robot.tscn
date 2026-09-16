@@ -30,12 +30,16 @@ damageZone = NodePath("DamageZone")
 texture_filter = 1
 scale = Vector2(4.9999995, 5.0000005)
 texture = ExtResource("2_k87gx")
+offset = Vector2(0, -5.545)
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=503925633]
-position = Vector2(0, 27.5)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_byqip")
 
-[node name="CollisionShape2D" parent="InteractionArea" parent_id_path=PackedInt32Array(253216721) index="0" unique_id=72547211]
+[node name="InteractionArea" parent="." index="2" unique_id=253216721]
+position = Vector2(0, -27)
+
+[node name="CollisionShape2D" parent="InteractionArea" index="0" unique_id=72547211]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_6cvnh")
 
@@ -46,6 +50,7 @@ target = NodePath("..")
 metadata/_custom_type_script = "uid://cd3222nx3y3k5"
 
 [node name="DamageZone" parent="." index="4" unique_id=1752915568 instance=ExtResource("8_6cvnh")]
+position = Vector2(0, -27)
 monitoring = false
 worksWithAreas = true
 
@@ -66,6 +71,8 @@ metadata/_custom_type_script = "uid://6ggdbwi8lhvs"
 script = ExtResource("9_xrtam")
 dialogueResource = ExtResource("3_rfwpu")
 metadata/_custom_type_script = "uid://dw687ssjn0exb"
+
+[connection signal="area_entered" from="InteractionArea" to="." method="AreaEntered"]
 
 [editable path="InteractionArea"]
 [editable path="DamageZone"]

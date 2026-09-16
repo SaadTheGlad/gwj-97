@@ -218,7 +218,6 @@ public partial class Player : CharacterBody2D, IComponentable
                     if (pickable != null)
                     {
                         pickable.PickUpBy(this);
-                        isHoldingSomething = true;
                         canDropObject = false;
                         StartDropGraceTimer();
                     }
@@ -275,7 +274,6 @@ public partial class Player : CharacterBody2D, IComponentable
     {
         pickable.DropDown();
         pickable = null;
-        isHoldingSomething = false;
     }
 
     public void ApplyMovementPenalty(float movementPenalty)
