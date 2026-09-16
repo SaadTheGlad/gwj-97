@@ -9,6 +9,11 @@ public partial class DialogueComponent : BaseComponent
     protected DialogueBalloon balloon;
 
     private InteractionArea interactArea;
+    private bool mute;
+
+    public void Mute() => mute = true;
+    public void Unmute() => mute = false;
+
 
     public DialogueBalloon GetBalloon()
     {
@@ -34,8 +39,11 @@ public partial class DialogueComponent : BaseComponent
 
     public void StartDialogue()
     {
-        balloon = (DialogueBalloon)DialogueManager.ShowDialogueBalloon(dialogueResource, "start");
-        EventManager.ResetVelocity?.Invoke();
+        if (!mute)
+        {
+            balloon = (DialogueBalloon)DialogueManager.ShowDialogueBalloon(dialogueResource, "start");
+            EventManager.ResetVelocity?.Invoke();
+        }
     }
     private void NullBalloon(Resource endingDialogueResource)
     {

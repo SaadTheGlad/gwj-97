@@ -33,10 +33,28 @@ public partial class Pickable : BaseComponent
             player.SetHoldingSomething(true);
             player.ApplyMovementPenalty(movementPenalty);
         }
+
+        if(actor is IComponentable componentable)
+        {
+            var dialogueComponent = componentable.GetComponent<DialogueComponent>();
+            if(dialogueComponent != null)
+            {
+                dialogueComponent.Mute();
+            }
+        }
     }
 
     public void DropDown()
     {
+        if (actor is IComponentable componentable)
+        {
+            var dialogueComponent = componentable.GetComponent<DialogueComponent>();
+            if (dialogueComponent != null)
+            {
+                dialogueComponent.Unmute();
+            }
+        }
+
         isPickedUp = false;
 
         foreach (CollisionShape2D shape in colliderShapes)
@@ -63,6 +81,15 @@ public partial class Pickable : BaseComponent
 
     public void DropDown(Vector2 customDropPosition)
     {
+        if (actor is IComponentable componentable)
+        {
+            var dialogueComponent = componentable.GetComponent<DialogueComponent>();
+            if (dialogueComponent != null)
+            {
+                dialogueComponent.Unmute();
+            }
+        }
+
         isPickedUp = false;
 
         foreach (CollisionShape2D shape in colliderShapes)

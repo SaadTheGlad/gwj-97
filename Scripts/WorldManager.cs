@@ -92,6 +92,8 @@ public partial class WorldManager : Node
 
     void LoadWorld(string levelName, bool useSpawnPos)
     {
+        Player _player = player as Player;
+        _player.DropObject();
 
         string previousWorldName = "";
 

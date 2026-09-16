@@ -139,7 +139,7 @@ public partial class Player : CharacterBody2D, IComponentable
         {
             if (pickable.isPickedUp && Input.IsActionJustPressed("pick_up") && canDropObject)
             {
-                Drop();
+                DropObject();
             }
         }
     }
@@ -270,10 +270,13 @@ public partial class Player : CharacterBody2D, IComponentable
         #endregion
     }
 
-    private void Drop()
+    public void DropObject()
     {
-        pickable.DropDown();
-        pickable = null;
+        if(pickable != null)
+        {
+            pickable.DropDown();
+            pickable = null;
+        }
     }
 
     public void ApplyMovementPenalty(float movementPenalty)

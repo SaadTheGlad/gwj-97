@@ -32,16 +32,16 @@ animations = [{
 size = Vector2(28, 43)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8erm5"]
-size = Vector2(44, 40)
+size = Vector2(31, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1ek2"]
-size = Vector2(40, 40)
+size = Vector2(30, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tx1dd"]
-size = Vector2(36, 39)
+size = Vector2(36, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3smsa"]
-size = Vector2(40, 54)
+size = Vector2(40, 35)
 
 [node name="Player" type="CharacterBody2D" unique_id=1201004403 node_paths=PackedStringArray("animatedSprite", "leftPoint", "rightPoint", "downPoint", "topPoint", "componentHolder") groups=["Player"]]
 motion_mode = 1
@@ -72,7 +72,7 @@ position = Vector2(37, -21)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionPoints/Right" unique_id=2090742645]
-position = Vector2(-1, 0)
+position = Vector2(-7.5, 0)
 shape = SubResource("RectangleShape2D_8erm5")
 
 [node name="Left" type="Area2D" parent="InteractionPoints" unique_id=1285626034]
@@ -80,7 +80,7 @@ position = Vector2(-38, -22)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionPoints/Left" unique_id=1284158871]
-position = Vector2(2, 0)
+position = Vector2(7, 0)
 shape = SubResource("RectangleShape2D_f1ek2")
 
 [node name="Bottom" type="Area2D" parent="InteractionPoints" unique_id=2081603537]
@@ -88,7 +88,7 @@ position = Vector2(0, 42)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionPoints/Bottom" unique_id=676042202]
-position = Vector2(0, -0.5)
+position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_tx1dd")
 
 [node name="Top" type="Area2D" parent="InteractionPoints" unique_id=1888377397]
@@ -96,7 +96,7 @@ position = Vector2(0, -87)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionPoints/Top" unique_id=1795147531]
-position = Vector2(0, 5)
+position = Vector2(0, 14.5)
 shape = SubResource("RectangleShape2D_3smsa")
 
 [node name="Components" type="Node" parent="." unique_id=804039001]
