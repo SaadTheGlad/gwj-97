@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Net;
+using System.Runtime.InteropServices;
 
 [GlobalClass]
 public partial class Pickable : BaseComponent
@@ -34,68 +35,75 @@ public partial class Pickable : BaseComponent
             player.ApplyMovementPenalty(movementPenalty);
         }
 
-        if(actor is IComponentable componentable)
+        //changing the parent of the object to be the picker's child
+        actor.Reparent(picker);
+
+        IComponentable componentable = actor as IComponentable;
+
+        var dialogueComponent = componentable.GetComponent<DialogueComponent>();
+        if(dialogueComponent != null)
         {
-            var dialogueComponent = componentable.GetComponent<DialogueComponent>();
-            if(dialogueComponent != null)
-            {
-                dialogueComponent.Mute();
-            }
+            dialogueComponent.Mute();
         }
     }
 
-    public void DropDown()
+    //public void DropDown()
+    //{
+    //    if (actor is IComponentable componentable)
+    //    {
+    //        var dialogueComponent = componentable.GetComponent<DialogueComponent>();
+    //        if (dialogueComponent != null)
+    //        {
+    //            dialogueComponent.Unmute();
+    //        }
+    //    }
+
+    //    isPickedUp = false;
+
+    //    foreach (CollisionShape2D shape in colliderShapes)
+    //    {
+    //        shape.Disabled = false;
+    //    }
+        
+    //    //set its position to something sensible
+    //    if(picker is Player player)
+    //    {
+    //        player.SetHoldingSomething(false);
+    //        player.RemoveMovementPenalty();
+    //        Vector2 lookDir = player.GetLatestLookDirection();
+    //        Ray2D ray = new Ray2D(player.GlobalPosition, lookDir);
+    //        if(actor is Node2D actor2D)
+    //            actor2D.GlobalPosition = ray.GetPoint(50f) - new Vector2(0, 25f);
+    //    }
+
+    //    //should probably check if there is a collider here so you can't place it inside colliders
+
+    //    picker = null;
+
+    //}
+
+    public void DropDown(bool hasCustomPosition, [Optional] Vector2 customDropPosition)
     {
-        if (actor is IComponentable componentable)
-        {
-            var dialogueComponent = componentable.GetComponent<DialogueComponent>();
-            if (dialogueComponent != null)
-            {
-                dialogueComponent.Unmute();
-            }
-        }
+        IComponentable componentable = actor as IComponentable;
 
-        isPickedUp = false;
-
-        foreach (CollisionShape2D shape in colliderShapes)
+        var dialogueComponent = componentable.GetComponent<DialogueComponent>();
+        if (dialogueComponent != null)
         {
-            shape.Disabled = false;
+            dialogueComponent.Unmute();
         }
         
-        //set its position to something sensible
-        if(picker is Player player)
-        {
-            player.SetHoldingSomething(false);
-            player.RemoveMovementPenalty();
-            Vector2 lookDir = player.GetLatestLookDirection();
-            Ray2D ray = new Ray2D(player.GlobalPosition, lookDir);
-            if(actor is Node2D actor2D)
-                actor2D.GlobalPosition = ray.GetPoint(50f) - new Vector2(0, 25f);
-        }
-
-        //should probably check if there is a collider here so you can't place it inside colliders
-
-        picker = null;
-
-    }
-
-    public void DropDown(Vector2 customDropPosition)
-    {
-        if (actor is IComponentable componentable)
-        {
-            var dialogueComponent = componentable.GetComponent<DialogueComponent>();
-            if (dialogueComponent != null)
-            {
-                dialogueComponent.Unmute();
-            }
-        }
-
         isPickedUp = false;
 
         foreach (CollisionShape2D shape in colliderShapes)
         {
             shape.Disabled = false;
         }
+
+        //change its parent to be the current world
+        World currentWorld = WorldManager.Instance.GetCurrentWorld();
+
+        if (actor.GetParent() != currentWorld)
+            actor.Reparent(currentWorld);
 
         //set its position to something sensible
         if (picker is Player player)
@@ -105,23 +113,32 @@ public partial class Pickable : BaseComponent
             Vector2 lookDir = player.GetLatestLookDirection();
             Ray2D ray = new Ray2D(player.GlobalPosition, lookDir);
             if (actor is Node2D actor2D)
-                actor2D.GlobalPosition = customDropPosition;
+            {
+                if (hasCustomPosition)
+                {
+                    actor2D.GlobalPosition = customDropPosition;
+                }
+                else
+                {
+                    actor2D.GlobalPosition = ray.GetPoint(50f) - new Vector2(0, 25f);
+                }
+            }
         }
 
-        //should probably check if there is a collider here so you can't place it inside colliders
 
+        //TODO: Should probably check if there is a collider here so you can't place it inside colliders
         picker = null;
 
     }
 
     public override void _ExitTree()
     {
-        //this is to ensure that the player flag isn't still set
-        if(picker is Player player)
-        {
-            player.SetHoldingSomething(false);
-            player.RemoveMovementPenalty();
-        }
+        ////this is to ensure that the player flag isn't still set
+        //if(picker is Player player)
+        //{
+        //    player.SetHoldingSomething(false);
+        //    player.RemoveMovementPenalty();
+        //}
     }
 
     public override void _Process(double delta)

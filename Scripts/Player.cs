@@ -25,7 +25,10 @@ public partial class Player : CharacterBody2D, IComponentable
 
     public Vector2 GetLatestLookDirection() => latestDirection;
 
-    public void SetHoldingSomething(bool flag) => isHoldingSomething = flag;
+    public void SetHoldingSomething(bool flag)
+    {
+        isHoldingSomething = flag;
+    }
 
     #region Component Related Code
     [Export] private Node componentHolder;
@@ -274,8 +277,7 @@ public partial class Player : CharacterBody2D, IComponentable
     {
         if(pickable != null)
         {
-            GD.Print("dropping");
-            pickable.DropDown();
+            pickable.DropDown(false);
             pickable = null;
         }
     }
@@ -316,6 +318,7 @@ public partial class Player : CharacterBody2D, IComponentable
         }
 
         Velocity = direction * currentSpeed;
+        //GD.Print(currentSpeed);
 		MoveAndSlide();
 	}
 }

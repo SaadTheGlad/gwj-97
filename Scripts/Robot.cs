@@ -70,7 +70,7 @@ public partial class Robot : NPC
         var pickable = GetComponent<Pickable>();
         if (pickable != null)
         {
-            pickable.DropDown(area.GlobalPosition);
+            pickable.DropDown(true, area.GlobalPosition);
         }
     }
 

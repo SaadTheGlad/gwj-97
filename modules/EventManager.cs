@@ -11,4 +11,6 @@ public static class EventManager
     public static Action GameOver;
 
     public static Action ResetVelocity;
+
+    public static Action SaveState;
 }

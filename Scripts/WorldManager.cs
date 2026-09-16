@@ -19,9 +19,15 @@ public partial class WorldManager : Node
     private float currentTimeLeft;
     private int secondCounter;
 
+
     //saving variables
     //here the string is the path and the variant is the dictionary
     Dictionary<string, Variant> persistantObjectsDictionary = new Dictionary<string, Variant>();
+
+    public World GetCurrentWorld()
+    {
+        return currentWorld;
+    }
 
     public override void _EnterTree()
     {
@@ -36,12 +42,14 @@ public partial class WorldManager : Node
 
         EventManager.WorldEntered += LoadWorld;
         EventManager.GameOver += RestartGame;
+        EventManager.SaveState += SaveObjectsInfo;
     }
 
     public override void _ExitTree()
     {
         EventManager.WorldEntered -= LoadWorld;
         EventManager.GameOver -= RestartGame;
+        EventManager.SaveState -= SaveObjectsInfo;
     }
 
     public override void _Ready()
@@ -90,15 +98,20 @@ public partial class WorldManager : Node
         GameState.Instance.timeScale = newTimeScale;
     }
 
-    void LoadWorld(string levelName, bool useSpawnPos)
+    private void PrintDictionary()
     {
-        Player _player = player as Player;
-        _player.DropObject();
+        foreach (string key in persistantObjectsDictionary.Keys)
+        {
+            var nodeData = new Godot.Collections.Dictionary<string, Variant>((Godot.Collections.Dictionary)persistantObjectsDictionary[key]);
+            string nodeName = nodeData["Name"].ToString();
+            string worldName = nodeData["World"].ToString();
 
-        string previousWorldName = "";
+            GD.Print($"{nodeName} | {worldName} | Path: {nodeData["Path"]}");
+        }
+    }
 
-        //save persistant objects positions when loading a world
-
+    public void SaveObjectsInfo()
+    {
         //gets the persistant objects
         var persistantObjects = GetTree().GetNodesInGroup("Persistant");
 
@@ -112,17 +125,28 @@ public partial class WorldManager : Node
                 {
                     string key = persistantObject.Save()["Path"].ToString();
 
+                    //If the dictionary does not have the key, then we add it. If it does, then we update it.
                     if (!persistantObjectsDictionary.ContainsKey(key))
+                    {
                         persistantObjectsDictionary.Add(key, persistantObject.Save());
+                    }
                     else
                     {
                         persistantObjectsDictionary[key] = persistantObject.Save();
                     }
-
-                    //GD.Print($"Saved {persistantObject.Save()}");
                 }
             }
         }
+    }
+
+    void LoadWorld(string levelName, bool useSpawnPos)
+    {
+        //NOTE: This doesn't run when we load from _Ready() for some reason. I don't know if that'll be a problem...
+
+        string previousWorldName = "";
+
+        //save the objects info before unloading the world
+        SaveObjectsInfo();
 
         //check if there's a level already loaded, if so, remove it first
         if (currentWorld != null) {
@@ -135,30 +159,20 @@ public partial class WorldManager : Node
         currentWorld = SceneManager.Instance.GetScene(levelName).Instantiate() as World;
         GetParent().AddChild(currentWorld);
 
-        persistantObjects = GetTree().GetNodesInGroup("Persistant");
-
-
-
-        //load positions
-        foreach (Node node in persistantObjects)
+        //load the persistant object positions based on the dictionary
+        foreach(string objectKey in persistantObjectsDictionary.Keys)
         {
-            if (node is IComponentable componentable)
+            var nodeData = new Godot.Collections.Dictionary<string, Variant>((Godot.Collections.Dictionary)persistantObjectsDictionary[objectKey]);
+            foreach (var (key, value) in nodeData)
             {
-                var persistantObject = componentable.GetComponent<PersistComponent>();
-                if (persistantObject != null)
-                {
-                    string key = persistantObject.Save()["Path"].ToString();
-
-                    if (persistantObjectsDictionary.ContainsKey(key))
-                    {
-                        Dictionary<string, Variant> objectDictionary = (Dictionary<string, Variant>)persistantObjectsDictionary[key];
-                        Vector2 position = (Vector2)objectDictionary["Position"];
-                        //GD.Print($"Loaded key: {key} with position: {position}.");
-                        persistantObject.SetPosition(position);
-                    }                  
-                }
+                Vector2 position = (Vector2)nodeData["Position"];
+                Node2D node = GetNodeOrNull(nodeData["Path"].ToString()) as Node2D;
+                if (node != null)
+                    node.SetPosition(position);
             }
         }
+
+        PrintDictionary();
 
         //set the player's position
         if (useSpawnPos)
@@ -176,8 +190,5 @@ public partial class WorldManager : Node
 
         //changes the time scale based on the world you're in
         SetTimeScale(currentWorld.GetTimeScale());
-
-
     }
-
 }

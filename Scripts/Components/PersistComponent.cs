@@ -19,7 +19,6 @@ public partial class PersistComponent : BaseComponent
 
     public void SetPosition(Vector2 position)
     {
-        //GD.Print($"Saved position: {position}");
         actor2D.GlobalPosition = position;
     }
 
@@ -32,8 +31,11 @@ public partial class PersistComponent : BaseComponent
     {
         return new Godot.Collections.Dictionary<string, Variant>()
         {
-            { "Path", actor2D.GetPath() },
+            { "Path", actor.GetPath() },
+            { "Name", actor.Name},
             { "Position", actor2D.GlobalPosition},
+            { "World", WorldManager.Instance.GetCurrentWorld().Name}
         };
     }
+
 }

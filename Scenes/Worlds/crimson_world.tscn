@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cq6pw4ef01ri2" path="res://Scripts/World.cs" id="1_pwu75"]
 [ext_resource type="PackedScene" uid="uid://dbnr15k3atkp3" path="res://Scenes/world_portal.tscn" id="2_ppip7"]
 [ext_resource type="Shader" uid="uid://byul2higf0iet" path="res://Shaders/test_shader.gdshader" id="3_lwlab"]
+[ext_resource type="PackedScene" uid="uid://7mowvo1dwstu" path="res://Scenes/NPCs/robot.tscn" id="4_6y7gq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g7ti4"]
 shader = ExtResource("3_lwlab")
@@ -33,6 +34,9 @@ modulate = Color(0.1254902, 0.33333334, 0.33333334, 1)
 
 [node name="Whirl" parent="BluePortal" index="3" unique_id=760310801]
 material = SubResource("ShaderMaterial_g7ti4")
+
+[node name="Robot" parent="." unique_id=64990111 instance=ExtResource("4_6y7gq")]
+position = Vector2(608, -176)
 
 [editable path="BluePortal"]
 [editable path="BluePortal/InteractionArea"]

@@ -10,4 +10,14 @@ public partial class BaseComponent : Node
     {
         actor = _actor;
     }
+
+    public virtual void RemoveComponent()
+    {
+        CallDeferred("DeferredQueueFree");
+    }
+
+    void DeferredQueueFree()
+    {
+        QueueFree();
+    }
 }
