@@ -48,8 +48,11 @@ metadata/_custom_type_script = "uid://6ggdbwi8lhvs"
 [node name="Pickable" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="1" unique_id=701135690 node_paths=PackedStringArray("colliderShapes")]
 script = ExtResource("5_1lhdn")
 colliderShapes = []
-movementPenalty = 50.0
+movementPenalty = 10.0
 metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
+
+[node name="PersistComponent" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="2" unique_id=685922651]
+packedScenePath = "uid://bsanjpifg12st"
 
 [node name="FixingArea" type="Area2D" parent="." index="4" unique_id=1778545198 groups=["FixingArea"]]
 position = Vector2(0, 32)

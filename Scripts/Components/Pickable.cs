@@ -43,7 +43,18 @@ public partial class Pickable : BaseComponent
             }
         }
 
+
         IComponentable componentable = actor as IComponentable;
+
+
+        //we check if the object we picked up has a persistant component, if so we call the remove from dictionary function
+        var persistantComponent = componentable.GetComponent<PersistComponent>();
+        if (persistantComponent != null)
+        {
+            //call the remove from dictionary function
+            persistantComponent.RemoveFromDictionary();
+            persistantComponent.SetIgnoreFlag(true);
+        }
 
         //changing the parent of the object to be the picker's child
         actor.Reparent(picker);
@@ -54,6 +65,7 @@ public partial class Pickable : BaseComponent
         {
             dialogueComponent.Mute();
         }
+
     }
 
     public void DropDown(bool hasCustomPosition, [Optional] Vector2 customDropPosition)
@@ -87,6 +99,13 @@ public partial class Pickable : BaseComponent
         }
 
         IComponentable componentable = actor as IComponentable;
+
+        //we check if the object we picked up has a persistant component, if so we call the remove from dictionary function
+        var persistantComponent = componentable.GetComponent<PersistComponent>();
+        if (persistantComponent != null)
+        {
+            persistantComponent.SetIgnoreFlag(false);
+        }
 
         //change its parent to be the current world
         World currentWorld = WorldManager.Instance.GetCurrentWorld();

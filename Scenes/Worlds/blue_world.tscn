@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dbnr15k3atkp3" path="res://Scenes/world_portal.tscn" id="3_vesm1"]
 [ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Components/Pickable.cs" id="4_vesm1"]
 [ext_resource type="PackedScene" uid="uid://bsanjpifg12st" path="res://Scenes/NPCs/terminal.tscn" id="5_gs30c"]
+[ext_resource type="PackedScene" uid="uid://c06bbsoplf7co" path="res://Scenes/NPCs/slumped_man.tscn" id="6_vesm1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2eqo0"]
 texture = ExtResource("2_gs30c")
@@ -35,7 +36,7 @@ tile_map_data = PackedByteArray("AAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAA
 tile_set = SubResource("TileSet_vjah8")
 
 [node name="CrimsonPortal" parent="." unique_id=994139881 instance=ExtResource("3_vesm1")]
-position = Vector2(420, -191.00002)
+position = Vector2(424, 49)
 targetWorldName = "CrimsonWorld"
 
 [node name="BG" parent="CrimsonPortal" index="2" unique_id=2090716909]
@@ -58,7 +59,10 @@ grow_vertical = 2
 color = Color(0.1254902, 0.33333334, 0.33333334, 1)
 
 [node name="Terminal" parent="." unique_id=64990111 instance=ExtResource("5_gs30c")]
-position = Vector2(826, 424)
+position = Vector2(638, 303)
+
+[node name="SlumpedMan" parent="." unique_id=1796582399 instance=ExtResource("6_vesm1")]
+position = Vector2(245, 255)
 
 [editable path="CrimsonPortal"]
 [editable path="CrimsonPortal/InteractionArea"]

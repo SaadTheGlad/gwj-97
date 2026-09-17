@@ -42,4 +42,7 @@ script = ExtResource("5_qwhxx")
 dialogueResource = ExtResource("2_8wcyi")
 metadata/_custom_type_script = "uid://dw687ssjn0exb"
 
+[node name="PersistComponent" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="3" unique_id=685922651]
+packedScenePath = "uid://c06bbsoplf7co"
+
 [editable path="InteractionArea"]

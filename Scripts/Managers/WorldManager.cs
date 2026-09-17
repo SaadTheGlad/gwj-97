@@ -1,6 +1,7 @@
 using Godot;
 using Godot.Collections;
 using System;
+using System.IO;
 using System.Reflection.Metadata.Ecma335;
 using System.Security;
 
@@ -51,10 +52,16 @@ public partial class WorldManager : Node
     {
         //loads starting world
         CallDeferred("LoadWorld", "BlueWorld");
-
+        CallDeferred("HackyWay");
 
         currentTimeLeft = timeLoopTime;
         secondCounter = (int)timeLoopTime;
+    }
+
+    private void HackyWay()
+    {
+        SaveObjectsState();
+        SetWorldVisited("BlueWorld");
     }
 
     void LoadWorld(string worldName)
@@ -118,6 +125,11 @@ public partial class WorldManager : Node
         }
 
         VisualizeTime(delta);
+
+        if (Input.IsActionJustPressed("action3"))
+        {
+            RemoveObjectFromDictionary("test");
+        }
     }
 
     public void RemoveObjectFromDictionary(string path)
@@ -173,6 +185,8 @@ public partial class WorldManager : Node
                 var persistantObject = componentable.GetComponent<PersistComponent>();
                 if (persistantObject != null)
                 {
+                    if (persistantObject.GetIgnoreFlag()) continue;
+
                     string key = persistantObject.GetKey();
 
                     //If the dictionary does not have the key, then we add it. If it does, then we update it.
@@ -210,9 +224,22 @@ public partial class WorldManager : Node
                 string worldName = persistantObjectData["World"].ToString();
                 if (worldName != currentWorld.GetWorldName()) continue;
 
+
+
                 Vector2 position = (Vector2)persistantObjectData["Position"];
-                Node2D node = GetNode(persistantObjectData["Path"].ToString()) as Node2D;
-                node.SetPosition(position);
+                Node2D node = GetNodeOrNull(persistantObjectData["Path"].ToString()) as Node2D;
+                if(node == null)
+                {
+                    //this means that the object no longer exists and therefore must be instantiated every time we enter.
+                    Node2D scene = ResourceLoader.Load<PackedScene>(persistantObjectData["PackedScene"].ToString()).Instantiate() as Node2D;
+                    GetCurrentWorld().AddChild(scene);
+                    scene.SetPosition(position);
+                }
+                else
+                {
+                    node.SetPosition(position);
+                }
+
             }
         }
 
@@ -221,6 +248,15 @@ public partial class WorldManager : Node
 
         foreach (Node persistantObject in persistantObjects)
         {
+            IComponentable componentable = persistantObject as IComponentable;
+
+            //we check if the object we picked up has a persistant component, if so we call the remove from dictionary function
+            var persistantComponent = componentable.GetComponent<PersistComponent>();
+            if (persistantComponent != null)
+            {
+                if (persistantComponent.GetIgnoreFlag()) continue;
+            }
+
             GD.Print($"Checking: {persistantObject.GetPath()}");
 
             //If the dictionary does not have the path of the object and if it exists then remove it.

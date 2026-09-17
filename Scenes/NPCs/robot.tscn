@@ -65,6 +65,9 @@ metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
 script = ExtResource("9_fusnn")
 metadata/_custom_type_script = "uid://6ggdbwi8lhvs"
 
+[node name="PersistComponent" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="2" unique_id=685922651]
+packedScenePath = "uid://7mowvo1dwstu"
+
 [connection signal="area_entered" from="InteractionArea" to="." method="AreaEntered"]
 
 [editable path="InteractionArea"]
