@@ -4,7 +4,6 @@ using Godot;
 public partial class PersistComponent : BaseComponent
 {
     private Node2D actor2D;
-
     public override void Bind(Node _actor)
     {
         base.Bind(_actor);
@@ -27,14 +26,21 @@ public partial class PersistComponent : BaseComponent
         return actor2D.GlobalPosition;
     }
 
+    public string GetKey()
+    {
+        return actor.GetPath();
+    }
+
     public Godot.Collections.Dictionary<string, Variant> Save()
     {
+
         return new Godot.Collections.Dictionary<string, Variant>()
         {
             { "Path", actor.GetPath() },
             { "Name", actor.Name},
             { "Position", actor2D.GlobalPosition},
-            { "World", WorldManager.Instance.GetCurrentWorld().GetWorldName()}
+            { "World", WorldManager.Instance.GetCurrentWorld().GetWorldName()},
+         
         };
     }
 

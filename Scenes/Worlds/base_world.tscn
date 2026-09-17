@@ -2,7 +2,29 @@
 
 [ext_resource type="Script" uid="uid://bmlt13qbn30h6" path="res://Scripts/TitleCard.cs" id="1_sujdc"]
 [ext_resource type="PackedScene" uid="uid://c6nn26vq0ummm" path="res://Scenes/world_manager.tscn" id="2_1wmeh"]
+[ext_resource type="Script" uid="uid://2sq5vr0bwat6" path="res://Scripts/WorldResource.cs" id="2_5bhlt"]
 [ext_resource type="PackedScene" uid="uid://kb1j238ceko1" path="res://Scenes/player.tscn" id="2_aqfjg"]
+[ext_resource type="PackedScene" uid="uid://ycsfbj1offl4" path="res://Scenes/Worlds/blue_world.tscn" id="3_pq8du"]
+[ext_resource type="PackedScene" uid="uid://c7f3mkf52uia0" path="res://Scenes/Worlds/crimson_world.tscn" id="4_u2v1c"]
+[ext_resource type="PackedScene" uid="uid://df75w13nkapfo" path="res://Scenes/Worlds/orange_world.tscn" id="5_jcg3c"]
+
+[sub_resource type="Resource" id="Resource_bcekn"]
+script = ExtResource("2_5bhlt")
+worldName = "BlueWorld"
+worldPackedScene = ExtResource("3_pq8du")
+metadata/_custom_type_script = "uid://2sq5vr0bwat6"
+
+[sub_resource type="Resource" id="Resource_5bhlt"]
+script = ExtResource("2_5bhlt")
+worldName = "CrimsonWorld"
+worldPackedScene = ExtResource("4_u2v1c")
+metadata/_custom_type_script = "uid://2sq5vr0bwat6"
+
+[sub_resource type="Resource" id="Resource_u2v1c"]
+script = ExtResource("2_5bhlt")
+worldName = "OrangeWorld"
+worldPackedScene = ExtResource("5_jcg3c")
+metadata/_custom_type_script = "uid://2sq5vr0bwat6"
 
 [sub_resource type="LabelSettings" id="LabelSettings_1wmeh"]
 font_size = 30
@@ -122,6 +144,7 @@ y_sort_enabled = true
 player = NodePath("../Player")
 timeLoopTime = 60.0
 timeLabel = NodePath("../CanvasLayer/TimeLabel")
+worldResources = Array[Object]([SubResource("Resource_bcekn"), SubResource("Resource_5bhlt"), SubResource("Resource_u2v1c")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=736484474]
 
