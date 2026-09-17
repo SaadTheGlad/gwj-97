@@ -34,7 +34,7 @@ public partial class PersistComponent : BaseComponent
             { "Path", actor.GetPath() },
             { "Name", actor.Name},
             { "Position", actor2D.GlobalPosition},
-            { "World", WorldManager.Instance.GetCurrentWorld().Name}
+            { "World", WorldManager.Instance.GetCurrentWorld().GetWorldName()}
         };
     }
 

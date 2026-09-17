@@ -23,11 +23,6 @@ public partial class WorldManager : Node
     //here the string is the path and the variant is the dictionary
     Dictionary<string, Variant> persistantObjectsDictionary = new Dictionary<string, Variant>();
 
-    public World GetCurrentWorld()
-    {
-        return currentWorld;
-    }
-
     public override void _EnterTree()
     {
         if (Instance != null)
@@ -41,14 +36,12 @@ public partial class WorldManager : Node
 
         EventManager.WorldEntered += LoadWorld;
         EventManager.GameOver += RestartGame;
-        EventManager.SaveState += SaveObjectsInfo;
     }
 
     public override void _ExitTree()
     {
         EventManager.WorldEntered -= LoadWorld;
         EventManager.GameOver -= RestartGame;
-        EventManager.SaveState -= SaveObjectsInfo;
     }
 
     public override void _Ready()
@@ -70,6 +63,11 @@ public partial class WorldManager : Node
         VisualizeTime(delta);
     }
 
+    public World GetCurrentWorld()
+    {
+        return currentWorld;
+    }
+
     public void VisualizeTime(double delta)
     {
         if (currentTimeLeft <= secondCounter)
@@ -88,6 +86,7 @@ public partial class WorldManager : Node
 
     private void RestartGame()
     {
+        //I just set it to null here cuz if I don't it breaks
         Instance = null;
         GetTree().ReloadCurrentScene();
     }
@@ -96,7 +95,6 @@ public partial class WorldManager : Node
     {
         GameState.Instance.timeScale = newTimeScale;
     }
-
 
     private void PrintDictionary()
     {
@@ -141,8 +139,16 @@ public partial class WorldManager : Node
                 }
             }
         }
+    }
 
-        PrintDictionary();
+    public void SaveState()
+    {
+
+    }
+
+    public void LoadState()
+    {
+
     }
 
     void LoadWorld(string levelName, bool useSpawnPos)
