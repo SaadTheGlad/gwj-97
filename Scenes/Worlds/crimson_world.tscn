@@ -10,6 +10,7 @@ shader = ExtResource("3_lwlab")
 [node name="CrimsonWorld" type="Node2D" unique_id=2101248957 node_paths=PackedStringArray("portals")]
 y_sort_enabled = true
 script = ExtResource("1_pwu75")
+worldName = "CrimsonWorld"
 worldTimeScale = 0.5
 portals = [NodePath("BluePortal")]
 
@@ -26,7 +27,7 @@ color = Color(0.5137255, 0.20784314, 0.28235295, 1)
 
 [node name="BluePortal" parent="." unique_id=994139881 instance=ExtResource("2_ppip7")]
 position = Vector2(412, -185)
-WorldName = "BlueWorld"
+targetWorldName = "BlueWorld"
 
 [node name="BG" parent="BluePortal" index="2" unique_id=2090716909]
 modulate = Color(0.1254902, 0.33333334, 0.33333334, 1)

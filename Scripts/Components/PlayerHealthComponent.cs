@@ -1,7 +1,7 @@
     using Godot;
 using System;
 
-public partial class PlayerCanTakeDamage : CanTakeDamage
+public partial class PlayerHealthComponent : HealthComponent
 {
     public override void Die()
     {
@@ -11,6 +11,5 @@ public partial class PlayerCanTakeDamage : CanTakeDamage
     private void RestartGame()
     {
         EventManager.GameOver?.Invoke();
-
     }
 }

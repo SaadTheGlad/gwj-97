@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://btgj55cyd56v5"]
 
-[ext_resource type="Script" uid="uid://nyf45v5d6l0m" path="res://Scripts/DamageZone.cs" id="1_lf2kq"]
+[ext_resource type="Script" uid="uid://nyf45v5d6l0m" path="res://Scripts/DamageZone.cs" id="1_otso3"]
 
 [node name="DamageZone" type="Area2D" unique_id=1752915568]
-script = ExtResource("1_lf2kq")
+script = ExtResource("1_otso3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=694617257]
 debug_color = Color(0.9943357, 0, 0.23098016, 0.41960785)

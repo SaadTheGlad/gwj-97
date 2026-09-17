@@ -6,13 +6,11 @@ public partial class Player : CharacterBody2D, IComponentable
 {
 	[Export] private AnimatedSprite2D animatedSprite;
 
-    //movement and raycast vars
+    //movement vars
     [Export] private float maxSpeed = 15f;
     private float currentSpeed;
-    [Export] private PackedScene testNode;
     Vector2 latestDirection;
     Vector2 direction;
-    float maxRayDistance = 30f;
 
     //dropping variables
     Pickable pickable = null;
@@ -25,10 +23,7 @@ public partial class Player : CharacterBody2D, IComponentable
 
     public Vector2 GetLatestLookDirection() => latestDirection;
 
-    public void SetHoldingSomething(bool flag)
-    {
-        isHoldingSomething = flag;
-    }
+    public void SetHoldingSomething(bool flag) => isHoldingSomething = flag;
 
     #region Component Related Code
     [Export] private Node componentHolder;
@@ -89,13 +84,9 @@ public partial class Player : CharacterBody2D, IComponentable
     public override void _Ready()
     {
         currentSpeed = maxSpeed;
+
         InitComponents();
         BindComponents();
-    }
-
-    void ResetDirection()
-    {
-        //do stuff and things
     }
 
     public override void _UnhandledInput(InputEvent @event)
@@ -104,10 +95,11 @@ public partial class Player : CharacterBody2D, IComponentable
 
         if (GameState.Instance.playerCanMove)
         {
-            if (Input.IsActionJustPressed("action"))
+            if (Input.IsActionJustPressed("action1"))
             {
                 InitiateDialogue();
-            }else if (Input.IsActionJustPressed("pick_up") && !isHoldingSomething)
+            }
+            else if (Input.IsActionJustPressed("action2") && !isHoldingSomething)
             {
                 PickUp();
             }
@@ -116,41 +108,18 @@ public partial class Player : CharacterBody2D, IComponentable
         }
     }
 
-    private HitInfo2D SendRaycastReturnHitinfo(uint mask)
-    {
-        Ray2D ray = new Ray2D(GlobalPosition, latestDirection);
-        HitInfo2D hitInfo = new HitInfo2D();
-
-        Raycast.Raycast2D(ray, out hitInfo, GetWorld2D().DirectSpaceState, maxRayDistance, GetRid(), mask);
-
-        #region raycast_debugging
-        //Node2D testNode1 = testNode.Instantiate() as Node2D;
-        //Node2D testNode2 = testNode.Instantiate() as Node2D;
-        //testNode1.GlobalPosition = GlobalPosition;
-        //testNode2.GlobalPosition = ray.GetPoint(maxRayDistance);
-        //GetTree().Root.AddChild(testNode1);
-        //GetTree().Root.AddChild(testNode2);
-        #endregion
-
-        return hitInfo;
-    }
 
     public override void _Process(double delta)
     {
-        //dropping the object
-        if(pickable != null)
+        if (Input.IsActionJustPressed("action2") && canDropObject)
         {
-            if (pickable.isPickedUp && Input.IsActionJustPressed("pick_up") && canDropObject)
-            {
-                DropObject();
-            }
+            DropObject();
         }
     }
 
-    async private void StartDropGraceTimer()
+    void ResetDirection()
     {
-        await ToSignal(GetTree().CreateTimer(droppingGracePeriod), SceneTreeTimer.SignalName.Timeout);
-        canDropObject = true;
+        //do stuff and things
     }
 
     private void SpeakWithOverlappedInteractables(Area2D areaToCheck)
@@ -159,7 +128,7 @@ public partial class Player : CharacterBody2D, IComponentable
         {
             if (area is InteractionArea interact)
             {
-                Node owner = interact.GetOwnerNode();
+                Node owner = interact.GetActor();
                 if (owner is IComponentable componentable)
                 {
                     var dialogueComponent = componentable.GetComponent<DialogueComponent>();
@@ -176,36 +145,22 @@ public partial class Player : CharacterBody2D, IComponentable
 
     private void InitiateDialogue()
     {
-        if(latestDirection == Vector2.Left)
+        if (latestDirection == Vector2.Left)
         {
             SpeakWithOverlappedInteractables(leftPoint);
         }
-        else if(latestDirection == Vector2.Right)
+        else if (latestDirection == Vector2.Right)
         {
             SpeakWithOverlappedInteractables(rightPoint);
         }
-        else if(latestDirection == Vector2.Down)
+        else if (latestDirection == Vector2.Down)
         {
             SpeakWithOverlappedInteractables(downPoint);
         }
-        else if(latestDirection == Vector2.Up)
+        else if (latestDirection == Vector2.Up)
         {
             SpeakWithOverlappedInteractables(topPoint);
         }
-
-        #region Deprecated Raycast Code
-        //uint mask = 1 << 1;
-        //HitInfo2D hitInfo = SendRaycastReturnHitinfo(mask);
-
-        //if (hitInfo != null)
-        //{
-        //    Node node = hitInfo.collider as Node;
-        //    if (node is InteractionArea interact)
-        //    {
-        //        interact.StartDialogue();
-        //    }
-        //}
-        #endregion
     }
 
     private void PickUpOverlappedInteractables(Area2D areaToPickUp)
@@ -214,13 +169,14 @@ public partial class Player : CharacterBody2D, IComponentable
         {
             if (area is InteractionArea interact)
             {
-                Node owner = interact.GetOwnerNode();
-                if(owner is IComponentable componentable)
+                Node owner = interact.GetActor();
+                if (owner is IComponentable componentable)
                 {
                     pickable = componentable.GetComponent<Pickable>();
                     if (pickable != null)
                     {
                         pickable.PickUpBy(this);
+                        //This is to make sure that we don't pick up the object then drop it immediately. 
                         canDropObject = false;
                         StartDropGraceTimer();
                     }
@@ -249,35 +205,19 @@ public partial class Player : CharacterBody2D, IComponentable
         {
             PickUpOverlappedInteractables(topPoint);
         }
+    }
 
-        #region Deprecated Raycast Code
-        //uint mask = 1 << 1;
-        //HitInfo2D hitInfo = SendRaycastReturnHitinfo(mask);
-
-        //if(hitInfo != null)
-        //{
-        //    Node node = hitInfo.collider as Node;
-
-        //    if(node is InteractionArea interact)
-        //    {
-        //        pickable = interact.GetPickable();
-        //        if(pickable != null)
-        //        {
-        //            pickable.PickUpBy(this);
-        //            isHoldingSomething = true;
-        //            canDropObject = false;
-        //            StartDropGraceTimer();
-        //        }
-        //    }
-        //}
-        #endregion
+    async private void StartDropGraceTimer()
+    {
+        await ToSignal(GetTree().CreateTimer(droppingGracePeriod), SceneTreeTimer.SignalName.Timeout);
+        canDropObject = true;
     }
 
     public void DropObject()
     {
         if(pickable != null)
         {
-            pickable.DropDown(false);
+            pickable.DropDown(hasCustomPosition: false);
             pickable = null;
         }
     }
@@ -318,7 +258,6 @@ public partial class Player : CharacterBody2D, IComponentable
         }
 
         Velocity = direction * currentSpeed;
-        //GD.Print(currentSpeed);
 		MoveAndSlide();
 	}
 }

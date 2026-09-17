@@ -21,6 +21,7 @@ sources/0 = SubResource("TileSetAtlasSource_2eqo0")
 [node name="BlueWorld" type="Node2D" unique_id=2101248957 node_paths=PackedStringArray("portals")]
 y_sort_enabled = true
 script = ExtResource("1_dynsa")
+worldName = "BlueWorld"
 portals = [NodePath("CrimsonPortal")]
 
 [node name="TileMapLayers" type="Node2D" parent="." unique_id=1778573850]
@@ -35,7 +36,7 @@ tile_set = SubResource("TileSet_vjah8")
 
 [node name="CrimsonPortal" parent="." unique_id=994139881 instance=ExtResource("3_vesm1")]
 position = Vector2(420, -191.00002)
-WorldName = "CrimsonWorld"
+targetWorldName = "CrimsonWorld"
 
 [node name="BG" parent="CrimsonPortal" index="2" unique_id=2090716909]
 modulate = Color(0.5137255, 0.20784314, 0.28235295, 1)
@@ -57,7 +58,7 @@ grow_vertical = 2
 color = Color(0.1254902, 0.33333334, 0.33333334, 1)
 
 [node name="Terminal" parent="." unique_id=64990111 instance=ExtResource("5_gs30c")]
-position = Vector2(465, 49)
+position = Vector2(826, 424)
 
 [editable path="CrimsonPortal"]
 [editable path="CrimsonPortal/InteractionArea"]

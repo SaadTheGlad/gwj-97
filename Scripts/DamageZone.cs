@@ -4,21 +4,13 @@ using System;
 public partial class DamageZone : Area2D
 {
     [Export] private bool worksWithBodies = true, worksWithAreas = false;
-    [Export] private float damageItDeals = 200f;
+    [Export] private float damage = 200f;
 
     public void BodyEnteredZone(Node2D body)
     {
         if (worksWithBodies)
         {
-            if(body is IComponentable componentable)
-            {
-                var canTakeDamage = componentable.GetComponent<CanTakeDamage>();
-
-                if (canTakeDamage != null)
-                {
-                    canTakeDamage.TakeDamage(damageItDeals);
-                }
-            }
+            DealDamage(body);
         }
     }
 
@@ -26,14 +18,18 @@ public partial class DamageZone : Area2D
     {
         if (worksWithAreas)
         {
-            if (area is IComponentable componentable)
-            {
-                var canTakeDamage = componentable.GetComponent<CanTakeDamage>();
+            DealDamage(area);
+        }
+    }
 
-                if (canTakeDamage != null)
-                {
-                    canTakeDamage.TakeDamage(damageItDeals);
-                }
+    private void DealDamage(Node detectedNode)
+    {
+        if (detectedNode is IComponentable componentable)
+        {
+            var canTakeDamage = componentable.GetComponent<HealthComponent>();
+            if (canTakeDamage != null)
+            {
+                canTakeDamage.TakeDamage(damage);
             }
         }
     }

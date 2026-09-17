@@ -186,7 +186,7 @@ public partial class WorldManager : Node
 
             for (int i = 0; i < currentWorld.GetPortals().Length; i++)
             {
-                if (currentWorld.GetPortals()[i].GetWorldName() == previousWorldName)
+                if (currentWorld.GetPortals()[i].GetTargetWorldName() == previousWorldName)
                 {
                     player.GlobalPosition = currentWorld.GetPortals()[i].GetSpawnPos();
                 }

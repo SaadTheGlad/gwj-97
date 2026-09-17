@@ -3,7 +3,7 @@ using System;
 
 public partial class WorldPortal : Area2D, IComponentable
 {
-	[Export] private string WorldName;
+	[Export] private string targetWorldName;
     [Export] private Marker2D spawnPos;
 
     #region Component Related Code
@@ -65,9 +65,9 @@ public partial class WorldPortal : Area2D, IComponentable
         return spawnPos.GlobalPosition;
     }
 
-    public string GetWorldName()
+    public string GetTargetWorldName()
     {
-        return WorldName;
+        return targetWorldName;
     }
 
     public bool IsMarkerThere()
@@ -93,12 +93,12 @@ public partial class WorldPortal : Area2D, IComponentable
 
     public override void _Process(double delta)
     {
-        if (Input.IsActionJustPressed("action") && playerNear)
+        if (Input.IsActionJustPressed("action1") && playerNear)
         {
             CallDeferred("EnterWorld");
         }
     }
 
-    private void EnterWorld() => EventManager.WorldEntered?.Invoke(WorldName, true);
+    private void EnterWorld() => EventManager.WorldEntered?.Invoke(targetWorldName, true);
 
 }

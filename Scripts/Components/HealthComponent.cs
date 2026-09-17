@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 [GlobalClass]
-public partial class CanTakeDamage : BaseComponent
+public partial class HealthComponent : BaseComponent
 {
     [Export] public float maxHealth = 100;
     private float currentHealth;

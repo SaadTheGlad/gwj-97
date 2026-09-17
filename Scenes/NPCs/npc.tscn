@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cp16mh07f6430"]
 
-[ext_resource type="Script" uid="uid://dhh8yqb5c8bdq" path="res://Scripts/NPC.cs" id="1_g6unj"]
+[ext_resource type="Script" uid="uid://dhh8yqb5c8bdq" path="res://Scripts/Character Specific/NPC.cs" id="1_g6unj"]
 [ext_resource type="Script" uid="uid://2hu7d7pk4b23" path="res://Scripts/Components/PersistComponent.cs" id="3_bsvs8"]
 [ext_resource type="PackedScene" uid="uid://bb3crtvugn41p" path="res://Scenes/interaction_area.tscn" id="3_q0ilr"]
 

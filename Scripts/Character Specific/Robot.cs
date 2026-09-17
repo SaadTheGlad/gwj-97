@@ -84,12 +84,7 @@ public partial class Robot : NPC
         var dialogueComponent = GetComponent<DialogueComponent>();
         if(dialogueComponent != null)
         {
-            var balloon = dialogueComponent.GetBalloon();
-
-            if (balloon != null)
-            {
-                balloon.QueueFree();
-            }
+            dialogueComponent.DeleteBalloon();
         }
 
         //spawning effect

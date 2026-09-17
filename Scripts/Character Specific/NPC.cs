@@ -56,12 +56,6 @@ public partial class NPC : StaticBody2D, IComponentable
     {
         InitComponents();
         BindComponents();
-
-        var dialogueComponent = GetComponent<DialogueComponent>();
-        if (dialogueComponent != null)
-        {
-            dialogueComponent.BindInteractArea(interactArea);
-        }
     }
 
 }

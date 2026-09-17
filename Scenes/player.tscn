@@ -1,12 +1,11 @@
 [gd_scene format=3 uid="uid://kb1j238ceko1"]
 
-[ext_resource type="Script" uid="uid://bjvpyfkdbltcf" path="res://Scripts/Player.cs" id="1_qkid2"]
+[ext_resource type="Script" uid="uid://bjvpyfkdbltcf" path="res://Scripts/Character Specific/Player.cs" id="1_qkid2"]
 [ext_resource type="Texture2D" uid="uid://chps5pboj207s" path="res://Art/Images/TestPlayer/test_player0001.png" id="2_fkybt"]
-[ext_resource type="PackedScene" uid="uid://db5o5ycvbgv03" path="res://Scenes/TestNode.tscn" id="2_x3wgy"]
 [ext_resource type="Texture2D" uid="uid://bpcwbsxmechy7" path="res://Art/Images/TestPlayer/test_player0002.png" id="3_x3wgy"]
 [ext_resource type="Texture2D" uid="uid://do4e6oj17682q" path="res://Art/Images/TestPlayer/test_player0003.png" id="4_3smsa"]
 [ext_resource type="Texture2D" uid="uid://14f28rleuusi" path="res://Art/Images/TestPlayer/test_player0004.png" id="5_8erm5"]
-[ext_resource type="Script" uid="uid://lhh0gmtkqfae" path="res://Scripts/Components/PlayerCanTakeDamage.cs" id="7_3smsa"]
+[ext_resource type="Script" uid="uid://lhh0gmtkqfae" path="res://Scripts/Components/PlayerHealthComponent.cs" id="7_3smsa"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cvnsp"]
 animations = [{
@@ -48,7 +47,6 @@ motion_mode = 1
 script = ExtResource("1_qkid2")
 animatedSprite = NodePath("Sprite2D")
 maxSpeed = 300.0
-testNode = ExtResource("2_x3wgy")
 leftPoint = NodePath("InteractionPoints/Left")
 rightPoint = NodePath("InteractionPoints/Right")
 downPoint = NodePath("InteractionPoints/Bottom")
@@ -101,5 +99,5 @@ shape = SubResource("RectangleShape2D_3smsa")
 
 [node name="Components" type="Node" parent="." unique_id=804039001]
 
-[node name="PlayerCanTakeDamage" type="Node" parent="Components" unique_id=1229153839]
+[node name="PlayerHealthComponent" type="Node" parent="Components" unique_id=1229153839]
 script = ExtResource("7_3smsa")

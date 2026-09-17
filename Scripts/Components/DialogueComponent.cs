@@ -8,9 +8,7 @@ public partial class DialogueComponent : BaseComponent
     [Export] private Resource dialogueResource;
     protected DialogueBalloon balloon;
 
-    private InteractionArea interactArea;
     private bool mute;
-
     public void Mute() => mute = true;
     public void Unmute() => mute = false;
 
@@ -27,14 +25,7 @@ public partial class DialogueComponent : BaseComponent
 
     public override void _ExitTree()
     {
-        interactArea.HasStartedDialogue -= StartDialogue;
         DialogueManager.DialogueEnded -= NullBalloon;
-    }
-
-    public void BindInteractArea(InteractionArea _interactArea)
-    { 
-        interactArea = _interactArea;
-        interactArea.HasStartedDialogue += StartDialogue;
     }
 
     public void StartDialogue()
@@ -42,9 +33,20 @@ public partial class DialogueComponent : BaseComponent
         if (!mute)
         {
             balloon = (DialogueBalloon)DialogueManager.ShowDialogueBalloon(dialogueResource, "start");
+            //NOT IMPLEMENTED YET
             EventManager.ResetVelocity?.Invoke();
         }
     }
+
+    public void DeleteBalloon()
+    {
+        if (balloon != null)
+        {
+            balloon.QueueFree();
+        }
+    }
+
+    //This function exists so that in the above function we can safely QueueFree();
     private void NullBalloon(Resource endingDialogueResource)
     {
         //This runs twice for some reason

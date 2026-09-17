@@ -6,14 +6,15 @@ using System.Runtime.InteropServices;
 [GlobalClass]
 public partial class Pickable : BaseComponent
 {
-    //flag for being picked up
     public bool isPickedUp;
+
     //adjustable array of colliders that disable/enable when being picked up
     [Export] private CollisionShape2D[] colliderShapes;
+
     //(optional)custom offset when putting it on top of head
     [Export] private float pickUpOffset = 50f;
 
-    //movement penalty for picking up
+    //movement penalty in percentage for picking up
     [Export(PropertyHint.Range, "0, 100, 1")] private float movementPenalty = 0f;
 
     public Node2D picker;
@@ -28,11 +29,18 @@ public partial class Pickable : BaseComponent
             shape.Disabled = true;
         }
 
-        //applying movement penalty
+        //applying movement penalty and setting player flag that it's holding something
         if(picker is Player player)
         {
+            //Usually I'd move these to a PickerComponent but it's fine for now
             player.SetHoldingSomething(true);
             player.ApplyMovementPenalty(movementPenalty);
+
+            //Sets the initial position
+            if (actor is Node2D actor2D)
+            {
+                actor2D.GlobalPosition = picker.GlobalPosition - new Vector2(0f, pickUpOffset);
+            }
         }
 
         IComponentable componentable = actor as IComponentable;
@@ -40,7 +48,7 @@ public partial class Pickable : BaseComponent
         //changing the parent of the object to be the picker's child
         actor.Reparent(picker);
 
-
+        //Stop being able to talk with this object while it's picked up if it has a dialogue component
         var dialogueComponent = componentable.GetComponent<DialogueComponent>();
         if(dialogueComponent != null)
         {
@@ -48,51 +56,8 @@ public partial class Pickable : BaseComponent
         }
     }
 
-    //public void DropDown()
-    //{
-    //    if (actor is IComponentable componentable)
-    //    {
-    //        var dialogueComponent = componentable.GetComponent<DialogueComponent>();
-    //        if (dialogueComponent != null)
-    //        {
-    //            dialogueComponent.Unmute();
-    //        }
-    //    }
-
-    //    isPickedUp = false;
-
-    //    foreach (CollisionShape2D shape in colliderShapes)
-    //    {
-    //        shape.Disabled = false;
-    //    }
-        
-    //    //set its position to something sensible
-    //    if(picker is Player player)
-    //    {
-    //        player.SetHoldingSomething(false);
-    //        player.RemoveMovementPenalty();
-    //        Vector2 lookDir = player.GetLatestLookDirection();
-    //        Ray2D ray = new Ray2D(player.GlobalPosition, lookDir);
-    //        if(actor is Node2D actor2D)
-    //            actor2D.GlobalPosition = ray.GetPoint(50f) - new Vector2(0, 25f);
-    //    }
-
-    //    //should probably check if there is a collider here so you can't place it inside colliders
-
-    //    picker = null;
-
-    //}
-
     public void DropDown(bool hasCustomPosition, [Optional] Vector2 customDropPosition)
     {
-        IComponentable componentable = actor as IComponentable;
-
-        var dialogueComponent = componentable.GetComponent<DialogueComponent>();
-        if (dialogueComponent != null)
-        {
-            dialogueComponent.Unmute();
-        }
-        
         isPickedUp = false;
 
         foreach (CollisionShape2D shape in colliderShapes)
@@ -100,17 +65,12 @@ public partial class Pickable : BaseComponent
             shape.Disabled = false;
         }
 
-        //change its parent to be the current world
-        World currentWorld = WorldManager.Instance.GetCurrentWorld();
-
-        if (actor.GetParent() != currentWorld)
-            actor.Reparent(currentWorld);
-
         //set its position to something sensible
         if (picker is Player player)
         {
             player.SetHoldingSomething(false);
             player.RemoveMovementPenalty();
+
             Vector2 lookDir = player.GetLatestLookDirection();
             Ray2D ray = new Ray2D(player.GlobalPosition, lookDir);
             if (actor is Node2D actor2D)
@@ -126,25 +86,25 @@ public partial class Pickable : BaseComponent
             }
         }
 
+        IComponentable componentable = actor as IComponentable;
+
+        //change its parent to be the current world
+        World currentWorld = WorldManager.Instance.GetCurrentWorld();
+
+        if (actor.GetParent() != currentWorld)
+            actor.Reparent(currentWorld);
+
+        //makes you able to talk to the object
+        var dialogueComponent = componentable.GetComponent<DialogueComponent>();
+        if (dialogueComponent != null)
+        {
+            dialogueComponent.Unmute();
+        }
 
         //TODO: Should probably check if there is a collider here so you can't place it inside colliders
+
+        //Sets picker to null to avoid headaches.
         picker = null;
 
-    }
-
-    public override void _ExitTree()
-    {
-        ////this is to ensure that the player flag isn't still set
-        //if(picker is Player player)
-        //{
-        //    player.SetHoldingSomething(false);
-        //    player.RemoveMovementPenalty();
-        //}
-    }
-
-    public override void _Process(double delta)
-    {
-        if (isPickedUp && actor is Node2D actor2D)
-            actor2D.GlobalPosition = picker.GlobalPosition - new Vector2(0f, pickUpOffset);
     }
 }
