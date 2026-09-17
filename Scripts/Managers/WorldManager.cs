@@ -67,7 +67,7 @@ public partial class WorldManager : Node
 
     void LoadWorld(string worldName)
     {
-        GD.Print("Loading World...");
+        //GD.Print("Loading World...");
 
         currentWorld = GetWorld(worldName);
         GetParent().AddChild(currentWorld);
@@ -173,7 +173,7 @@ public partial class WorldManager : Node
 
     public void SaveObjectsState()
     {
-        GD.Print("Saving Data...");
+        //GD.Print("Saving Data...");
 
         //gets the persistant objects
         var persistantObjects = GetTree().GetNodesInGroup("Persistant");
@@ -205,7 +205,7 @@ public partial class WorldManager : Node
                     string nodeName = savedPersistantObject["Name"].ToString();
 
 
-                    GD.Print($"- {nodeName} in {worldName} with path: {savedPersistantObject["Path"]}");
+                    //GD.Print($"- {nodeName} in {worldName} with path: {savedPersistantObject["Path"]}");
                 }
             }
         }
@@ -216,42 +216,50 @@ public partial class WorldManager : Node
         GD.Print("Loading Data...");
 
         //load the persistant object positions based on the dictionary
+
+        //for every key in the dictionary so for every object
+        //we get its data
+        //then for every key value pair, so world [text], name [text] 
+        //we set it.
         foreach (string persistantObjectKey in persistantObjectsDictionary.Keys)
         {
             var persistantObjectData = 
                 new Godot.Collections.Dictionary<string, Variant>((Godot.Collections.Dictionary)persistantObjectsDictionary[persistantObjectKey]);
-            foreach (var (key, value) in persistantObjectData)
+
+            string worldName = persistantObjectData["World"].ToString();
+            if (worldName != currentWorld.GetWorldName()) continue;
+
+            string name = persistantObjectData["Name"].ToString();
+            Vector2 position = (Vector2)persistantObjectData["Position"];
+            string path = persistantObjectData["Path"].ToString();
+            string packedScenePath = persistantObjectData["PackedScene"].ToString();
+
+
+            Node2D node = GetNodeOrNull(path) as Node2D;
+
+            //This only executes if the node isn't original to the scene.
+            if (node == null)
             {
-                string worldName = persistantObjectData["World"].ToString();
-                if (worldName != currentWorld.GetWorldName()) continue;
+                node = ResourceLoader.Load<PackedScene>(packedScenePath).Instantiate() as Node2D;   
+                GetCurrentWorld().AddChild(node);
+            }
 
+            //setting robot dependant info
+            if (node is Robot robot)
+            {
+                robot.timeRemainingFloat = (float)persistantObjectData["timeInSecondsForSelfDestruct"];
+                robot.hasBlownUp = (bool)persistantObjectData["hasBlownUp"];
+                robot.defused = (bool)persistantObjectData["defused"];
 
-
-                //Path
-                //Here we assume the path is correct as it'll always be a child of the world
-                //string path = persistantObjectData["Path"].ToString();
-                //Name
-                string name = persistantObjectData["Name"].ToString();
-                //Position
-                Vector2 position = (Vector2)persistantObjectData["Position"];
-
-                Node2D node = GetNodeOrNull(persistantObjectData["Path"].ToString()) as Node2D;
-                if(node == null)
+                var persistantComponent = robot.GetComponent<PersistComponent>();
+                if (persistantComponent != null)
                 {
-                    //this means that the object no longer exists and therefore must be instantiated every time we enter.
-                    Node2D scene = ResourceLoader.Load<PackedScene>(persistantObjectData["PackedScene"].ToString()).Instantiate() as Node2D;
-                
-                    GetCurrentWorld().AddChild(scene);
-
-                    //Setting settable info
-                    scene.Name = name;
-                    scene.SetPosition(position);
-                }
-                else
-                {
-                    node.SetPosition(position);
+                    persistantComponent.StartRunning?.Invoke();
                 }
             }
+
+            node.Name = name;
+            node.SetPosition(position);
         }
 
         //loops through all persistant objects and if it doesn't find them in the dictionary then it deletes them
@@ -268,13 +276,13 @@ public partial class WorldManager : Node
                 if (persistantComponent.GetIgnoreFlag()) continue;
             }
 
-            GD.Print($"Checking: {persistantObject.GetPath()}");
+            //GD.Print($"Checking: {persistantObject.GetPath()}");
 
             //If the dictionary does not have the path of the object and if it exists then remove it.
             if (!persistantObjectsDictionary.ContainsKey(persistantObject.GetPath()) && GetNodeOrNull(persistantObject.GetPath()) != null && WasWorldVisited(currentWorld.GetWorldName()))
             {
                 persistantObject.QueueFree();
-                GD.Print($"Removed {persistantObject.Name}. No longer part of world.");
+                //GD.Print($"Removed {persistantObject.Name}. No longer part of world.");
             }
         }
     }

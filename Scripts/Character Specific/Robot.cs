@@ -4,67 +4,82 @@ using System;
 
 public partial class Robot : NPC
 {
-    [Export] private float timeInSecondsForSelfDestruct;
+    //This is the real variable that determines how much time it has left
+    [Export] public float timeRemainingFloat = 12f;
+
     //This variable is purely for the dialogue manager to display correctly
     public int timeRemainingInt;
 
     [Export] private PackedScene explosionEffect;
     [Export] private DamageZone damageZone;
 
-    bool hasBlownUp = false;
+    public bool hasBlownUp = false;
     public bool defused;
+
+    //variable and method to avoid race conditions
+    bool startRunning = false;
+    void SetRunningTrue() => startRunning = true;
 
     public override void _Ready()
     {
+        var persistantComponent = GetComponent<PersistComponent>();
+        if(persistantComponent != null)
+        {
+            persistantComponent.StartRunning += SetRunningTrue;
+        }
+
         base._Ready();
 
-        if (WorldManager.Instance.GetCurrentTime() >= timeInSecondsForSelfDestruct)
+        if (WorldManager.Instance.GetCurrentTime() >= timeRemainingFloat && !defused && startRunning)
         {
-            CallDeferred("DeferredQueueFree");
+            CallDeferred("DeferQueueFree");
         }
     }
 
-    void DeferredQueueFree()
+    public override void _ExitTree()
     {
-        QueueFree();
+        var persistantComponent = GetComponent<PersistComponent>();
+        if (persistantComponent != null)
+        {
+            persistantComponent.StartRunning -= SetRunningTrue;
+        }
     }
+
+    void DeferQueueFree() => QueueFree();
 
     public override void _Process(double delta)
     {
-        if(!defused)
+        if (!defused && startRunning)
+        {
             RunDownClock();
+        }
     }
 
     private void RunDownClock()
     {
         float currentTime = WorldManager.Instance.GetCurrentTime();
 
-        if (currentTime >= timeInSecondsForSelfDestruct)
+        if (currentTime >= timeRemainingFloat)
         {
             if (!hasBlownUp)
             {
-                CallDeferred("DeferBlowUp");
+                CallDeferred("BlowUp");
                 hasBlownUp = true;
             }
         }
 
-        timeRemainingInt = (int)(timeInSecondsForSelfDestruct - currentTime);
+        timeRemainingInt = (int)(timeRemainingFloat - currentTime);
     }
 
     public void AreaEntered(Area2D area)
     {
         if (area.IsInGroup("FixingArea"))
         {
-            Defuse(area);
+            CallDeferred("Defuse", area);
         }
     }
 
-    private void Defuse(Area2D area)
-    {
-        CallDeferred("DeferDefuse", area);
-    }
-
-    void DeferDefuse(Area2D area)
+    void Defuse(Area2D area)
     {
         defused = true;
         var pickable = GetComponent<Pickable>();
@@ -72,11 +87,6 @@ public partial class Robot : NPC
         {
             pickable.DropDown(true, area.GlobalPosition);
         }
-    }
-
-    private void DeferBlowUp()
-    {
-        BlowUp();
     }
 
     private void BlowUp()

@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 [GlobalClass]
 public partial class PersistComponent : BaseComponent
@@ -11,6 +12,9 @@ public partial class PersistComponent : BaseComponent
 
     public void SetIgnoreFlag(bool flag) => ignore = flag;
     public bool GetIgnoreFlag() => ignore;
+
+    //This property is purely to avoid race conditions to let all the properties load in first
+    public Action StartRunning;
 
     public override void Bind(Node _actor)
     {
@@ -44,7 +48,7 @@ public partial class PersistComponent : BaseComponent
         WorldManager.Instance.RemoveObjectFromDictionary(actor.GetPath());
     }
 
-    public Godot.Collections.Dictionary<string, Variant> Save()
+    public virtual Godot.Collections.Dictionary<string, Variant> Save()
     {
 
         return new Godot.Collections.Dictionary<string, Variant>()
