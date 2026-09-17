@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://brbe12jcx3y5x" path="res://Art/Images/TileSets/TitleAtlas.png" id="2_gs30c"]
 [ext_resource type="PackedScene" uid="uid://dbnr15k3atkp3" path="res://Scenes/world_portal.tscn" id="3_vesm1"]
 [ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Components/Pickable.cs" id="4_vesm1"]
-[ext_resource type="PackedScene" uid="uid://bsanjpifg12st" path="res://Scenes/NPCs/terminal.tscn" id="5_gs30c"]
-[ext_resource type="PackedScene" uid="uid://c06bbsoplf7co" path="res://Scenes/NPCs/slumped_man.tscn" id="6_vesm1"]
+[ext_resource type="PackedScene" uid="uid://7mowvo1dwstu" path="res://Scenes/NPCs/robot.tscn" id="5_gs30c"]
+[ext_resource type="PackedScene" uid="uid://bsanjpifg12st" path="res://Scenes/NPCs/terminal.tscn" id="6_vesm1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2eqo0"]
 texture = ExtResource("2_gs30c")
@@ -36,7 +36,7 @@ tile_map_data = PackedByteArray("AAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAA
 tile_set = SubResource("TileSet_vjah8")
 
 [node name="CrimsonPortal" parent="." unique_id=994139881 instance=ExtResource("3_vesm1")]
-position = Vector2(424, 49)
+position = Vector2(412, -157)
 targetWorldName = "CrimsonWorld"
 
 [node name="BG" parent="CrimsonPortal" index="2" unique_id=2090716909]
@@ -44,7 +44,7 @@ modulate = Color(0.5137255, 0.20784314, 0.28235295, 1)
 
 [node name="Pickable" type="Node" parent="CrimsonPortal/Components" parent_id_path=PackedInt32Array(994139881, 927054557) index="1" unique_id=154773655 node_paths=PackedStringArray("colliderShapes")]
 script = ExtResource("4_vesm1")
-colliderShapes = []
+colliderShapes = [NodePath("../../CollisionShape2D"), NodePath("../../InteractionArea/CollisionShape2D")]
 metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1089424841]
@@ -58,11 +58,12 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.1254902, 0.33333334, 0.33333334, 1)
 
-[node name="Terminal" parent="." unique_id=64990111 instance=ExtResource("5_gs30c")]
-position = Vector2(638, 303)
+[node name="Robot" parent="." unique_id=64990111 instance=ExtResource("5_gs30c")]
+position = Vector2(608, 339)
+timeInSecondsForSelfDestruct = 5.0
 
-[node name="SlumpedMan" parent="." unique_id=1796582399 instance=ExtResource("6_vesm1")]
-position = Vector2(245, 255)
+[node name="Terminal" parent="." unique_id=1021496901 instance=ExtResource("6_vesm1")]
+position = Vector2(1420, 319)
 
 [editable path="CrimsonPortal"]
 [editable path="CrimsonPortal/InteractionArea"]

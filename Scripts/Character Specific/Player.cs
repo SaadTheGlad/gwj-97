@@ -224,7 +224,6 @@ public partial class Player : CharacterBody2D, IComponentable
 
     public void ApplyMovementPenalty(float movementPenalty)
     {
-        GD.Print("huh");
         currentSpeed = currentSpeed - currentSpeed * (movementPenalty / 100f);
     }
 

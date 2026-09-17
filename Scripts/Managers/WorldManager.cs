@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using System.Reflection.Metadata.Ecma335;
 using System.Security;
+using static System.Formats.Asn1.AsnWriter;
 
 public partial class WorldManager : Node
 {
@@ -226,20 +227,30 @@ public partial class WorldManager : Node
 
 
 
+                //Path
+                //Here we assume the path is correct as it'll always be a child of the world
+                //string path = persistantObjectData["Path"].ToString();
+                //Name
+                string name = persistantObjectData["Name"].ToString();
+                //Position
                 Vector2 position = (Vector2)persistantObjectData["Position"];
+
                 Node2D node = GetNodeOrNull(persistantObjectData["Path"].ToString()) as Node2D;
                 if(node == null)
                 {
                     //this means that the object no longer exists and therefore must be instantiated every time we enter.
                     Node2D scene = ResourceLoader.Load<PackedScene>(persistantObjectData["PackedScene"].ToString()).Instantiate() as Node2D;
+                
                     GetCurrentWorld().AddChild(scene);
+
+                    //Setting settable info
+                    scene.Name = name;
                     scene.SetPosition(position);
                 }
                 else
                 {
                     node.SetPosition(position);
                 }
-
             }
         }
 
