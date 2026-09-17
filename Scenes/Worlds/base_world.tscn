@@ -142,7 +142,7 @@ y_sort_enabled = true
 
 [node name="WorldManager" parent="." unique_id=2144744180 node_paths=PackedStringArray("player", "timeLabel") instance=ExtResource("2_1wmeh")]
 player = NodePath("../Player")
-timeLoopTime = 60.0
+timeLoopTime = 10.0
 timeLabel = NodePath("../CanvasLayer/TimeLabel")
 worldResources = Array[Object]([SubResource("Resource_bcekn"), SubResource("Resource_5bhlt"), SubResource("Resource_u2v1c")])
 

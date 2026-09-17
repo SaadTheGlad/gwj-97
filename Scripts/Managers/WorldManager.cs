@@ -163,6 +163,14 @@ public partial class WorldManager : Node
     {
         //I just set it to null here cuz if I don't it breaks
         Instance = null;
+
+        persistantObjectsDictionary.Clear();
+
+        foreach(var worldResource in worldResources)
+        {
+            worldResource.hasLoadedWorld = false;
+        }
+
         GetTree().ReloadCurrentScene();
     }
 
@@ -173,7 +181,7 @@ public partial class WorldManager : Node
 
     public void SaveObjectsState()
     {
-        //GD.Print("Saving Data...");
+        GD.Print("Saving Data...");
 
         //gets the persistant objects
         var persistantObjects = GetTree().GetNodesInGroup("Persistant");
@@ -205,7 +213,7 @@ public partial class WorldManager : Node
                     string nodeName = savedPersistantObject["Name"].ToString();
 
 
-                    //GD.Print($"- {nodeName} in {worldName} with path: {savedPersistantObject["Path"]}");
+                    GD.Print($"- {nodeName} in {worldName} with path: {savedPersistantObject["Path"]}");
                 }
             }
         }
@@ -276,13 +284,13 @@ public partial class WorldManager : Node
                 if (persistantComponent.GetIgnoreFlag()) continue;
             }
 
-            //GD.Print($"Checking: {persistantObject.GetPath()}");
+            GD.Print($"Checking: {persistantObject.GetPath()}");
 
             //If the dictionary does not have the path of the object and if it exists then remove it.
             if (!persistantObjectsDictionary.ContainsKey(persistantObject.GetPath()) && GetNodeOrNull(persistantObject.GetPath()) != null && WasWorldVisited(currentWorld.GetWorldName()))
             {
                 persistantObject.QueueFree();
-                //GD.Print($"Removed {persistantObject.Name}. No longer part of world.");
+                GD.Print($"Removed {persistantObject.Name}. No longer part of world.");
             }
         }
     }
