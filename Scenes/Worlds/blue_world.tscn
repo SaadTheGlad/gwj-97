@@ -4,8 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://brbe12jcx3y5x" path="res://Art/Images/TileSets/TitleAtlas.png" id="2_gs30c"]
 [ext_resource type="PackedScene" uid="uid://dbnr15k3atkp3" path="res://Scenes/world_portal.tscn" id="3_vesm1"]
 [ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Components/Pickable.cs" id="4_vesm1"]
-[ext_resource type="PackedScene" uid="uid://bsanjpifg12st" path="res://Scenes/NPCs/terminal.tscn" id="6_2eqo0"]
-[ext_resource type="PackedScene" uid="uid://7mowvo1dwstu" path="res://Scenes/NPCs/robot.tscn" id="6_vesm1"]
+[ext_resource type="PackedScene" uid="uid://bsanjpifg12st" path="res://Scenes/NPCs/terminal.tscn" id="5_gs30c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2eqo0"]
 texture = ExtResource("2_gs30c")
@@ -57,14 +56,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.1254902, 0.33333334, 0.33333334, 1)
 
-[node name="Terminal" parent="." unique_id=64990111 instance=ExtResource("6_2eqo0")]
-position = Vector2(2362, 403)
-
-[node name="Robot" parent="." unique_id=1032934518 instance=ExtResource("6_vesm1")]
-position = Vector2(756, 411)
+[node name="Terminal" parent="." unique_id=64990111 instance=ExtResource("5_gs30c")]
+position = Vector2(465, 49)
 
 [editable path="CrimsonPortal"]
 [editable path="CrimsonPortal/InteractionArea"]
-[editable path="Robot"]
-[editable path="Robot/InteractionArea"]
-[editable path="Robot/DamageZone"]

@@ -35,10 +35,11 @@ public partial class Pickable : BaseComponent
             player.ApplyMovementPenalty(movementPenalty);
         }
 
+        IComponentable componentable = actor as IComponentable;
+
         //changing the parent of the object to be the picker's child
         actor.Reparent(picker);
 
-        IComponentable componentable = actor as IComponentable;
 
         var dialogueComponent = componentable.GetComponent<DialogueComponent>();
         if(dialogueComponent != null)

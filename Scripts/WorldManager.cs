@@ -19,7 +19,6 @@ public partial class WorldManager : Node
     private float currentTimeLeft;
     private int secondCounter;
 
-
     //saving variables
     //here the string is the path and the variant is the dictionary
     Dictionary<string, Variant> persistantObjectsDictionary = new Dictionary<string, Variant>();
@@ -98,15 +97,20 @@ public partial class WorldManager : Node
         GameState.Instance.timeScale = newTimeScale;
     }
 
+
     private void PrintDictionary()
     {
+        GD.Print("Objects currently in dictionary: ");
+
         foreach (string key in persistantObjectsDictionary.Keys)
         {
-            var nodeData = new Godot.Collections.Dictionary<string, Variant>((Godot.Collections.Dictionary)persistantObjectsDictionary[key]);
-            string nodeName = nodeData["Name"].ToString();
-            string worldName = nodeData["World"].ToString();
 
-            GD.Print($"{nodeName} | {worldName} | Path: {nodeData["Path"]}");
+            var nodeData = new Godot.Collections.Dictionary<string, Variant>((Godot.Collections.Dictionary)persistantObjectsDictionary[key]);
+            string worldName = nodeData["World"].ToString();
+            string nodeName = nodeData["Name"].ToString();
+
+
+            GD.Print($"- {nodeName} | {worldName} | Path: {nodeData["Path"]}");
         }
     }
 
@@ -137,6 +141,8 @@ public partial class WorldManager : Node
                 }
             }
         }
+
+        PrintDictionary();
     }
 
     void LoadWorld(string levelName, bool useSpawnPos)
@@ -172,7 +178,6 @@ public partial class WorldManager : Node
             }
         }
 
-        PrintDictionary();
 
         //set the player's position
         if (useSpawnPos)
