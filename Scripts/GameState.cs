@@ -7,7 +7,6 @@ public partial class GameState : Node
 
     public bool hasMetSlumpedMan;
     public bool playerCanMove = true;
-    public float timeScale;
 
     public void EnablePlayerMove() => playerCanMove = true;
     public void DisablePlayerMove() => playerCanMove = false;

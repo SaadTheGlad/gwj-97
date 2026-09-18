@@ -46,7 +46,6 @@ public partial class Pickable : BaseComponent
 
         IComponentable componentable = actor as IComponentable;
 
-
         //changing the parent of the object to be the picker's child
         actor.Reparent(picker);
 
@@ -92,7 +91,7 @@ public partial class Pickable : BaseComponent
         IComponentable componentable = actor as IComponentable;
 
         //change its parent to be the current world
-        World currentWorld = WorldManager.Instance.GetCurrentWorld();
+        World currentWorld = WorldManager.Instance.GetCurrentWorldForPlayer();
 
         if (actor.GetParent() != currentWorld)
             actor.Reparent(currentWorld);

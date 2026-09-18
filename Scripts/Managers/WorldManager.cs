@@ -54,7 +54,6 @@ public partial class WorldManager : Node
             if(world.GetWorldName() == "BlueWorld")
             {
                 currentWorld = world;
-                SetTimeScale(world.GetTimeScale());
                 break;
             }
         }
@@ -71,7 +70,7 @@ public partial class WorldManager : Node
         VisualizeTime(delta);
     }
 
-    public World GetCurrentWorld()
+    public World GetCurrentWorldForPlayer()
     {
         return currentWorld;
     }
@@ -83,8 +82,8 @@ public partial class WorldManager : Node
             AudioManager.Instance.Play("ticktock");
             secondCounter--;
         }
-        currentTimeLeft -= (float)delta * GameState.Instance.timeScale;
-        timeLabel.Text = "DEBUG\nTime Left: " + currentTimeLeft.ToString("0") + "\nTime Scale: " + GameState.Instance.timeScale.ToString();
+        currentTimeLeft -= (float)delta;
+        timeLabel.Text = "DEBUG\nTime Left Relative to you: " + currentTimeLeft.ToString("0") + "\nRelative Time Scale: " + currentWorld.GetTimeScale().ToString();
     }
 
     public float GetCurrentTime()
@@ -99,12 +98,7 @@ public partial class WorldManager : Node
         GetTree().ReloadCurrentScene();
     }
 
-    public void SetTimeScale(float newTimeScale)
-    {
-        GameState.Instance.timeScale = newTimeScale;
-    }
-
-    void ChangeWorld(string targetWorldName, bool useSpawnPos)
+    void ChangeWorld(string targetWorldName)
     {
         //change position
         World targetWorld = null;
@@ -117,13 +111,11 @@ public partial class WorldManager : Node
             }
         }
 
-        GD.Print(currentWorld.GetWorldName());
         WorldPortal targetPortal = targetWorld.GetPortal(currentWorld.GetWorldName());
         player.GlobalPosition = targetPortal.GetSpawnPos();
 
         currentWorld = targetWorld;
 
-        SetTimeScale(targetWorld.GetTimeScale());
-
+        EventManager.ChangedWorld?.Invoke();
     }
 }

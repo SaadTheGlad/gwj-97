@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://c7f3mkf52uia0" path="res://Scenes/Worlds/template_world.tscn" id="1_v04rg"]
 [ext_resource type="PackedScene" uid="uid://dbnr15k3atkp3" path="res://Scenes/world_portal.tscn" id="3_vesm1"]
+[ext_resource type="PackedScene" uid="uid://7mowvo1dwstu" path="res://Scenes/NPCs/robot.tscn" id="4_dynsa"]
+[ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Components/Pickable.cs" id="4_vesm1"]
 [ext_resource type="PackedScene" uid="uid://bsanjpifg12st" path="res://Scenes/NPCs/terminal.tscn" id="6_vesm1"]
 
 [node name="BlueWorld" unique_id=2101248957 node_paths=PackedStringArray("portals") instance=ExtResource("1_v04rg")]
@@ -21,6 +23,15 @@ targetWorldName = "OrangeWorld"
 
 [node name="BG" parent="WorldPortal" index="2" unique_id=2090716909]
 modulate = Color(1, 0.41118768, 0.32443708, 1)
+
+[node name="Pickable" type="Node" parent="WorldPortal/Components" parent_id_path=PackedInt32Array(1584393610, 927054557) index="0" unique_id=483074131 node_paths=PackedStringArray("colliderShapes")]
+script = ExtResource("4_vesm1")
+colliderShapes = [NodePath("../../CollisionShape2D"), NodePath("../../InteractionArea/CollisionShape2D")]
+movementPenalty = 5.0
+metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
+
+[node name="Robot" parent="." index="3" unique_id=1308723983 instance=ExtResource("4_dynsa")]
+position = Vector2(476, 234)
 
 [editable path="WorldPortal"]
 [editable path="WorldPortal/InteractionArea"]

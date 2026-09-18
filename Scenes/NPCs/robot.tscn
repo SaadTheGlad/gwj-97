@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://6ggdbwi8lhvs" path="res://Scripts/Components/HealthComponent.cs" id="9_fusnn"]
 [ext_resource type="Script" uid="uid://dw687ssjn0exb" path="res://Scripts/Components/DialogueComponent.cs" id="9_xrtam"]
 [ext_resource type="Resource" uid="uid://clyej8il0xv5p" path="res://Dialogue/Dialogue Resources/dying_robot.dialogue" id="10_bx4vm"]
+[ext_resource type="Script" uid="uid://ci8try848mskg" path="res://Scripts/Components/TimeDilationComponent.cs" id="11_bx4vm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_byqip"]
 size = Vector2(50, 25)
@@ -22,7 +23,7 @@ radius = 76.05919
 
 [node name="Robot" unique_id=64990111 node_paths=PackedStringArray("damageZone") instance=ExtResource("1_u5bia")]
 script = ExtResource("2_k18oe")
-timeRemainingFloat = 12.0
+totalLifeTime = 25.0
 explosionEffect = ExtResource("3_bvx5k")
 damageZone = NodePath("DamageZone")
 
@@ -71,6 +72,10 @@ metadata/_custom_type_script = "uid://6ggdbwi8lhvs"
 script = ExtResource("9_xrtam")
 dialogueResource = ExtResource("10_bx4vm")
 metadata/_custom_type_script = "uid://dw687ssjn0exb"
+
+[node name="TimeDilationComponent" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="3" unique_id=863678052]
+script = ExtResource("11_bx4vm")
+metadata/_custom_type_script = "uid://ci8try848mskg"
 
 [connection signal="area_entered" from="InteractionArea" to="." method="AreaEntered"]
 

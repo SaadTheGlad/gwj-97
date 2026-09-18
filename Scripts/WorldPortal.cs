@@ -101,6 +101,6 @@ public partial class WorldPortal : Area2D, IComponentable
         }
     }
 
-    private void EnterWorld() => EventManager.WorldEntered?.Invoke(targetWorldName, true);
+    private void EnterWorld() => EventManager.WorldEntered?.Invoke(targetWorldName);
 
 }

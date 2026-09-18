@@ -5,51 +5,48 @@ using System;
 public partial class Robot : NPC
 {
     //This is the real variable that determines how much time it has left
-    [Export] public float timeRemainingFloat = 12f;
+    [Export] public float totalLifeTime = 12f;
 
     //This variable is purely for the dialogue manager to display correctly
     public int timeRemainingInt;
+    private float currentRemainingTime;
 
     [Export] private PackedScene explosionEffect;
     [Export] private DamageZone damageZone;
 
-    public bool hasBlownUp = false;
     public bool defused;
+    float timeScale = 1f;
+    void DeferQueueFree() => QueueFree();
 
     public override void _Ready()
     {
-        base._Ready();
-
-        if (WorldManager.Instance.GetCurrentTime() >= timeRemainingFloat && !defused)
-        {
-            CallDeferred("DeferQueueFree");
-        }
+        currentRemainingTime = totalLifeTime;
     }
-
-    void DeferQueueFree() => QueueFree();
 
     public override void _Process(double delta)
     {
         if (!defused)
         {
-            RunDownClock();
+            RunDownClock(delta);
         }
     }
 
-    private void RunDownClock()
+    private void RunDownClock(double delta)
     {
-        float currentTime = WorldManager.Instance.GetCurrentTime();
-
-        if (currentTime >= timeRemainingFloat)
+        if (currentRemainingTime <= 0)
         {
-            if (!hasBlownUp)
-            {
-                CallDeferred("BlowUp");
-                hasBlownUp = true;
-            }
+            CallDeferred("BlowUp");         
         }
 
-        timeRemainingInt = (int)(timeRemainingFloat - currentTime);
+        var timeDilationComponent = GetComponent<TimeDilationComponent>();
+        if(timeDilationComponent != null)
+        {
+            timeScale = timeDilationComponent.GetTimeScale();
+        }
+
+        currentRemainingTime -= (float)delta * timeScale;
+        GD.Print(currentRemainingTime);
+        timeRemainingInt = (int)currentRemainingTime;
     }
 
     public void AreaEntered(Area2D area)
