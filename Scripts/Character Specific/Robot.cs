@@ -45,7 +45,6 @@ public partial class Robot : NPC
         }
 
         currentRemainingTime -= (float)delta * timeScale;
-        GD.Print(currentRemainingTime);
         timeRemainingInt = (int)currentRemainingTime;
     }
 

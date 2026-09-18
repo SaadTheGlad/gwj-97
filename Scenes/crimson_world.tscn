@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://djqr7422v207h"]
+
+[ext_resource type="PackedScene" uid="uid://c7f3mkf52uia0" path="res://Scenes/Worlds/template_world.tscn" id="1_pwu75"]
+[ext_resource type="PackedScene" uid="uid://dbnr15k3atkp3" path="res://Scenes/world_portal.tscn" id="2_ppip7"]
+[ext_resource type="Shader" uid="uid://byul2higf0iet" path="res://Shaders/test_shader.gdshader" id="3_hayco"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ppip7"]
+shader = ExtResource("3_hayco")
+
+[node name="CrimsonWorld" unique_id=2101248957 node_paths=PackedStringArray("portals") instance=ExtResource("1_pwu75")]
+worldRelativeTimeFactor = 0.25
+portals = [NodePath("OrangeWorld")]
+
+[node name="OrangeWorld" parent="." index="1" unique_id=1584393610 instance=ExtResource("2_ppip7")]
+targetWorldName = "OrangeWorld"
+
+[node name="BG" parent="OrangeWorld" index="2" unique_id=2090716909]
+modulate = Color(1, 0.4117647, 0.3254902, 1)
+
+[node name="Whirl" parent="OrangeWorld" index="3" unique_id=760310801]
+material = SubResource("ShaderMaterial_ppip7")
+
+[editable path="OrangeWorld"]
+[editable path="OrangeWorld/InteractionArea"]

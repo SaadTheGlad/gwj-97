@@ -35,9 +35,11 @@ public partial class TimeDilationComponent : BaseComponent
         var actorCurrentWorld = actor.GetParent() as World;
         if (WorldManager.Instance.GetCurrentWorldForPlayer().GetWorldName() != actorCurrentWorld.GetWorldName())
         {
-            GD.Print($"{actor.Name} is not in the player's world.");
-            timeScale = actorCurrentWorld.GetTimeScale();
-            GD.Print(timeScale);
+            float playerRelativeFactor = WorldManager.Instance.GetCurrentWorldForPlayer().GetRelativeTimeFactor();
+            float actorRelativeFactor = actorCurrentWorld.GetRelativeTimeFactor();
+            timeScale = actorRelativeFactor / playerRelativeFactor;
+
+            GD.Print($"Current time scale: {timeScale}");
         }
         else
         {

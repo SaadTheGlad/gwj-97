@@ -5,7 +5,27 @@ using System;
 [GlobalClass]
 public partial class DialogueComponent : BaseComponent
 {
-    [Export] private Resource dialogueResource;
+
+    private Resource dialogueResource = null;
+
+    /// <summary>
+    /// The dialogue resource to use when starting dialogue.
+    /// </summary>
+    [Export]
+    public Resource DialogueResource
+    {
+        get => dialogueResource;
+        set
+        {
+            dialogueResource = value;
+            if (dialogueResource == null)
+            {
+                //DialogueCue = "";
+            }
+            NotifyPropertyListChanged();
+        }
+    }
+
     protected DialogueBalloon balloon;
 
     private bool mute;
@@ -42,15 +62,20 @@ public partial class DialogueComponent : BaseComponent
     {
         if (balloon != null)
         {
-            balloon.QueueFree();
+            CallDeferred("DeferQueueFree");
         }
+    }
+
+    void DeferQueueFree()
+    {
+        balloon.QueueFree();
     }
 
     //This function exists so that in the above function we can safely QueueFree();
     private void NullBalloon(Resource endingDialogueResource)
     {
-        //This runs twice for some reason
-        balloon = null;
+        if(endingDialogueResource == dialogueResource)
+            balloon = null;
     }
 
 }

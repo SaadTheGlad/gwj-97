@@ -6,8 +6,6 @@ public partial class WorldPortal : Area2D, IComponentable
 	[Export] private string targetWorldName;
     [Export] private Marker2D spawnPos;
 
-  
-
     #region Component Related Code
     [Export] private Node componentHolder;
     private BaseComponent[] components;
@@ -58,7 +56,6 @@ public partial class WorldPortal : Area2D, IComponentable
         return default(T);
     }
     #endregion
-
 
     private bool playerNear = false;
 

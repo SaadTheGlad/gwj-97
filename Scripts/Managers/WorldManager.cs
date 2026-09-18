@@ -1,10 +1,4 @@
 using Godot;
-using Godot.Collections;
-using System;
-using System.IO;
-using System.Reflection.Metadata.Ecma335;
-using System.Security;
-using static System.Formats.Asn1.AsnWriter;
 
 public partial class WorldManager : Node
 {
@@ -20,7 +14,9 @@ public partial class WorldManager : Node
     [Export] private float timeLoopTime;
     [Export] private Label timeLabel;
     private float currentTimeLeft;
-    private int secondCounter;
+
+
+    private float localTime = 0f;
 
     public override void _EnterTree()
     {
@@ -47,7 +43,6 @@ public partial class WorldManager : Node
     {
         //loads starting world
         currentTimeLeft = timeLoopTime;
-        secondCounter = (int)timeLoopTime;
 
         foreach(var world in worlds)
         {
@@ -59,7 +54,6 @@ public partial class WorldManager : Node
         }
     }
 
-
     public override void _Process(double delta)
     {
         if (currentTimeLeft <= 0)
@@ -67,7 +61,10 @@ public partial class WorldManager : Node
             RestartGame();
         }
 
+        PlayClockSound(delta);
         VisualizeTime(delta);
+
+        if (Input.IsActionJustPressed("restart")) RestartGame();
     }
 
     public World GetCurrentWorldForPlayer()
@@ -75,15 +72,21 @@ public partial class WorldManager : Node
         return currentWorld;
     }
 
-    public void VisualizeTime(double delta)
+    public void PlayClockSound(double delta)
     {
-        if (currentTimeLeft <= secondCounter)
+        localTime += (float)delta * currentWorld.GetRelativeTimeFactor();
+
+        if (localTime >= 1f)
         {
             AudioManager.Instance.Play("ticktock");
-            secondCounter--;
+            localTime = 0f;
         }
+    }
+
+    public void VisualizeTime(double delta)
+    {
         currentTimeLeft -= (float)delta;
-        timeLabel.Text = "DEBUG\nTime Left Relative to you: " + currentTimeLeft.ToString("0") + "\nRelative Time Scale: " + currentWorld.GetTimeScale().ToString();
+        timeLabel.Text = "DEBUG\nTime Left Relative to you: " + currentTimeLeft.ToString("0") + "\nRelative Time Scale: " + currentWorld.GetRelativeTimeFactor().ToString();
     }
 
     public float GetCurrentTime()
