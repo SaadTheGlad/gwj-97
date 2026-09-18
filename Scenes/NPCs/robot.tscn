@@ -2,8 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://cp16mh07f6430" path="res://Scenes/NPCs/npc.tscn" id="1_u5bia"]
 [ext_resource type="Script" uid="uid://d0ny4w3151qag" path="res://Scripts/Character Specific/Robot.cs" id="2_k18oe"]
-[ext_resource type="Texture2D" uid="uid://y5i78kr1q8gg" path="res://Art/Images/robot.png" id="2_k87gx"]
 [ext_resource type="PackedScene" uid="uid://hbufimvf1n5q" path="res://Scenes/blow_up_effect.tscn" id="3_bvx5k"]
+[ext_resource type="Shader" uid="uid://dvvhyvl8u1s7m" path="res://Shaders/bounce.gdshader" id="4_5f2ph"]
+[ext_resource type="Texture2D" uid="uid://bm6c5ochc5rpk" path="res://Art/Images/robot_updated.png" id="4_bx4vm"]
 [ext_resource type="Script" uid="uid://cd3222nx3y3k5" path="res://addons/dialogue_manager/nodes/context/dialogue_state_context.gd" id="4_k18oe"]
 [ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Components/Pickable.cs" id="6_ggc2j"]
 [ext_resource type="PackedScene" uid="uid://btgj55cyd56v5" path="res://Scenes/damage_zone.tscn" id="8_6cvnh"]
@@ -12,8 +13,11 @@
 [ext_resource type="Resource" uid="uid://clyej8il0xv5p" path="res://Dialogue/Dialogue Resources/dying_robot.dialogue" id="10_bx4vm"]
 [ext_resource type="Script" uid="uid://ci8try848mskg" path="res://Scripts/Components/TimeDilationComponent.cs" id="11_bx4vm"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5f2ph"]
+shader = ExtResource("4_5f2ph")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_byqip"]
-size = Vector2(50, 25)
+size = Vector2(86, 34)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6cvnh"]
 size = Vector2(50, 76)
@@ -23,18 +27,19 @@ radius = 76.05919
 
 [node name="Robot" unique_id=64990111 node_paths=PackedStringArray("damageZone") instance=ExtResource("1_u5bia")]
 script = ExtResource("2_k18oe")
-totalLifeTime = 12.0
+totalLifeTime = 10.0
 explosionEffect = ExtResource("3_bvx5k")
 damageZone = NodePath("DamageZone")
 
 [node name="Sprite2D" parent="." index="0" unique_id=969637244]
-texture_filter = 1
-scale = Vector2(4.9999995, 5.0000005)
-texture = ExtResource("2_k87gx")
+material = SubResource("ShaderMaterial_5f2ph")
+position = Vector2(1, -32)
+scale = Vector2(0.30363038, 0.30363047)
+texture = ExtResource("4_bx4vm")
 offset = Vector2(0, -5.545)
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=503925633]
-position = Vector2(0, 0.5)
+position = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_byqip")
 
 [node name="InteractionArea" parent="." index="2" unique_id=253216721]
@@ -61,7 +66,7 @@ shape = SubResource("CircleShape2D_6cvnh")
 [node name="Pickable" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="0" unique_id=2056748283 node_paths=PackedStringArray("colliderShapes")]
 script = ExtResource("6_ggc2j")
 colliderShapes = [NodePath("../../CollisionShape2D")]
-movementPenalty = 35.0
+movementPenalty = 38.0
 metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
 
 [node name="HealthComponent" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="1" unique_id=2091448220]

@@ -30,7 +30,8 @@ movementPenalty = 5.0
 metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
 
 [node name="Robot" parent="." index="3" unique_id=1037066890 instance=ExtResource("5_gs30c")]
-position = Vector2(649, 181)
+position = Vector2(563, 171)
+totalLifeTime = 11.0
 
 [editable path="Terminal"]
 [editable path="Terminal/InteractionArea"]
