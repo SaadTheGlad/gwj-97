@@ -10,10 +10,21 @@ public partial class World : Node2D
 
     public string GetWorldName() => worldName;
 
-    public WorldPortal[] GetPortals()
+    public WorldPortal GetPortal(string worldName)
     {
-        return portals;
+        foreach(var portal in portals)
+        {
+            if (portal.GetTargetWorldName() == worldName)
+            {
+                return portal;
+            }
+        }
+
+        GD.Print("Could not find portal");
+        return null;
     }
+
+
 
 	public float GetTimeScale() => worldTimeScale;
 }

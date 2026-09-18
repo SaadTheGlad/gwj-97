@@ -16,32 +16,13 @@ public partial class Robot : NPC
     public bool hasBlownUp = false;
     public bool defused;
 
-    //variable and method to avoid race conditions
-    bool startRunning = false;
-    void SetRunningTrue() => startRunning = true;
-
     public override void _Ready()
     {
-        var persistantComponent = GetComponent<PersistComponent>();
-        if(persistantComponent != null)
-        {
-            persistantComponent.StartRunning += SetRunningTrue;
-        }
-
         base._Ready();
 
-        if (WorldManager.Instance.GetCurrentTime() >= timeRemainingFloat && !defused && startRunning)
+        if (WorldManager.Instance.GetCurrentTime() >= timeRemainingFloat && !defused)
         {
             CallDeferred("DeferQueueFree");
-        }
-    }
-
-    public override void _ExitTree()
-    {
-        var persistantComponent = GetComponent<PersistComponent>();
-        if (persistantComponent != null)
-        {
-            persistantComponent.StartRunning -= SetRunningTrue;
         }
     }
 
@@ -49,7 +30,7 @@ public partial class Robot : NPC
 
     public override void _Process(double delta)
     {
-        if (!defused && startRunning)
+        if (!defused)
         {
             RunDownClock();
         }

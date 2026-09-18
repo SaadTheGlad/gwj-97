@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Components/Pickable.cs" id="4_p5sug"]
 [ext_resource type="Script" uid="uid://6ggdbwi8lhvs" path="res://Scripts/Components/HealthComponent.cs" id="5_571my"]
 [ext_resource type="Script" uid="uid://dw687ssjn0exb" path="res://Scripts/Components/DialogueComponent.cs" id="5_qwhxx"]
-[ext_resource type="Script" uid="uid://2hu7d7pk4b23" path="res://Scripts/Components/PersistComponent.cs" id="7_88nv4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vl8pb"]
 size = Vector2(107, 39)
@@ -42,10 +41,5 @@ metadata/_custom_type_script = "uid://6ggdbwi8lhvs"
 script = ExtResource("5_qwhxx")
 dialogueResource = ExtResource("2_8wcyi")
 metadata/_custom_type_script = "uid://dw687ssjn0exb"
-
-[node name="PersistComponent" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="3" unique_id=791592758]
-script = ExtResource("7_88nv4")
-packedScenePath = "uid://c06bbsoplf7co"
-metadata/_custom_type_script = "uid://2hu7d7pk4b23"
 
 [editable path="InteractionArea"]

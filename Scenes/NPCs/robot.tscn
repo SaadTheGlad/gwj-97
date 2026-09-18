@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://6ggdbwi8lhvs" path="res://Scripts/Components/HealthComponent.cs" id="9_fusnn"]
 [ext_resource type="Script" uid="uid://dw687ssjn0exb" path="res://Scripts/Components/DialogueComponent.cs" id="9_xrtam"]
 [ext_resource type="Resource" uid="uid://clyej8il0xv5p" path="res://Dialogue/Dialogue Resources/dying_robot.dialogue" id="10_bx4vm"]
-[ext_resource type="Script" uid="uid://clafk8p6cufu7" path="res://Scripts/Components/RobotPersistantComponent.cs" id="11_bx4vm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_byqip"]
 size = Vector2(50, 25)
@@ -72,11 +71,6 @@ metadata/_custom_type_script = "uid://6ggdbwi8lhvs"
 script = ExtResource("9_xrtam")
 dialogueResource = ExtResource("10_bx4vm")
 metadata/_custom_type_script = "uid://dw687ssjn0exb"
-
-[node name="RobotPersistantComponent" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="3" unique_id=750220876]
-script = ExtResource("11_bx4vm")
-packedScenePath = "uid://7mowvo1dwstu"
-metadata/_custom_type_script = "uid://clafk8p6cufu7"
 
 [connection signal="area_entered" from="InteractionArea" to="." method="AreaEntered"]
 

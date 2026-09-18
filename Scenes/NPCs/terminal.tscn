@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://cqowd00cpwot2" path="res://Art/Images/Render.png" id="2_g8lan"]
 [ext_resource type="Script" uid="uid://6ggdbwi8lhvs" path="res://Scripts/Components/HealthComponent.cs" id="4_56fcr"]
 [ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Components/Pickable.cs" id="5_1lhdn"]
-[ext_resource type="Script" uid="uid://2hu7d7pk4b23" path="res://Scripts/Components/PersistComponent.cs" id="5_lkodu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0dftn"]
 size = Vector2(86, 31)
@@ -51,11 +50,6 @@ script = ExtResource("5_1lhdn")
 colliderShapes = []
 movementPenalty = 10.0
 metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
-
-[node name="PersistComponent" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="2" unique_id=740348397]
-script = ExtResource("5_lkodu")
-packedScenePath = "uid://bsanjpifg12st"
-metadata/_custom_type_script = "uid://2hu7d7pk4b23"
 
 [node name="FixingArea" type="Area2D" parent="." index="4" unique_id=1778545198 groups=["FixingArea"]]
 position = Vector2(0, 32)
