@@ -182,6 +182,17 @@ player = NodePath("../Player")
 timeLoopTime = 60.0
 timeLabel = NodePath("../CanvasLayer/TimeLabel")
 
+[node name="BGLayer" type="CanvasLayer" parent="." unique_id=2147127410]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="BGLayer" unique_id=2070779263]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=736484474]
 process_mode = 3
 
@@ -190,7 +201,6 @@ offset_right = 166.0
 offset_bottom = 73.0
 text = "60"
 label_settings = SubResource("LabelSettings_1wmeh")
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer" unique_id=1165315686 node_paths=PackedStringArray("animationPlayer")]

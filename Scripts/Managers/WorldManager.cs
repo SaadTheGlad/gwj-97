@@ -86,7 +86,9 @@ public partial class WorldManager : Node
     public void VisualizeTime(double delta)
     {
         currentTimeLeft -= (float)delta;
-        timeLabel.Text = "DEBUG\nTime Left Relative to you: " + currentTimeLeft.ToString("0") + "\nRelative Time Scale: " + currentWorld.GetRelativeTimeFactor().ToString();
+        timeLabel.Text = "DEBUG\nTime Left Relative to you: " + currentTimeLeft.ToString("0") + "\nRelative Time Scale: " + currentWorld.GetRelativeTimeFactor().ToString()
+            + "\nControls:\nPickup: Space\nTalk: Z\nRestart: R"
+            ;
     }
 
     public float GetCurrentTime()
