@@ -23,7 +23,7 @@ radius = 76.05919
 
 [node name="Robot" unique_id=64990111 node_paths=PackedStringArray("damageZone") instance=ExtResource("1_u5bia")]
 script = ExtResource("2_k18oe")
-totalLifeTime = 3.0
+totalLifeTime = 12.0
 explosionEffect = ExtResource("3_bvx5k")
 damageZone = NodePath("DamageZone")
 

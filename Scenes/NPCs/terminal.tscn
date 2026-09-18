@@ -50,7 +50,7 @@ metadata/_custom_type_script = "uid://6ggdbwi8lhvs"
 [node name="Pickable" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="1" unique_id=701135690 node_paths=PackedStringArray("colliderShapes")]
 script = ExtResource("5_1lhdn")
 colliderShapes = []
-movementPenalty = 10.0
+movementPenalty = 50.0
 metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
 
 [node name="DialogueComponent" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="2" unique_id=1199401491]
