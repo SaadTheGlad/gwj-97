@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c7f3mkf52uia0" path="res://Scenes/Worlds/template_world.tscn" id="1_v04rg"]
 [ext_resource type="PackedScene" uid="uid://dbnr15k3atkp3" path="res://Scenes/world_portal.tscn" id="3_vesm1"]
 [ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Components/Pickable.cs" id="4_vesm1"]
+[ext_resource type="PackedScene" uid="uid://7mowvo1dwstu" path="res://Scenes/NPCs/robot.tscn" id="5_gs30c"]
 [ext_resource type="PackedScene" uid="uid://bsanjpifg12st" path="res://Scenes/NPCs/terminal.tscn" id="6_vesm1"]
 
 [node name="BlueWorld" unique_id=2101248957 node_paths=PackedStringArray("portals") instance=ExtResource("1_v04rg")]
@@ -28,5 +29,10 @@ colliderShapes = [NodePath("../../CollisionShape2D"), NodePath("../../Interactio
 movementPenalty = 5.0
 metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
 
+[node name="Robot" parent="." index="3" unique_id=1037066890 instance=ExtResource("5_gs30c")]
+position = Vector2(649, 181)
+
+[editable path="Terminal"]
+[editable path="Terminal/InteractionArea"]
 [editable path="WorldPortal"]
 [editable path="WorldPortal/InteractionArea"]

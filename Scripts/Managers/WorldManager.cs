@@ -98,7 +98,7 @@ public partial class WorldManager : Node
     {
         //I just set it to null here cuz if I don't it breaks
         Instance = null;
-        GetTree().ReloadCurrentScene();
+        GameState.Instance.RestartGame();
     }
 
     void ChangeWorld(string targetWorldName)

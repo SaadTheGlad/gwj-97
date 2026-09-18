@@ -87,6 +87,8 @@ public partial class Player : CharacterBody2D, IComponentable
 
         InitComponents();
         BindComponents();
+
+        latestDirection = Vector2.Right;
     }
 
     public override void _UnhandledInput(InputEvent @event)

@@ -39,7 +39,7 @@ metadata/_custom_type_script = "uid://6ggdbwi8lhvs"
 
 [node name="DialogueComponent" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="2" unique_id=74696244]
 script = ExtResource("5_qwhxx")
-dialogueResource = ExtResource("2_8wcyi")
+DialogueResource = ExtResource("2_8wcyi")
 metadata/_custom_type_script = "uid://dw687ssjn0exb"
 
 [editable path="InteractionArea"]

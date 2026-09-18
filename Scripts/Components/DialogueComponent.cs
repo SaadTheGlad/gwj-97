@@ -69,6 +69,7 @@ public partial class DialogueComponent : BaseComponent
     void DeferQueueFree()
     {
         balloon.QueueFree();
+        balloon = null;
     }
 
     //This function exists so that in the above function we can safely QueueFree();

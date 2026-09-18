@@ -24,7 +24,7 @@ buses/default_bus_layout="uid://qede3b75qmtt"
 SceneManager="*uid://dp0fikctft4vb"
 GameState="*uid://dxfldm4f6xqj5"
 AudioManager="*uid://c1lwo60pp5m84"
-DialogueManager="uid://c3rodes2l3gxb"
+DialogueManager="*uid://c3rodes2l3gxb"
 
 [dialogue_manager]
 

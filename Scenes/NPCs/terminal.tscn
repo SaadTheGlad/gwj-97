@@ -55,7 +55,7 @@ metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
 
 [node name="DialogueComponent" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="2" unique_id=1199401491]
 script = ExtResource("5_lkodu")
-dialogueResource = ExtResource("6_lkodu")
+DialogueResource = ExtResource("6_lkodu")
 metadata/_custom_type_script = "uid://dw687ssjn0exb"
 
 [node name="FixingArea" type="Area2D" parent="." index="4" unique_id=1778545198 groups=["FixingArea"]]
