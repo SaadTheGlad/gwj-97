@@ -106,6 +106,12 @@ public partial class WorldPortal : Area2D, IComponentable
                 }
             }
 
+            //When changing the world of the object we change its world too
+            if(node is CharacterBodyNPC npcNode)
+            {
+                npcNode.SettingCurrentWorldName(targetWorld.GetWorldName());
+            }
+
             WorldPortal targetPortal = targetWorld.GetPortal(currentWorld.GetWorldName());
 
             node.GlobalPosition = targetPortal.GetSpawnPos();

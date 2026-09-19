@@ -6,6 +6,15 @@ using System;
 public partial class CharacterBodyNPC : CharacterBody2D, IComponentable
 {
     [Export] private InteractionArea interactArea;
+    [Export] private string currentWorldName;
+
+    public void SettingCurrentWorldName(string _currentWorldName)
+    {
+        currentWorldName = _currentWorldName;
+        GD.Print($"Current world name is: {currentWorldName}");
+    }
+
+    public string GetCurrentWorldName() => currentWorldName;
 
     #region Component Related Code
     [Export] private Node componentHolder;

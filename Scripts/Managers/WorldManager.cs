@@ -103,6 +103,20 @@ public partial class WorldManager : Node
         GameState.Instance.RestartGame();
     }
 
+    public World GetWorld(string worldName)
+    {
+        foreach (World world in worlds)
+        {
+            if (world.GetWorldName() == worldName)
+            {
+                return world;
+            }
+        }
+
+        GD.PrintErr($"{worldName} does not exist!");
+        return null;
+    }
+
     void ChangeWorld(string targetWorldName)
     {
         //change position

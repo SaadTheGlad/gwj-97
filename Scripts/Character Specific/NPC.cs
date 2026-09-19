@@ -6,6 +6,7 @@ using System;
 public partial class NPC : StaticBody2D, IComponentable
 {
     [Export] private InteractionArea interactArea;
+    [Export] public string currentWorldName;
 
     #region Component Related Code
     [Export] private Node componentHolder;

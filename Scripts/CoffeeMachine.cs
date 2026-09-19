@@ -68,7 +68,10 @@ public partial class CoffeeMachine : NPC
         {
             tillNextCoffee = 0f;
             CoffeeCup coffeeCup = coffeeScene.Instantiate() as CoffeeCup;
-            GetParent().AddChild(coffeeCup);
+            coffeeCup.SettingCurrentWorldName(GetParent().Name);
+
+            //we add the coffee to the tree to avoid position problems and set its current world name accordingly by looking for the parent's name.
+            GetTree().Root.AddChild(coffeeCup);
 
             if (lookDirection == Vector2.Down)
             {

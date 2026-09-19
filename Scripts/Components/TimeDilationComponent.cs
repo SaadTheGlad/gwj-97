@@ -35,7 +35,18 @@ public partial class TimeDilationComponent : BaseComponent
         }
 
         //Here we assume that current world is always the one that the player is in.
-        var actorCurrentWorld = actor.GetParent() as World;
+        string currentWorldName = "";
+
+        World actorCurrentWorld = null;
+        if (actor is CoffeeCup coffee)
+        {
+            actorCurrentWorld = WorldManager.Instance.GetWorld(coffee.GetCurrentWorldName());
+        }
+        else
+        {
+            actorCurrentWorld = actor.GetParent() as World;
+        }
+
         if (WorldManager.Instance.GetCurrentWorldForPlayer().GetWorldName() != actorCurrentWorld.GetWorldName())
         {
             float playerRelativeFactor = WorldManager.Instance.GetCurrentWorldForPlayer().GetRelativeTimeFactor();
