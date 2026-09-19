@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bh31cordtv8w1"]
+
+[ext_resource type="Script" uid="uid://cp7use4qa6cak" path="res://Scripts/Character Specific/CharacterBodyNPC.cs" id="1_sdnh5"]
+[ext_resource type="PackedScene" uid="uid://bb3crtvugn41p" path="res://Scenes/interaction_area.tscn" id="2_fpugt"]
+
+[node name="CharacterBodyNPC" type="CharacterBody2D" unique_id=439113131 node_paths=PackedStringArray("interactArea", "componentHolder") groups=["NPC"]]
+script = ExtResource("1_sdnh5")
+interactArea = NodePath("InteractionArea")
+componentHolder = NodePath("ComponentsHolder")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=969637244]
+scale = Vector2(0.04479167, 0.044791672)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=503925633]
+
+[node name="InteractionArea" parent="." unique_id=253216721 instance=ExtResource("2_fpugt")]
+
+[node name="ComponentsHolder" type="Node" parent="." unique_id=230629070]
+
+[editable path="InteractionArea"]

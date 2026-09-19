@@ -4,6 +4,8 @@ using System;
 public partial class TitleCard : PanelContainer
 {
     [Export] private AnimationPlayer animationPlayer;
+    [Export] private Label titleCardLabel;
+
 
     public override void _Ready()
     {
@@ -15,6 +17,21 @@ public partial class TitleCard : PanelContainer
         {
             PlayCutscene();
         }
+
+        //setting up the text for the title card
+        titleCardLabel.Text = $"WORLD ENDS IN {GetTextFromTimeInSeconds(WorldManager.Instance.timeLoopTime)}*";
+    }
+
+    private string GetTextFromTimeInSeconds(float totalSeconds)
+    {
+        int minutes = (int)Mathf.Floor(totalSeconds / 60f);
+        int seconds = (int)(totalSeconds - minutes * 60f);
+        if(seconds == 0)
+        {
+            return $"{minutes.ToString()}m";
+        }
+
+        return $"{minutes.ToString()}m {seconds.ToString()}s";
     }
 
     public void PlayCutscene()

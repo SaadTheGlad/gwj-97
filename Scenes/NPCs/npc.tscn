@@ -16,3 +16,5 @@ scale = Vector2(0.04479167, 0.044791672)
 [node name="InteractionArea" parent="." unique_id=253216721 instance=ExtResource("3_q0ilr")]
 
 [node name="ComponentsHolder" type="Node" parent="." unique_id=230629070]
+
+[editable path="InteractionArea"]

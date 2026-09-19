@@ -179,7 +179,7 @@ y_sort_enabled = true
 [node name="WorldManager" parent="." unique_id=2144744180 node_paths=PackedStringArray("worlds", "player", "timeLabel") instance=ExtResource("2_1wmeh")]
 worlds = [NodePath("../OrangeWorld"), NodePath("../BlueWorld"), NodePath("../CrimsonWorld")]
 player = NodePath("../Player")
-timeLoopTime = 60.0
+timeLoopTime = 300.0
 timeLabel = NodePath("../CanvasLayer/TimeLabel")
 
 [node name="BGLayer" type="CanvasLayer" parent="." unique_id=2147127410]
@@ -203,7 +203,7 @@ text = "60"
 label_settings = SubResource("LabelSettings_1wmeh")
 vertical_alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer" unique_id=1165315686 node_paths=PackedStringArray("animationPlayer")]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer" unique_id=1165315686 node_paths=PackedStringArray("animationPlayer", "titleCardLabel")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -212,6 +212,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_5tygf")
 script = ExtResource("1_sujdc")
 animationPlayer = NodePath("AnimationPlayer")
+titleCardLabel = NodePath("CenterContainer/VBoxContainer/Label")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/PanelContainer" unique_id=161575389]
 root_node = NodePath("../../..")
@@ -226,7 +227,6 @@ layout_mode = 2
 [node name="Label" type="Label" parent="CanvasLayer/PanelContainer/CenterContainer/VBoxContainer" unique_id=780695238]
 visible = false
 layout_mode = 2
-text = "THE WORLD ENDS IN 60 SECONDS*"
 label_settings = SubResource("LabelSettings_dhkjg")
 horizontal_alignment = 1
 vertical_alignment = 1

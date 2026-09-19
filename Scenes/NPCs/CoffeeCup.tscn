@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c218jj1chtiw"]
+
+[ext_resource type="PackedScene" uid="uid://bh31cordtv8w1" path="res://Scenes/NPCs/character_body_npc.tscn" id="1_b3xyv"]
+[ext_resource type="Texture2D" uid="uid://c3m1ia2ceag8m" path="res://Art/Images/Coffee.png" id="2_3o25a"]
+[ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Components/Pickable.cs" id="3_i8uiu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3o25a"]
+radius = 18.248287
+
+[node name="CoffeeCup" unique_id=439113131 instance=ExtResource("1_b3xyv")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=969637244]
+scale = Vector2(0.09909911, 0.09909915)
+texture = ExtResource("2_3o25a")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=503925633]
+disabled = true
+
+[node name="CollisionShape2D" parent="InteractionArea" parent_id_path=PackedInt32Array(253216721) index="0" unique_id=72547211]
+shape = SubResource("CircleShape2D_3o25a")
+
+[node name="Pickable" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="0" unique_id=1312680361 node_paths=PackedStringArray("colliderShapes")]
+script = ExtResource("3_i8uiu")
+colliderShapes = []
+metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
+
+[editable path="InteractionArea"]

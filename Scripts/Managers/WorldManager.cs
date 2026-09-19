@@ -6,17 +6,17 @@ public partial class WorldManager : Node
     public static WorldManager Instance { get; private set; }
 
     //World related variables
-    [Export] private World[] worlds;
+    [Export] public World[] worlds;
     World currentWorld;
-    [Export] private Node2D player;
+    [Export] public Node2D player;
 
     //Time related variables
-    [Export] private float timeLoopTime;
-    [Export] private Label timeLabel;
-    private float currentTimeLeft;
+    [Export] public float timeLoopTime;
+    [Export] public Label timeLabel;
+    public float currentTimeLeft;
 
 
-    private float localTime = 0f;
+    public float localTime = 0f;
 
     public override void _EnterTree()
     {

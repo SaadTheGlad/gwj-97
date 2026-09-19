@@ -80,6 +80,29 @@ public partial class WorldPortal : Area2D, IComponentable
 		{
 			playerNear = true;
         }
+
+        if (node.IsInGroup("GoesThroughPortals"))
+        {
+            //change position
+            World targetWorld = null;
+            foreach (World world in WorldManager.Instance.worlds)
+            {
+                if (world.GetWorldName() == targetWorldName)
+                {
+                    targetWorld = world;
+                    break;
+                }
+            }
+
+            WorldPortal targetPortal = targetWorld.GetPortal(WorldManager.Instance.GetCurrentWorldForPlayer().GetWorldName());
+            node.GlobalPosition = targetPortal.GetSpawnPos();
+
+            if (node is IComponentable componentable)
+            {
+                var timeDilationComponent = componentable.GetComponent<TimeDilationComponent>();
+                timeDilationComponent.CheckIfActorIsInSameWorldAsPlayer();
+            }
+        }
     }
 
     private void ExitedBody(Node2D node)
@@ -99,5 +122,4 @@ public partial class WorldPortal : Area2D, IComponentable
     }
 
     private void EnterWorld() => EventManager.WorldEntered?.Invoke(targetWorldName);
-
 }

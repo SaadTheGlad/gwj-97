@@ -37,12 +37,12 @@ size = Vector2(31, 40)
 size = Vector2(30, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tx1dd"]
-size = Vector2(36, 26)
+size = Vector2(36, 50)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3smsa"]
-size = Vector2(40, 35)
+size = Vector2(40, 68)
 
-[node name="Player" type="CharacterBody2D" unique_id=1201004403 node_paths=PackedStringArray("animatedSprite", "leftPoint", "rightPoint", "downPoint", "topPoint", "componentHolder") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1201004403 node_paths=PackedStringArray("animatedSprite", "leftPoint", "rightPoint", "downPoint", "topPoint", "componentHolder") groups=["GoesThroughPortals", "Player"]]
 motion_mode = 1
 script = ExtResource("1_qkid2")
 animatedSprite = NodePath("Sprite2D")
@@ -86,7 +86,7 @@ position = Vector2(0, 42)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionPoints/Bottom" unique_id=676042202]
-position = Vector2(0, -7)
+position = Vector2(0, -19)
 shape = SubResource("RectangleShape2D_tx1dd")
 
 [node name="Top" type="Area2D" parent="InteractionPoints" unique_id=1888377397]
@@ -94,7 +94,7 @@ position = Vector2(0, -87)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionPoints/Top" unique_id=1795147531]
-position = Vector2(0, 14.5)
+position = Vector2(0, 31)
 shape = SubResource("RectangleShape2D_3smsa")
 
 [node name="Components" type="Node" parent="." unique_id=804039001]

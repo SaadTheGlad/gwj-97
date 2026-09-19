@@ -34,7 +34,6 @@ texture = ExtResource("4_bx4vm")
 offset = Vector2(0, -5.545)
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=503925633]
-position = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_byqip")
 
 [node name="InteractionArea" parent="." index="2" unique_id=253216721]
