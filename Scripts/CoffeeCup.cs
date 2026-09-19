@@ -10,6 +10,11 @@ public partial class CoffeeCup : CharacterBodyNPC
     [Export] InteractionArea interactionArea;
     HealthComponent healthComponent;
 
+    Vector2 movementDirection;
+    public void SetMovementDirection(Vector2 _movementDirection) => movementDirection = _movementDirection;
+
+    public bool canMove = true;
+
     public override void _EnterTree()
     {
         base._EnterTree();
@@ -37,10 +42,16 @@ public partial class CoffeeCup : CharacterBodyNPC
 
     public override void _PhysicsProcess(double delta)
     {
-        if (!pickableComponent.isPickedUp)
+        if(!pickableComponent.isPickedUp)
         {
-            Velocity = pickableComponent.dropDownDirection * speed;
-            MoveAndSlide();
+            if(canMove)
+                Velocity = movementDirection * speed;
         }
+        else
+        {
+            Velocity = Vector2.Zero;
+            canMove = false;
+        }
+        MoveAndSlide();
     }
 }

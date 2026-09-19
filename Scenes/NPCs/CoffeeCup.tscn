@@ -6,12 +6,13 @@
 [ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Components/Pickable.cs" id="3_i8uiu"]
 [ext_resource type="Script" uid="uid://ci8try848mskg" path="res://Scripts/Components/TimeDilationComponent.cs" id="5_ylouo"]
 [ext_resource type="Script" uid="uid://6ggdbwi8lhvs" path="res://Scripts/Components/HealthComponent.cs" id="6_7bsuw"]
+[ext_resource type="Script" uid="uid://dgnhl5jnntw51" path="res://Scripts/Components/PortalableComponent.cs" id="7_6r3cj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ylouo"]
-size = Vector2(20, 9)
+size = Vector2(14, 6.5720654)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3o25a"]
-radius = 9.018163
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7bsuw"]
+size = Vector2(20, 24)
 
 [node name="CoffeeCup" unique_id=439113131 node_paths=PackedStringArray("interactionArea") groups=["GoesThroughPortals"] instance=ExtResource("1_b3xyv")]
 script = ExtResource("2_6o4wv")
@@ -24,14 +25,15 @@ scale = Vector2(0.09909911, 0.09909915)
 texture = ExtResource("2_3o25a")
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=503925633]
-position = Vector2(0, 1.9279346)
+position = Vector2(0, 0.7139673)
 shape = SubResource("RectangleShape2D_ylouo")
 
 [node name="InteractionArea" parent="." index="2" unique_id=253216721]
 position = Vector2(0, -6.5720654)
 
 [node name="CollisionShape2D" parent="InteractionArea" index="0" unique_id=72547211]
-shape = SubResource("CircleShape2D_3o25a")
+position = Vector2(0, 0.57206535)
+shape = SubResource("RectangleShape2D_7bsuw")
 
 [node name="Pickable" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="0" unique_id=1312680361 node_paths=PackedStringArray("colliderShapes")]
 script = ExtResource("3_i8uiu")
@@ -45,5 +47,9 @@ metadata/_custom_type_script = "uid://ci8try848mskg"
 [node name="HealthComponent" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="2" unique_id=2109966424]
 script = ExtResource("6_7bsuw")
 metadata/_custom_type_script = "uid://6ggdbwi8lhvs"
+
+[node name="PortalableComponent" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="3" unique_id=1997525286]
+script = ExtResource("7_6r3cj")
+metadata/_custom_type_script = "uid://dgnhl5jnntw51"
 
 [editable path="InteractionArea"]

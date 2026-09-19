@@ -7,6 +7,8 @@ public partial class TimeDilationComponent : BaseComponent
     protected float timeScale = 1f;
     public float GetTimeScale() => timeScale;
 
+    public bool objectInSameWorldAsPlayer;
+
     public override void _EnterTree()
     {
         EventManager.ChangedWorld += CheckIfActorIsInSameWorldAsPlayer;
@@ -28,6 +30,7 @@ public partial class TimeDilationComponent : BaseComponent
         {
             //we know the timescale should be 1 anyways
             timeScale = 1;
+            objectInSameWorldAsPlayer = true;
             return;
         }
 
@@ -39,10 +42,14 @@ public partial class TimeDilationComponent : BaseComponent
             float actorRelativeFactor = actorCurrentWorld.GetRelativeTimeFactor();
             timeScale = actorRelativeFactor / playerRelativeFactor;
 
-            GD.Print($"Current time scale of {actor.Name} is {timeScale}");
+            //GD.Print($"Current time scale of {actor.Name} is {timeScale}");
+
+            objectInSameWorldAsPlayer = false;
         }
         else
         {
+
+            objectInSameWorldAsPlayer = true;
             timeScale = 1f;
         }
         

@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://7mowvo1dwstu" path="res://Scenes/NPCs/robot.tscn" id="5_gs30c"]
 [ext_resource type="PackedScene" uid="uid://d1eja3r2u6ptk" path="res://Scenes/NPCs/coffee_machine.tscn" id="6_2eqo0"]
 [ext_resource type="PackedScene" uid="uid://bsanjpifg12st" path="res://Scenes/NPCs/terminal.tscn" id="6_vesm1"]
-[ext_resource type="PackedScene" uid="uid://c218jj1chtiw" path="res://Scenes/NPCs/CoffeeCup.tscn" id="7_2eqo0"]
 
 [node name="BlueWorld" unique_id=2101248957 node_paths=PackedStringArray("portals") instance=ExtResource("1_v04rg")]
 worldName = "BlueWorld"
@@ -48,12 +47,8 @@ metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
 position = Vector2(563, 171)
 totalLifeTime = 11.0
 
-[node name="CoffeeMachine" parent="." index="5" unique_id=2032461470 instance=ExtResource("6_2eqo0")]
-position = Vector2(-283, 795)
-
-[node name="CoffeeCup" parent="." index="6" unique_id=439113131 instance=ExtResource("7_2eqo0")]
-position = Vector2(82, 480)
-speed = 60.0
+[node name="CoffeeMachine" parent="." index="5" unique_id=1877917849 instance=ExtResource("6_2eqo0")]
+position = Vector2(210, 340)
 
 [editable path="Terminal"]
 [editable path="Terminal/InteractionArea"]
@@ -61,3 +56,5 @@ speed = 60.0
 [editable path="OrangePortal/InteractionArea"]
 [editable path="CrimsonPortal"]
 [editable path="CrimsonPortal/InteractionArea"]
+[editable path="CoffeeMachine"]
+[editable path="CoffeeMachine/InteractionArea"]

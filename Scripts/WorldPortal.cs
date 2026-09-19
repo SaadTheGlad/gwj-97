@@ -84,8 +84,17 @@ public partial class WorldPortal : Area2D, IComponentable
         World currentWorld = GetParent() as World;
         string currentWorldName = currentWorld.GetWorldName();
 
-        if (node.IsInGroup("GoesThroughPortals") && currentWorldName == WorldManager.Instance.GetCurrentWorldForPlayer().GetWorldName())
+        PortalableComponent portalableComponent = null;
+        if (node is IComponentable componentable)
         {
+            portalableComponent = componentable.GetComponent<PortalableComponent>();
+        }
+
+        if (node.IsInGroup("GoesThroughPortals") && portalableComponent.canTeleport)
+        {
+            portalableComponent.SetTimeOut();
+            GD.Print("teleporting...");
+
             //change position
             World targetWorld = null;
             foreach (World world in WorldManager.Instance.worlds)
@@ -97,7 +106,7 @@ public partial class WorldPortal : Area2D, IComponentable
                 }
             }
 
-            WorldPortal targetPortal = targetWorld.GetPortal(WorldManager.Instance.GetCurrentWorldForPlayer().GetWorldName());
+            WorldPortal targetPortal = targetWorld.GetPortal(currentWorld.GetWorldName());
 
             node.GlobalPosition = targetPortal.GetSpawnPos();
             //we need to reparent for the time dilation component to work

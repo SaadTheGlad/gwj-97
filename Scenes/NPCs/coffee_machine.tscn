@@ -2,8 +2,29 @@
 
 [ext_resource type="PackedScene" uid="uid://cp16mh07f6430" path="res://Scenes/NPCs/npc.tscn" id="1_bxena"]
 [ext_resource type="Script" uid="uid://b28oxds4vcoym" path="res://Scripts/CoffeeMachine.cs" id="2_axxsa"]
-[ext_resource type="Texture2D" uid="uid://n02udegcolwd" path="res://Art/Images/coffee_machine.png" id="2_e33a5"]
+[ext_resource type="Texture2D" uid="uid://n02udegcolwd" path="res://Art/Images/Coffee Machine/coffee_machine.png" id="2_e33a5"]
+[ext_resource type="PackedScene" uid="uid://c218jj1chtiw" path="res://Scenes/NPCs/CoffeeCup.tscn" id="3_kvyg6"]
 [ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Components/Pickable.cs" id="3_n224d"]
+[ext_resource type="Texture2D" uid="uid://oxmb1dvlwx6a" path="res://Art/Images/Coffee Machine/coffee_machine_back.png" id="4_kdqgd"]
+[ext_resource type="Texture2D" uid="uid://v564y3xmkhon" path="res://Art/Images/Coffee Machine/coffee_machine_side.png" id="5_b8fqa"]
+[ext_resource type="Script" uid="uid://ci8try848mskg" path="res://Scripts/Components/TimeDilationComponent.cs" id="7_b8fqa"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_axxsa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e33a5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kdqgd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_b8fqa")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_axxsa"]
 size = Vector2(82, 20)
@@ -11,15 +32,28 @@ size = Vector2(82, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e33a5"]
 size = Vector2(106, 134)
 
-[node name="CoffeeMachine" unique_id=64990111 instance=ExtResource("1_bxena")]
+[node name="CoffeeMachine" unique_id=64990111 node_paths=PackedStringArray("animatedSprite", "left", "right", "bottom", "top") instance=ExtResource("1_bxena")]
 script = ExtResource("2_axxsa")
+animatedSprite = NodePath("AnimatedSprite2D")
+coffeeScene = ExtResource("3_kvyg6")
+spawnInterval = 1.0
+left = NodePath("SpawnPoints/Left")
+right = NodePath("SpawnPoints/Right")
+bottom = NodePath("SpawnPoints/Bottom")
+top = NodePath("SpawnPoints/Top")
 
-[node name="Sprite2D" parent="." index="0" unique_id=969637244]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0" unique_id=1101756075]
+position = Vector2(0, -45)
+scale = Vector2(0.129, 0.129)
+sprite_frames = SubResource("SpriteFrames_axxsa")
+animation = &"idle"
+frame_progress = 0.99975604
+
+[node name="Sprite2D" parent="." index="1" unique_id=969637244]
 position = Vector2(0, -45)
 scale = Vector2(0.12859097, 0.128591)
-texture = ExtResource("2_e33a5")
 
-[node name="CollisionShape2D" parent="." index="1" unique_id=503925633]
+[node name="CollisionShape2D" parent="." index="2" unique_id=503925633]
 position = Vector2(-3, 8)
 shape = SubResource("RectangleShape2D_axxsa")
 
@@ -32,5 +66,23 @@ script = ExtResource("3_n224d")
 colliderShapes = [NodePath("../../CollisionShape2D"), NodePath("../../InteractionArea/CollisionShape2D")]
 movementPenalty = 20.0
 metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
+
+[node name="TimeDilationComponent" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="1" unique_id=1670262100]
+script = ExtResource("7_b8fqa")
+metadata/_custom_type_script = "uid://ci8try848mskg"
+
+[node name="SpawnPoints" type="Node2D" parent="." index="5" unique_id=1687104085]
+
+[node name="Bottom" type="Marker2D" parent="SpawnPoints" index="0" unique_id=95947835]
+position = Vector2(0, 28)
+
+[node name="Top" type="Marker2D" parent="SpawnPoints" index="1" unique_id=1669225253]
+position = Vector2(0, -38)
+
+[node name="Right" type="Marker2D" parent="SpawnPoints" index="2" unique_id=1662863934]
+position = Vector2(59, -3)
+
+[node name="Left" type="Marker2D" parent="SpawnPoints" index="3" unique_id=994269946]
+position = Vector2(-47, -3)
 
 [editable path="InteractionArea"]
