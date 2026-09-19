@@ -91,9 +91,9 @@ public partial class WorldPortal : Area2D, IComponentable
             portalableComponent = componentable.GetComponent<PortalableComponent>();
         }
 
-        if (node.IsInGroup("GoesThroughPortals") /*&& portalableComponent.canTeleport*/)
+        if (node.IsInGroup("GoesThroughPortals") && portalableComponent.canTeleport)
         {
-            //portalableComponent.SetTimeOut();
+            portalableComponent.SetTimeOut();
 
             //change position
             World targetWorld = null;

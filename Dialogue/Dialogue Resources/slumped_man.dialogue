@@ -1,11 +1,11 @@
 ~ start
 if GameState.hasMetSlumpedMan
-	The man stares blankly at the ground.
+	COFFEEEEE!!!
 else
 	A man sits slumped against a wall, staring off into nothingness.
-	???: Come and sit down.
-	???: No?
-	???: Suit yourself.
-	The man goes back to sleep.
+	???: Hey man can you give me like 5 coffees per minute?
+	- What?
+	???: I need 5 cups of coffee per minute or else I won't function!!!
+	???: Please find a way to do that, I'll owe you.
 	$> GameState.hasMetSlumpedMan = true
 => END
