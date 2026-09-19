@@ -42,7 +42,7 @@ size = Vector2(36, 50)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3smsa"]
 size = Vector2(40, 68)
 
-[node name="Player" type="CharacterBody2D" unique_id=1201004403 node_paths=PackedStringArray("animatedSprite", "leftPoint", "rightPoint", "downPoint", "topPoint", "componentHolder") groups=["GoesThroughPortals", "Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1201004403 node_paths=PackedStringArray("animatedSprite", "leftPoint", "rightPoint", "downPoint", "topPoint", "componentHolder") groups=["Player"]]
 motion_mode = 1
 script = ExtResource("1_qkid2")
 animatedSprite = NodePath("Sprite2D")

@@ -49,6 +49,7 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 Player=""
 NPC=""
 GoesThroughPortals=""
+Obstacles=""
 
 [input]
 

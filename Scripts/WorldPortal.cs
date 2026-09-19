@@ -81,7 +81,10 @@ public partial class WorldPortal : Area2D, IComponentable
 			playerNear = true;
         }
 
-        if (node.IsInGroup("GoesThroughPortals"))
+        World currentWorld = GetParent() as World;
+        string currentWorldName = currentWorld.GetWorldName();
+
+        if (node.IsInGroup("GoesThroughPortals") && currentWorldName == WorldManager.Instance.GetCurrentWorldForPlayer().GetWorldName())
         {
             //change position
             World targetWorld = null;
@@ -95,13 +98,27 @@ public partial class WorldPortal : Area2D, IComponentable
             }
 
             WorldPortal targetPortal = targetWorld.GetPortal(WorldManager.Instance.GetCurrentWorldForPlayer().GetWorldName());
-            node.GlobalPosition = targetPortal.GetSpawnPos();
 
-            if (node is IComponentable componentable)
+            node.GlobalPosition = targetPortal.GetSpawnPos();
+            //we need to reparent for the time dilation component to work
+            CallDeferred("Reparent", node, targetWorld);
+        }
+    }
+
+    private void Reparent(Node toBeParented, Node newParent)
+    {
+        toBeParented.Reparent(newParent, keepGlobalTransform: true);
+
+        if (toBeParented is IComponentable componentable)
+        {
+            var timeDilationComponent = componentable.GetComponent<TimeDilationComponent>();
+            if (timeDilationComponent != null)
             {
-                var timeDilationComponent = componentable.GetComponent<TimeDilationComponent>();
                 timeDilationComponent.CheckIfActorIsInSameWorldAsPlayer();
+
             }
+            else
+                GD.Print("No time dilation component");
         }
     }
 

@@ -39,7 +39,7 @@ public partial class TimeDilationComponent : BaseComponent
             float actorRelativeFactor = actorCurrentWorld.GetRelativeTimeFactor();
             timeScale = actorRelativeFactor / playerRelativeFactor;
 
-            GD.Print($"Current time scale: {timeScale}");
+            GD.Print($"Current time scale of {actor.Name} is {timeScale}");
         }
         else
         {

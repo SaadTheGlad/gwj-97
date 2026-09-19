@@ -36,7 +36,7 @@ position = Vector2(274, 1253)
 targetWorldName = "CrimsonWorld"
 
 [node name="BG" parent="CrimsonPortal" index="2" unique_id=2090716909]
-modulate = Color(0.99999875, 0.07081602, 0.19410238, 1)
+modulate = Color(5.2943824e-07, 0.65246373, 0.270791, 1)
 
 [node name="Pickable" type="Node" parent="CrimsonPortal/Components" parent_id_path=PackedInt32Array(505939663, 927054557) index="0" unique_id=1832080643 node_paths=PackedStringArray("colliderShapes")]
 script = ExtResource("4_vesm1")

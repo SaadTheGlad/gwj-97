@@ -31,7 +31,7 @@ portals = []
 [node name="TileMapLayers" type="Node2D" parent="." unique_id=442821184]
 z_index = -1
 
-[node name="BG" type="TileMapLayer" parent="TileMapLayers" unique_id=1817643228]
+[node name="BG" type="TileMapLayer" parent="TileMapLayers" unique_id=1817643228 groups=["Obstacles"]]
 z_index = -1
 position = Vector2(1, -1)
 scale = Vector2(0.15, 0.15)

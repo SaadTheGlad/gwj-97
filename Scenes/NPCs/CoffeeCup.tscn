@@ -5,31 +5,45 @@
 [ext_resource type="Script" uid="uid://cbx0sk3ykea57" path="res://Scripts/CoffeeCup.cs" id="2_6o4wv"]
 [ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Components/Pickable.cs" id="3_i8uiu"]
 [ext_resource type="Script" uid="uid://ci8try848mskg" path="res://Scripts/Components/TimeDilationComponent.cs" id="5_ylouo"]
+[ext_resource type="Script" uid="uid://6ggdbwi8lhvs" path="res://Scripts/Components/HealthComponent.cs" id="6_7bsuw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ylouo"]
+size = Vector2(20, 9)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3o25a"]
-radius = 18.248287
+radius = 9.018163
 
-[node name="CoffeeCup" unique_id=439113131 instance=ExtResource("1_b3xyv")]
+[node name="CoffeeCup" unique_id=439113131 node_paths=PackedStringArray("interactionArea") groups=["GoesThroughPortals"] instance=ExtResource("1_b3xyv")]
 script = ExtResource("2_6o4wv")
 speed = 150.0
+interactionArea = NodePath("InteractionArea")
 
 [node name="Sprite2D" parent="." index="0" unique_id=969637244]
+position = Vector2(0, -6.5720654)
 scale = Vector2(0.09909911, 0.09909915)
 texture = ExtResource("2_3o25a")
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=503925633]
-disabled = true
+position = Vector2(0, 1.9279346)
+shape = SubResource("RectangleShape2D_ylouo")
 
-[node name="CollisionShape2D" parent="InteractionArea" parent_id_path=PackedInt32Array(253216721) index="0" unique_id=72547211]
+[node name="InteractionArea" parent="." index="2" unique_id=253216721]
+position = Vector2(0, -6.5720654)
+
+[node name="CollisionShape2D" parent="InteractionArea" index="0" unique_id=72547211]
 shape = SubResource("CircleShape2D_3o25a")
 
 [node name="Pickable" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="0" unique_id=1312680361 node_paths=PackedStringArray("colliderShapes")]
 script = ExtResource("3_i8uiu")
-colliderShapes = []
+colliderShapes = [NodePath("../../CollisionShape2D"), NodePath("../../InteractionArea/CollisionShape2D")]
 metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
 
 [node name="TimeDilationComponent" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="1" unique_id=1086933886]
 script = ExtResource("5_ylouo")
 metadata/_custom_type_script = "uid://ci8try848mskg"
+
+[node name="HealthComponent" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="2" unique_id=2109966424]
+script = ExtResource("6_7bsuw")
+metadata/_custom_type_script = "uid://6ggdbwi8lhvs"
 
 [editable path="InteractionArea"]
