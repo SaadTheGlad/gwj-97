@@ -19,7 +19,7 @@ public partial class TitleCard : PanelContainer
         }
 
         //setting up the text for the title card
-        titleCardLabel.Text = $"WORLD ENDS IN {GetTextFromTimeInSeconds(WorldManager.Instance.timeLoopTime)}*";
+        titleCardLabel.Text = $"WORLD ENDS IN {GetTextFromTimeInSeconds(WorldManager.Instance.timeLoopTime).ToUpper()}*";
     }
 
     private string GetTextFromTimeInSeconds(float totalSeconds)

@@ -53,6 +53,9 @@ movementPenalty = 45.0
 [node name="CoffeeMachine" parent="." index="5" unique_id=88114331 instance=ExtResource("6_2eqo0")]
 position = Vector2(-374, 794)
 
+[node name="Pickable" parent="CoffeeMachine/ComponentsHolder" parent_id_path=PackedInt32Array(88114331, 230629070) index="0" unique_id=535826786]
+movementPenalty = 35.0
+
 [node name="SlumpedMan" parent="." index="6" unique_id=1483709891 instance=ExtResource("7_2eqo0")]
 position = Vector2(-371, 1254)
 
@@ -68,5 +71,7 @@ collision_layer = 3
 [editable path="Robot"]
 [editable path="Robot/InteractionArea"]
 [editable path="Robot/DamageZone"]
+[editable path="CoffeeMachine"]
+[editable path="CoffeeMachine/InteractionArea"]
 [editable path="SlumpedMan"]
 [editable path="SlumpedMan/InteractionArea"]
