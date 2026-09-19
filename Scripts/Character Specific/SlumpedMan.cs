@@ -4,7 +4,7 @@ using System;
 public partial class SlumpedMan : NPC
 {
     private int coffeesDrunk;
-    private float coffeesDrunkPerMinute;
+    private float coffeesDrunkPerSecond;
 
     private float totalTimeSinceSpawn;
 
@@ -18,11 +18,20 @@ public partial class SlumpedMan : NPC
         CalculateRateOfCoffeesDrunk(delta);
     }
 
+    bool satiated = false;
+
     public void CalculateRateOfCoffeesDrunk(double delta)
     {
         totalTimeSinceSpawn += (float)delta;
-        coffeesDrunkPerMinute = (coffeesDrunk / totalTimeSinceSpawn) * 10f;
-        GD.Print($"Rate is: {coffeesDrunkPerMinute} coffees drunk per 10 seconds!");
+        coffeesDrunkPerSecond = (coffeesDrunk / totalTimeSinceSpawn);
+        //GD.Print($"Rate is: {coffeesDrunkPerSecond} coffees drunk per second!");
+        if(coffeesDrunkPerSecond >= 2f && !satiated)
+        {
+            GD.Print("satiated");
+            AudioManager.Instance.Play("Jingle");
+            GameState.Instance.hasSatiatedSlumpedMan = true;
+            satiated = true;
+        }
     }
 
 }

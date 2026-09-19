@@ -66,6 +66,11 @@ public partial class Robot : NPC
         }
 
         area.Monitorable = false;
+
+        GameState.Instance.hasDefusedRobot = true;
+        AudioManager.Instance.Play("Jingle");
+        GD.Print("defused");
+
     }
 
     private void BlowUp()

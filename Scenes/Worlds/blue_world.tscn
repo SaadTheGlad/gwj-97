@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://7mowvo1dwstu" path="res://Scenes/NPCs/robot.tscn" id="5_gs30c"]
 [ext_resource type="PackedScene" uid="uid://d1eja3r2u6ptk" path="res://Scenes/NPCs/coffee_machine.tscn" id="6_2eqo0"]
 [ext_resource type="PackedScene" uid="uid://bsanjpifg12st" path="res://Scenes/NPCs/terminal.tscn" id="6_vesm1"]
+[ext_resource type="PackedScene" uid="uid://c06bbsoplf7co" path="res://Scenes/NPCs/slumped_man.tscn" id="7_2eqo0"]
 
 [node name="BlueWorld" unique_id=2101248957 node_paths=PackedStringArray("portals") instance=ExtResource("1_v04rg")]
 worldName = "BlueWorld"
@@ -45,10 +46,18 @@ metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
 
 [node name="Robot" parent="." index="4" unique_id=1037066890 instance=ExtResource("5_gs30c")]
 position = Vector2(563, 171)
-totalLifeTime = 11.0
+
+[node name="Pickable" parent="Robot/ComponentsHolder" parent_id_path=PackedInt32Array(1037066890, 230629070) index="0" unique_id=2056748283]
+movementPenalty = 45.0
 
 [node name="CoffeeMachine" parent="." index="5" unique_id=88114331 instance=ExtResource("6_2eqo0")]
-position = Vector2(216, 351)
+position = Vector2(-374, 794)
+
+[node name="SlumpedMan" parent="." index="6" unique_id=1483709891 instance=ExtResource("7_2eqo0")]
+position = Vector2(-371, 1254)
+
+[node name="InteractionArea" parent="SlumpedMan" index="2" unique_id=253216721]
+collision_layer = 3
 
 [editable path="Terminal"]
 [editable path="Terminal/InteractionArea"]
@@ -56,3 +65,8 @@ position = Vector2(216, 351)
 [editable path="OrangePortal/InteractionArea"]
 [editable path="CrimsonPortal"]
 [editable path="CrimsonPortal/InteractionArea"]
+[editable path="Robot"]
+[editable path="Robot/InteractionArea"]
+[editable path="Robot/DamageZone"]
+[editable path="SlumpedMan"]
+[editable path="SlumpedMan/InteractionArea"]

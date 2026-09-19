@@ -19,11 +19,14 @@ public partial class CoffeeCup : CharacterBodyNPC
     {
         base._EnterTree();
         interactionArea.BodyEntered += EnterBody;
+        interactionArea.AreaEntered += EnterArea;
     }
 
     public override void _ExitTree()
     {
         interactionArea.BodyEntered -= EnterBody;
+        interactionArea.AreaEntered -= EnterArea;
+
     }
 
     public override void _Ready()
@@ -39,11 +42,17 @@ public partial class CoffeeCup : CharacterBodyNPC
             healthComponent.TakeDamage(1000f);
         }
 
-        if (body.IsInGroup("SlumpedMan"))
+    }
+
+    public void EnterArea(Area2D area)
+    {
+        if (area is InteractionArea interactArea)
         {
-            SlumpedMan slumpedMan = body as SlumpedMan;
-            slumpedMan.DrinkCoffee();
-            QueueFree();
+            if(interactArea.GetActor() is SlumpedMan slumpedMan)
+            {
+                slumpedMan.DrinkCoffee();
+                QueueFree();
+            }
         }
     }
 

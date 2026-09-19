@@ -1,11 +1,13 @@
 ~ start
-if GameState.hasMetSlumpedMan
-	COFFEEEEE!!!
+if GameState.hasSatiatedSlumpedMan
+	THANK YOU FOR THE COFFEE! I CAN STUDY FOR MY FINALS NOW. I LOVE YOU.
+elif GameState.hasMetSlumpedMan
+	COFFEEEEE!!! >:(
 else
 	A man sits slumped against a wall, staring off into nothingness.
-	???: Hey man can you give me like 5 coffees per minute?
+	???: Hey man can you give me 2 coffees per second?
 	- What?
-	???: I need 5 cups of coffee per minute or else I won't function!!!
+	???: I need to drink two cups of coffee a second or else I won't function!!!
 	???: Please find a way to do that, I'll owe you.
 	$> GameState.hasMetSlumpedMan = true
 => END

@@ -8,7 +8,7 @@
 shader = ExtResource("3_hayco")
 
 [node name="CrimsonWorld" unique_id=2101248957 node_paths=PackedStringArray("portals") instance=ExtResource("1_pwu75")]
-worldRelativeTimeFactor = 2.0
+worldRelativeTimeFactor = 3.0
 portals = [NodePath("BluePortal")]
 
 [node name="BG" parent="TileMapLayers" parent_id_path=PackedInt32Array(442821184) index="0" unique_id=1817643228]

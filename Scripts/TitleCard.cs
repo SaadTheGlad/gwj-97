@@ -28,10 +28,10 @@ public partial class TitleCard : PanelContainer
         int seconds = (int)(totalSeconds - minutes * 60f);
         if(seconds == 0)
         {
-            return $"{minutes.ToString()}m";
+            return $"{minutes.ToString()} minutes";
         }
 
-        return $"{minutes.ToString()}m {seconds.ToString()}s";
+        return $"{minutes.ToString()} minutes & {seconds.ToString()} seconds";
     }
 
     public void PlayCutscene()

@@ -4,6 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://v7vy3nwp5sa2" path="res://Audio/SFX/old tick tocks/tick tock 1.wav" id="2_j1goe"]
 [ext_resource type="AudioStream" uid="uid://ciax1duaerhd5" path="res://Audio/SFX/old tick tocks/tick tock 2.wav" id="3_6o2l2"]
 [ext_resource type="Script" uid="uid://2hdc4e5l7fuh" path="res://modules/AudioManager/Sound.cs" id="4_f6ntu"]
+[ext_resource type="AudioStream" uid="uid://w3o6tj6kjgh5" path="res://Audio/SFX/WinSFX.ogg" id="5_6o2l2"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xw0pe"]
 playback_mode = 2
@@ -19,6 +20,14 @@ volume = -27.0
 bus = 4
 metadata/_custom_type_script = "uid://2hdc4e5l7fuh"
 
+[sub_resource type="Resource" id="Resource_pdcff"]
+script = ExtResource("4_f6ntu")
+name = "Jingle"
+AudioStream = ExtResource("5_6o2l2")
+volume = -5.0
+bus = 2
+metadata/_custom_type_script = "uid://2hdc4e5l7fuh"
+
 [node name="AudioManager" type="Node" unique_id=1921231180]
 script = ExtResource("1_tbsdu")
-sounds = Array[Object]([SubResource("Resource_x8n3i")])
+sounds = Array[Object]([SubResource("Resource_x8n3i"), SubResource("Resource_pdcff")])
