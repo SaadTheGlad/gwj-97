@@ -12,15 +12,18 @@ public partial class World : Node2D
 
     public WorldPortal GetPortal(string worldName)
     {
-        foreach(var portal in portals)
+        foreach(var portal in GetTree().GetNodesInGroup("Portals"))
         {
-            if (portal.GetTargetWorldName() == worldName)
+            if(portal is WorldPortal worldPortal && worldPortal.GetParent() == this)
             {
-                return portal;
+                if (worldPortal.GetTargetWorldName() == worldName)
+                {
+                    return worldPortal;
+                }
             }
         }
 
-        GD.Print("Could not find portal");
+        GD.Print($"Could not find portal with name {worldName}");
         return null;
     }
 

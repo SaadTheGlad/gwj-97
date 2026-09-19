@@ -92,7 +92,7 @@ animations = [{
 "speed": 24.0
 }]
 
-[node name="WorldPortal" type="Area2D" unique_id=1584393610 node_paths=PackedStringArray("spawnPos", "componentHolder")]
+[node name="WorldPortal" type="Area2D" unique_id=1584393610 node_paths=PackedStringArray("spawnPos", "componentHolder") groups=["Portals"]]
 z_index = -1
 script = ExtResource("1_n7ww6")
 spawnPos = NodePath("SpawnPos")

@@ -52,6 +52,7 @@ NPC=""
 GoesThroughPortals=""
 Obstacles=""
 SlumpedMan=""
+Portals=""
 
 [input]
 
