@@ -23,7 +23,7 @@ radius = 76.05919
 
 [node name="Robot" unique_id=64990111 node_paths=PackedStringArray("damageZone") instance=ExtResource("1_u5bia")]
 script = ExtResource("2_k18oe")
-totalLifeTime = 10.0
+totalLifeTime = 12.0
 explosionEffect = ExtResource("3_bvx5k")
 damageZone = NodePath("DamageZone")
 
@@ -61,7 +61,7 @@ shape = SubResource("CircleShape2D_6cvnh")
 [node name="Pickable" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="0" unique_id=2056748283 node_paths=PackedStringArray("colliderShapes")]
 script = ExtResource("6_ggc2j")
 colliderShapes = [NodePath("../../CollisionShape2D")]
-movementPenalty = 38.0
+movementPenalty = 42.0
 metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
 
 [node name="HealthComponent" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="1" unique_id=2091448220]

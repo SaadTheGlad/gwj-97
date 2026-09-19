@@ -64,6 +64,8 @@ public partial class Robot : NPC
         {
             pickable.DropDown(true, area.GlobalPosition);
         }
+
+        area.Monitorable = false;
     }
 
     private void BlowUp()

@@ -33,7 +33,16 @@ metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
 position = Vector2(563, 171)
 totalLifeTime = 11.0
 
+[node name="Robot2" parent="." index="4" unique_id=1674917214 instance=ExtResource("5_gs30c")]
+position = Vector2(1049, 371)
+
+[node name="DialogueStateContext" parent="Robot2" index="3" unique_id=666998739]
+alias = "robot2"
+
 [editable path="Terminal"]
 [editable path="Terminal/InteractionArea"]
 [editable path="WorldPortal"]
 [editable path="WorldPortal/InteractionArea"]
+[editable path="Robot2"]
+[editable path="Robot2/InteractionArea"]
+[editable path="Robot2/DamageZone"]
