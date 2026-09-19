@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c0gwyt50ct54y" path="res://Scenes/Worlds/blue_world.tscn" id="3_pq8du"]
 [ext_resource type="PackedScene" uid="uid://j3h8ieu15xte" path="res://Scenes/Worlds/orange_world.tscn" id="5_jcg3c"]
 [ext_resource type="PackedScene" uid="uid://djqr7422v207h" path="res://Scenes/crimson_world.tscn" id="6_pq8du"]
+[ext_resource type="PackedScene" uid="uid://c06bbsoplf7co" path="res://Scenes/NPCs/slumped_man.tscn" id="7_u2v1c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1wmeh"]
 font_size = 30
@@ -307,3 +308,6 @@ position = Vector2(577, -6325)
 
 [node name="CrimsonWorld" parent="." unique_id=205572285 instance=ExtResource("6_pq8du")]
 position = Vector2(8123, -6250)
+
+[node name="SlumpedMan" parent="." unique_id=64990111 instance=ExtResource("7_u2v1c")]
+position = Vector2(-365, 757)

@@ -11,7 +11,6 @@ public partial class CharacterBodyNPC : CharacterBody2D, IComponentable
     public void SettingCurrentWorldName(string _currentWorldName)
     {
         currentWorldName = _currentWorldName;
-        GD.Print($"Current world name is: {currentWorldName}");
     }
 
     public string GetCurrentWorldName() => currentWorldName;

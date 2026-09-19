@@ -38,6 +38,13 @@ public partial class CoffeeCup : CharacterBodyNPC
         {
             healthComponent.TakeDamage(1000f);
         }
+
+        if (body.IsInGroup("SlumpedMan"))
+        {
+            SlumpedMan slumpedMan = body as SlumpedMan;
+            slumpedMan.DrinkCoffee();
+            QueueFree();
+        }
     }
 
     public override void _PhysicsProcess(double delta)

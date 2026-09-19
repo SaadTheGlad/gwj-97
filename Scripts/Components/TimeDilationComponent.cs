@@ -34,9 +34,6 @@ public partial class TimeDilationComponent : BaseComponent
             return;
         }
 
-        //Here we assume that current world is always the one that the player is in.
-        string currentWorldName = "";
-
         World actorCurrentWorld = null;
         if (actor is CoffeeCup coffee)
         {
@@ -44,6 +41,7 @@ public partial class TimeDilationComponent : BaseComponent
         }
         else
         {
+            //Here we assume that current world is always the one that the player is in.
             actorCurrentWorld = actor.GetParent() as World;
         }
 

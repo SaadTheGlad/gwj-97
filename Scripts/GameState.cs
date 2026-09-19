@@ -9,6 +9,10 @@ public partial class GameState : Node
     public bool playerCanMove = false;
     public bool hasPlayedCutscene = false;
 
+    //conditions for wion
+    public bool hasDefusedRobot = false;
+    public bool hasSatiatedSlumpedMan = false;
+
     public void EnablePlayerMove()
     {
         playerCanMove = true;
@@ -39,5 +43,19 @@ public partial class GameState : Node
     public override void _Ready()
     {
         GetTree().Paused = true;
+    }
+
+    bool hasInvokedGameWon = false;
+
+    public override void _Process(double delta)
+    {
+        if(hasDefusedRobot && hasSatiatedSlumpedMan && !hasInvokedGameWon)
+        {
+            EventManager.GameWon?.Invoke();
+
+            //do some panel here and pause the game
+
+            hasInvokedGameWon = true;
+        }
     }
 }
