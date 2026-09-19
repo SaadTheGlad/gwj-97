@@ -6,7 +6,7 @@ public partial class SlumpedMan : NPC
     private int coffeesDrunk;
     private float coffeesDrunkPerSecond;
 
-    private float totalTimeSinceSpawn;
+    private float totalTimeSinceSpawn = 0.1f;
 
     public void DrinkCoffee()
     {

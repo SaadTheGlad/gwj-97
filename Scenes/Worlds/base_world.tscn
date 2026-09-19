@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://kb1j238ceko1" path="res://Scenes/player.tscn" id="2_aqfjg"]
 [ext_resource type="FontFile" uid="uid://p2gkig6rqkm3" path="res://Fonts/IMFellEnglish-Regular.ttf" id="2_u2v1c"]
 [ext_resource type="PackedScene" uid="uid://c0gwyt50ct54y" path="res://Scenes/Worlds/blue_world.tscn" id="3_pq8du"]
+[ext_resource type="FontFile" uid="uid://136xt67n7dkw" path="res://Fonts/Risque-Regular.ttf" id="4_jcg3c"]
+[ext_resource type="Script" uid="uid://le2swyi40mpm" path="res://Scripts/WinPanel.cs" id="4_npr82"]
 [ext_resource type="PackedScene" uid="uid://j3h8ieu15xte" path="res://Scenes/Worlds/orange_world.tscn" id="5_jcg3c"]
 [ext_resource type="PackedScene" uid="uid://djqr7422v207h" path="res://Scenes/crimson_world.tscn" id="6_pq8du"]
 
@@ -12,7 +14,7 @@
 font = ExtResource("2_u2v1c")
 font_size = 21
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5tygf"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jcg3c"]
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_sujdc"]
@@ -20,7 +22,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/PanelContainer:modulate")
+tracks/0/path = NodePath("CanvasLayer/IntroPanel:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -32,7 +34,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/PanelContainer/CenterContainer/VBoxContainer/Label:visible")
+tracks/1/path = NodePath("CanvasLayer/IntroPanel/CenterContainer/VBoxContainer/Label:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -44,7 +46,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/PanelContainer/CenterContainer/VBoxContainer/Label2:visible")
+tracks/2/path = NodePath("CanvasLayer/IntroPanel/CenterContainer/VBoxContainer/Label2:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -60,7 +62,7 @@ length = 6.366667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/PanelContainer:modulate")
+tracks/0/path = NodePath("CanvasLayer/IntroPanel:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -72,7 +74,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/PanelContainer/CenterContainer/VBoxContainer/Label:visible")
+tracks/1/path = NodePath("CanvasLayer/IntroPanel/CenterContainer/VBoxContainer/Label:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -84,7 +86,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/PanelContainer/CenterContainer/VBoxContainer/Label2:visible")
+tracks/2/path = NodePath("CanvasLayer/IntroPanel/CenterContainer/VBoxContainer/Label2:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -96,7 +98,7 @@ tracks/2/keys = {
 tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/PanelContainer")
+tracks/3/path = NodePath("CanvasLayer/IntroPanel")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -114,7 +116,7 @@ length = 6.366667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/PanelContainer:modulate")
+tracks/0/path = NodePath("CanvasLayer/IntroPanel:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -126,7 +128,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/PanelContainer/CenterContainer/VBoxContainer/Label:visible")
+tracks/1/path = NodePath("CanvasLayer/IntroPanel/CenterContainer/VBoxContainer/Label:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -138,7 +140,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/PanelContainer/CenterContainer/VBoxContainer/Label2:visible")
+tracks/2/path = NodePath("CanvasLayer/IntroPanel/CenterContainer/VBoxContainer/Label2:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -150,7 +152,7 @@ tracks/2/keys = {
 tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/PanelContainer")
+tracks/3/path = NodePath("CanvasLayer/IntroPanel")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -168,7 +170,7 @@ length = 6.366667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/PanelContainer:modulate")
+tracks/0/path = NodePath("CanvasLayer/IntroPanel:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -180,7 +182,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/PanelContainer/CenterContainer/VBoxContainer/Label:visible")
+tracks/1/path = NodePath("CanvasLayer/IntroPanel/CenterContainer/VBoxContainer/Label:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -192,7 +194,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/PanelContainer/CenterContainer/VBoxContainer/Label2:visible")
+tracks/2/path = NodePath("CanvasLayer/IntroPanel/CenterContainer/VBoxContainer/Label2:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -204,7 +206,7 @@ tracks/2/keys = {
 tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/PanelContainer")
+tracks/3/path = NodePath("CanvasLayer/IntroPanel")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -225,15 +227,62 @@ _data = {
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_dhkjg"]
-font_size = 62
+font_size = 69
 
 [sub_resource type="LabelSettings" id="LabelSettings_sujdc"]
 font_size = 21
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5tygf"]
+bg_color = Color(0.8209137, 0.54982036, 0, 1)
+
+[sub_resource type="Animation" id="Animation_npr82"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(657.62, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_jcg3c"]
+resource_name = "pop_up"
+length = 2.4
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(657.62, 0, 0, 0.46666667, -0.6199951, 0, -0.5416667, 5, 0.24998586, -2.3075616),
+"times": PackedFloat32Array(0.033333335, 0.8666667)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_npr82"]
+_data = {
+&"RESET": SubResource("Animation_npr82"),
+&"pop_up": SubResource("Animation_jcg3c")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_u2v1c"]
+font = ExtResource("4_jcg3c")
+font_size = 150
+
+[sub_resource type="LabelSettings" id="LabelSettings_jcg3c"]
+font = ExtResource("4_jcg3c")
+font_size = 80
 
 [node name="BaseWorld" type="Node2D" unique_id=604395411]
 y_sort_enabled = true
 
 [node name="WorldManager" parent="." unique_id=2144744180 node_paths=PackedStringArray("worlds", "player", "timeLabel") instance=ExtResource("2_1wmeh")]
+process_mode = 3
 worlds = [NodePath("../OrangeWorld"), NodePath("../BlueWorld"), NodePath("../CrimsonWorld")]
 player = NodePath("../Player")
 timeLoopTime = 300.0
@@ -260,44 +309,102 @@ text = "asdfasdf"
 label_settings = SubResource("LabelSettings_1wmeh")
 vertical_alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer" unique_id=1165315686 node_paths=PackedStringArray("animationPlayer", "titleCardLabel")]
+[node name="IntroPanel" type="PanelContainer" parent="CanvasLayer" unique_id=1165315686 node_paths=PackedStringArray("animationPlayer", "titleCardLabel")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_5tygf")
+theme_override_styles/panel = SubResource("StyleBoxFlat_jcg3c")
 script = ExtResource("1_sujdc")
 animationPlayer = NodePath("AnimationPlayer")
 titleCardLabel = NodePath("CenterContainer/VBoxContainer/Label")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/PanelContainer" unique_id=161575389]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/IntroPanel" unique_id=161575389]
 root_node = NodePath("../../..")
 libraries/ = SubResource("AnimationLibrary_sujdc")
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/PanelContainer" unique_id=1331876805]
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/IntroPanel" unique_id=1331876805]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/CenterContainer" unique_id=616421745]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/IntroPanel/CenterContainer" unique_id=616421745]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/CenterContainer/VBoxContainer" unique_id=780695238]
+[node name="Label" type="Label" parent="CanvasLayer/IntroPanel/CenterContainer/VBoxContainer" unique_id=780695238]
 visible = false
 custom_minimum_size = Vector2(1000, 3)
 layout_mode = 2
-text = "WORLD ENDS IN 5 MINUTES AND 3 SECONDS"
+text = "WORLD ENDS IN 5 MINUTES*"
 label_settings = SubResource("LabelSettings_dhkjg")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Label2" type="Label" parent="CanvasLayer/PanelContainer/CenterContainer/VBoxContainer" unique_id=2037406862]
+[node name="Label2" type="Label" parent="CanvasLayer/IntroPanel/CenterContainer/VBoxContainer" unique_id=2037406862]
 visible = false
 layout_mode = 2
 text = "*time is relative"
 label_settings = SubResource("LabelSettings_sujdc")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="WinPanel" type="PanelContainer" parent="CanvasLayer" unique_id=742592538 node_paths=PackedStringArray("button", "animPlayer")]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 657.62
+offset_bottom = 657.6211
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5tygf")
+script = ExtResource("4_npr82")
+button = NodePath("CenterContainer/VBoxContainer/MarginContainer/Button")
+animPlayer = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/WinPanel" unique_id=715735104]
+libraries/ = SubResource("AnimationLibrary_npr82")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/WinPanel" unique_id=1497199518]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/WinPanel/CenterContainer" unique_id=1443170879]
+layout_mode = 2
+theme_override_constants/separation = 33
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/WinPanel/CenterContainer/VBoxContainer" unique_id=1394900507]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="Label" type="Label" parent="CanvasLayer/WinPanel/CenterContainer/VBoxContainer/VBoxContainer" unique_id=1634566935]
+custom_minimum_size = Vector2(1000, 3)
+layout_mode = 2
+text = "YOU WIN!"
+label_settings = SubResource("LabelSettings_u2v1c")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/WinPanel/CenterContainer/VBoxContainer/VBoxContainer" unique_id=319141810]
+custom_minimum_size = Vector2(1000, 3)
+layout_mode = 2
+text = "CONGRATZ!!"
+label_settings = SubResource("LabelSettings_jcg3c")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/WinPanel/CenterContainer/VBoxContainer" unique_id=1532341202]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_constants/margin_left = 351
+theme_override_constants/margin_right = 366
+
+[node name="Button" type="Button" parent="CanvasLayer/WinPanel/CenterContainer/VBoxContainer/MarginContainer" unique_id=1357010355]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_jcg3c")
+theme_override_font_sizes/font_size = 35
+text = "PLAY AGAIN"
 
 [node name="Player" parent="." unique_id=1201004403 instance=ExtResource("2_aqfjg")]
 position = Vector2(282, 270)
@@ -312,3 +419,5 @@ position = Vector2(577, -6325)
 
 [node name="CrimsonWorld" parent="." unique_id=205572285 instance=ExtResource("6_pq8du")]
 position = Vector2(8123, -6250)
+
+[connection signal="pressed" from="CanvasLayer/WinPanel/CenterContainer/VBoxContainer/MarginContainer/Button" to="CanvasLayer/WinPanel" method="ButtonPressed"]

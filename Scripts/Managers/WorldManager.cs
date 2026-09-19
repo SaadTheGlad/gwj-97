@@ -99,7 +99,7 @@ public partial class WorldManager : Node
         return timeLoopTime - currentTimeLeft;
     }
 
-    private void RestartGame()
+    public void RestartGame()
     {
         //I just set it to null here cuz if I don't it breaks
         Instance = null;
