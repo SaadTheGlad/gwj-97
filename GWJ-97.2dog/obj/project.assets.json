@@ -159,28 +159,11 @@
           }
         }
       },
-      "GodotSharpEditor/4.7.2": {
-        "type": "package",
-        "dependencies": {
-          "GodotSharp": "4.7.2"
-        },
-        "compile": {
-          "lib/net8.0/GodotSharpEditor.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net8.0/GodotSharpEditor.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "GWJ-97/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
-          "GodotSharp": "4.7.2",
-          "GodotSharpEditor": "4.7.2"
+          "GodotSharp": "4.7.2"
         },
         "compile": {
           "bin/placeholder/GWJ-97.dll": {}
@@ -303,28 +286,11 @@
           }
         }
       },
-      "GodotSharpEditor/4.7.2": {
-        "type": "package",
-        "dependencies": {
-          "GodotSharp": "4.7.2"
-        },
-        "compile": {
-          "lib/net8.0/GodotSharpEditor.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net8.0/GodotSharpEditor.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "GWJ-97/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
-          "GodotSharp": "4.7.2",
-          "GodotSharpEditor": "4.7.2"
+          "GodotSharp": "4.7.2"
         },
         "compile": {
           "bin/placeholder/GWJ-97.dll": {}
@@ -635,19 +601,6 @@
         "godotsharp.nuspec",
         "lib/net8.0/GodotSharp.dll",
         "lib/net8.0/GodotSharp.xml"
-      ]
-    },
-    "GodotSharpEditor/4.7.2": {
-      "sha512": "Fuf2rNvajla9N8Z+ksxsSIt326wsjpB2F2uZCtxkdfWIsApabCHy5fsE2EKxOlQ4NaINGdgMIv62D0n583qe1A==",
-      "type": "package",
-      "path": "godotsharpeditor/4.7.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "godotsharpeditor.4.7.2.nupkg.sha512",
-        "godotsharpeditor.nuspec",
-        "lib/net8.0/GodotSharpEditor.dll",
-        "lib/net8.0/GodotSharpEditor.xml"
       ]
     },
     "GWJ-97/1.0.0": {

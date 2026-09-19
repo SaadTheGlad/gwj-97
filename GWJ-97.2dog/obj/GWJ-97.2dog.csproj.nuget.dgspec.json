@@ -432,11 +432,6 @@
               "target": "Package",
               "version": "[4.7.2, )",
               "autoReferenced": true
-            },
-            "GodotSharpEditor": {
-              "target": "Package",
-              "version": "[4.7.2, )",
-              "autoReferenced": true
             }
           },
           "imports": [
