@@ -76,6 +76,7 @@ public partial class WorldPortal : Area2D, IComponentable
 
     private void EnteredBody(Node2D node)
 	{
+
 		if (node.IsInGroup("Player"))
 		{
 			playerNear = true;
@@ -90,10 +91,9 @@ public partial class WorldPortal : Area2D, IComponentable
             portalableComponent = componentable.GetComponent<PortalableComponent>();
         }
 
-        if (node.IsInGroup("GoesThroughPortals") && portalableComponent.canTeleport)
+        if (node.IsInGroup("GoesThroughPortals") /*&& portalableComponent.canTeleport*/)
         {
-            portalableComponent.SetTimeOut();
-            GD.Print("teleporting...");
+            //portalableComponent.SetTimeOut();
 
             //change position
             World targetWorld = null;

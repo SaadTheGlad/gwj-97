@@ -47,8 +47,8 @@ metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
 position = Vector2(563, 171)
 totalLifeTime = 11.0
 
-[node name="CoffeeMachine" parent="." index="5" unique_id=1877917849 instance=ExtResource("6_2eqo0")]
-position = Vector2(210, 340)
+[node name="CoffeeMachine" parent="." index="5" unique_id=88114331 instance=ExtResource("6_2eqo0")]
+position = Vector2(216, 351)
 
 [editable path="Terminal"]
 [editable path="Terminal/InteractionArea"]
@@ -56,5 +56,3 @@ position = Vector2(210, 340)
 [editable path="OrangePortal/InteractionArea"]
 [editable path="CrimsonPortal"]
 [editable path="CrimsonPortal/InteractionArea"]
-[editable path="CoffeeMachine"]
-[editable path="CoffeeMachine/InteractionArea"]

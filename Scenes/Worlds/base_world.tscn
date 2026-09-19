@@ -295,7 +295,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Player" parent="." unique_id=1201004403 instance=ExtResource("2_aqfjg")]
-position = Vector2(108, 405)
+position = Vector2(-138, 896)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1663197869]
 position = Vector2(5, 3)
