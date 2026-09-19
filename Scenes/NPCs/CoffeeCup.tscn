@@ -2,12 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://bh31cordtv8w1" path="res://Scenes/NPCs/character_body_npc.tscn" id="1_b3xyv"]
 [ext_resource type="Texture2D" uid="uid://c3m1ia2ceag8m" path="res://Art/Images/Coffee.png" id="2_3o25a"]
+[ext_resource type="Script" uid="uid://cbx0sk3ykea57" path="res://Scripts/CoffeeCup.cs" id="2_6o4wv"]
 [ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Components/Pickable.cs" id="3_i8uiu"]
+[ext_resource type="Script" uid="uid://ci8try848mskg" path="res://Scripts/Components/TimeDilationComponent.cs" id="5_ylouo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3o25a"]
 radius = 18.248287
 
 [node name="CoffeeCup" unique_id=439113131 instance=ExtResource("1_b3xyv")]
+script = ExtResource("2_6o4wv")
+speed = 150.0
 
 [node name="Sprite2D" parent="." index="0" unique_id=969637244]
 scale = Vector2(0.09909911, 0.09909915)
@@ -23,5 +27,9 @@ shape = SubResource("CircleShape2D_3o25a")
 script = ExtResource("3_i8uiu")
 colliderShapes = []
 metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
+
+[node name="TimeDilationComponent" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="1" unique_id=1086933886]
+script = ExtResource("5_ylouo")
+metadata/_custom_type_script = "uid://ci8try848mskg"
 
 [editable path="InteractionArea"]

@@ -62,7 +62,7 @@ public partial class Robot : NPC
         var pickable = GetComponent<Pickable>();
         if (pickable != null)
         {
-            pickable.DropDown(true, area.GlobalPosition);
+            pickable.DropDown(true, area.GlobalPosition, Vector2.Zero);
         }
 
         area.Monitorable = false;

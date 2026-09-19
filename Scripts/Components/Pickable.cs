@@ -19,6 +19,8 @@ public partial class Pickable : BaseComponent
 
     public Node2D picker;
 
+    public Vector2 dropDownDirection;
+
     public void PickUpBy(Node2D _picker)
     {
         isPickedUp = true;
@@ -58,7 +60,7 @@ public partial class Pickable : BaseComponent
 
     }
 
-    public void DropDown(bool hasCustomPosition, [Optional] Vector2 customDropPosition)
+    public void DropDown(bool hasCustomPosition, [Optional] Vector2 customDropPosition, Vector2 _dropDownDirection)
     {
         isPickedUp = false;
 
@@ -86,6 +88,8 @@ public partial class Pickable : BaseComponent
                     actor2D.GlobalPosition = ray.GetPoint(50f) - new Vector2(0, 25f);
                 }
             }
+
+            dropDownDirection = _dropDownDirection;
         }
 
         IComponentable componentable = actor as IComponentable;

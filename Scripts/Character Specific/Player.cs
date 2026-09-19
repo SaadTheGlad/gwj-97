@@ -9,7 +9,7 @@ public partial class Player : CharacterBody2D, IComponentable
     //movement vars
     [Export] private float maxSpeed = 15f;
     private float currentSpeed;
-    Vector2 latestDirection;
+    public Vector2 latestDirection;
     Vector2 direction;
 
     //dropping variables
@@ -219,7 +219,7 @@ public partial class Player : CharacterBody2D, IComponentable
     {
         if(pickable != null)
         {
-            pickable.DropDown(hasCustomPosition: false);
+            pickable.DropDown(hasCustomPosition: false, _dropDownDirection: latestDirection);
             pickable = null;
         }
     }
