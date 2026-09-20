@@ -655,7 +655,7 @@ godotsharp_game_main_init (void * arg0, void * arg1, void * arg2, int32_t arg3) 
     uint32_t result;
 
     if (!(InterpEntry_T30)wasm_native_to_interp_ftndescs [30].func) {
-        mono_wasm_marshal_get_managed_wrapper ("GWJ-97", "GodotPlugins.Game", "Main", "InitializeFromGameProject", 100663849, 4);
+        mono_wasm_marshal_get_managed_wrapper ("GWJ-97", "GodotPlugins.Game", "Main", "InitializeFromGameProject", 100663850, 4);
     }
 
     ((InterpEntry_T30)wasm_native_to_interp_ftndescs [30].func) ((int*)&result, (int*)&arg0, (int*)&arg1, (int*)&arg2, (int*)&arg3, (int*)wasm_native_to_interp_ftndescs [30].arg);
@@ -931,7 +931,7 @@ static UnmanagedExport wasm_native_to_interp_table[] = {
     {"HasMethodUnknownParams#2:GodotSharp:Godot.Bridge:CSharpInstanceBridge", 100709656, wasm_native_to_interp_GodotSharp_Godot_Bridge_CSharpInstanceBridge_HasMethodUnknownParams},
     {"InitCallback#3:twodog:twodog:LibGodot", 100663358, wasm_native_to_interp_twodog_twodog_LibGodot_InitCallback},
     {"InitializeCallback#2:twodog:twodog:LibGodot", 100663356, wasm_native_to_interp_twodog_twodog_LibGodot_InitializeCallback},
-    {"InitializeFromGameProject#4:GWJ-97:GodotPlugins.Game:Main", 100663849, godotsharp_game_main_init},
+    {"InitializeFromGameProject#4:GWJ-97:GodotPlugins.Game:Main", 100663850, godotsharp_game_main_init},
     {"InitializePlugins#4:twodog:twodog:WebHost", 100663394, wasm_native_to_interp_twodog_twodog_WebHost_InitializePlugins},
     {"InvokeWithVariantArgs#5:GodotSharp:Godot:DelegateUtils", 100663734, wasm_native_to_interp_GodotSharp_Godot_DelegateUtils_InvokeWithVariantArgs},
     {"LoadFromExecutable#0:twodog:twodog:HostedGodotPlugins", 100663351, wasm_native_to_interp_twodog_twodog_HostedGodotPlugins_LoadFromExecutable},

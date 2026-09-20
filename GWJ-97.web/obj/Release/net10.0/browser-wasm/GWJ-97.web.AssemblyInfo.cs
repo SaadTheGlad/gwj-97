@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GWJ-97.web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c5910e3739f30038d8898100616ab28d2cc23886")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fe27fdff0262003757a9d09070c49de7902b010c")]
 [assembly: System.Reflection.AssemblyProductAttribute("GWJ-97.web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GWJ-97.web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

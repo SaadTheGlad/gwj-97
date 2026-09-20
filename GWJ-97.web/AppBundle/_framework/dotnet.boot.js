@@ -1,7 +1,7 @@
 export const config = /*json-start*/{
   "mainAssemblyName": "GWJ-97.web.dll",
   "resources": {
-    "hash": "sha256-FJtIDzqqihs5FKmLiSvacmqROk3bAa5nOCzkLe2ywGI=",
+    "hash": "sha256-O9hJAPxEEVqWIdIxl/7hPmYnUsjWZNY+P38kKDWgAOk=",
     "jsModuleNative": [
       {
         "name": "dotnet.native.js"
@@ -15,7 +15,7 @@ export const config = /*json-start*/{
     "wasmNative": [
       {
         "name": "dotnet.native.wasm",
-        "hash": "sha256-CGInZ5s6zd/qr2wVRrRgg40/4xS5K871di/z5KRtYKI="
+        "hash": "sha256-x4z3gboQCH2pVWt1+DpdrbYrRRnVzxDP9qkYMIAVeHI="
       }
     ],
     "wasmSymbols": [
@@ -61,12 +61,12 @@ export const config = /*json-start*/{
       {
         "virtualPath": "GWJ-97.wasm",
         "name": "GWJ-97.wasm",
-        "hash": "sha256-x87RCrQkP1BSNWrpt6hEiwuGYapoS1Jj6CSkGJVkT+g="
+        "hash": "sha256-X1N8E9N/D26IhaaAFkGY1C3DinXk7tLSkaOW16TfGYI="
       },
       {
         "virtualPath": "GWJ-97.web.wasm",
         "name": "GWJ-97.web.wasm",
-        "hash": "sha256-ZCdVR2mmHMbemRSnqRgaiBZS73iSpS1mfISvGIsPX8o="
+        "hash": "sha256-jtTuZ/iEy5k4l6igLxh+3mIFqU1vkunfLv1TK8FBJSM="
       },
       {
         "virtualPath": "System.Collections.Concurrent.wasm",
