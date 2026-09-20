@@ -38,7 +38,6 @@ shape = SubResource("RectangleShape2D_7bsuw")
 [node name="Pickable" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="0" unique_id=1312680361 node_paths=PackedStringArray("colliderShapes")]
 script = ExtResource("3_i8uiu")
 colliderShapes = [NodePath("../../CollisionShape2D"), NodePath("../../InteractionArea/CollisionShape2D")]
-movementPenalty = 50.0
 metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
 
 [node name="TimeDilationComponent" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="1" unique_id=1086933886]

@@ -15,7 +15,7 @@ public partial class TitleCard : PanelContainer
         }
         else
         {
-            PlayCutscene();
+            PlayPressContinue();
         }
 
         //setting up the text for the title card
@@ -32,6 +32,20 @@ public partial class TitleCard : PanelContainer
         }
 
         return $"{minutes.ToString()} minutes & {seconds.ToString()} seconds";
+    }
+
+    public override void _Process(double delta)
+    {
+        if (Input.IsAnythingPressed() && !GameState.Instance.hasPlayedCutscene)
+        {
+            //turn off the other label too
+            animationPlayer.Play("press_continue_fade_out");
+        }
+    }
+
+    public void PlayPressContinue()
+    {
+        animationPlayer.Play("press_continue");
     }
 
     public void PlayCutscene()

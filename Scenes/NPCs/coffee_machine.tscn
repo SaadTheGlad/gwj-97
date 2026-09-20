@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://oxmb1dvlwx6a" path="res://Art/Images/Coffee Machine/coffee_machine_back.png" id="4_kdqgd"]
 [ext_resource type="Texture2D" uid="uid://v564y3xmkhon" path="res://Art/Images/Coffee Machine/coffee_machine_side.png" id="5_b8fqa"]
 [ext_resource type="Script" uid="uid://ci8try848mskg" path="res://Scripts/Components/TimeDilationComponent.cs" id="7_b8fqa"]
+[ext_resource type="Script" uid="uid://dw687ssjn0exb" path="res://Scripts/Components/DialogueComponent.cs" id="9_jtssr"]
+[ext_resource type="Resource" uid="uid://bwvp7igmp20ga" path="res://coffee.dialogue" id="10_ha04b"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_axxsa"]
 animations = [{
@@ -70,6 +72,11 @@ metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
 [node name="TimeDilationComponent" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="1" unique_id=1670262100]
 script = ExtResource("7_b8fqa")
 metadata/_custom_type_script = "uid://ci8try848mskg"
+
+[node name="DialogueComponent" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="2" unique_id=2067218367]
+script = ExtResource("9_jtssr")
+DialogueResource = ExtResource("10_ha04b")
+metadata/_custom_type_script = "uid://dw687ssjn0exb"
 
 [node name="SpawnPoints" type="Node2D" parent="." index="5" unique_id=1687104085]
 

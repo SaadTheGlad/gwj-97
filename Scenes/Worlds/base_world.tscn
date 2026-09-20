@@ -55,6 +55,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/IntroPanel/CenterContainer/VBoxContainer/Label3:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_u2v1c"]
 resource_name = "cutscene"
@@ -218,12 +230,58 @@ tracks/3/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_mv2vg"]
+resource_name = "press_continue"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/IntroPanel/CenterContainer/VBoxContainer/Label3:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.100000024, 0.8666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_tkhp8"]
+resource_name = "press_continue_fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/IntroPanel/CenterContainer/VBoxContainer/Label3:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333333, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/IntroPanel")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"PlayCutscene"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sujdc"]
 _data = {
 &"RESET": SubResource("Animation_sujdc"),
 &"cutscene": SubResource("Animation_u2v1c"),
 &"faster_cutscene": SubResource("Animation_dhkjg"),
-&"normal_fade": SubResource("Animation_pq8du")
+&"normal_fade": SubResource("Animation_pq8du"),
+&"press_continue": SubResource("Animation_mv2vg"),
+&"press_continue_fade_out": SubResource("Animation_tkhp8")
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_dhkjg"]
@@ -231,6 +289,9 @@ font_size = 69
 
 [sub_resource type="LabelSettings" id="LabelSettings_sujdc"]
 font_size = 21
+
+[sub_resource type="LabelSettings" id="LabelSettings_npr82"]
+font_size = 26
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5tygf"]
 bg_color = Color(0.8209137, 0.54982036, 0, 1)
@@ -345,6 +406,14 @@ visible = false
 layout_mode = 2
 text = "*time is relative"
 label_settings = SubResource("LabelSettings_sujdc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer/IntroPanel/CenterContainer/VBoxContainer" unique_id=467777310]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+text = "Press any button to continue"
+label_settings = SubResource("LabelSettings_npr82")
 horizontal_alignment = 1
 vertical_alignment = 1
 

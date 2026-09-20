@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://bwvp7igmp20ga"
+path="res://.godot/imported/coffee.dialogue-163a4dc37778858f15ed82df33bc3a45.tres"
+
+[deps]
+
+source_file="res://coffee.dialogue"
+dest_files=["res://.godot/imported/coffee.dialogue-163a4dc37778858f15ed82df33bc3a45.tres"]
+
+[params]
+
+defaults=true

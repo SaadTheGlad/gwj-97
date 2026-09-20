@@ -90,7 +90,7 @@ public partial class WorldManager : Node
         //    + "\nControls:\nPickup: Space\nTalk: Z\nRestart: R"
         //    ;
 
-        timeLabel.Text = "Controls:\nPickup/ Drop: Space\nInteract: Z\nRestart: R\nMove: WASD/\n Arrow Keys";
+        timeLabel.Text = "Controls:\nPickup/ Drop: Space\nInteract: Z/E\nRestart: R\nMove: WASD/\n Arrow Keys";
     
     }
 
