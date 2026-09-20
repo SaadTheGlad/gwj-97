@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="GWJ-97"
+config/name="Time in a Bottle"
 run/main_scene="uid://d0rpsualgqagm"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 config/icon="uid://bd3l3yiq016ya"
