@@ -13,7 +13,7 @@ config_version=5
 config/name="GWJ-97"
 run/main_scene="uid://d0rpsualgqagm"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://bd3l3yiq016ya"
 
 [audio]
 
@@ -29,13 +29,10 @@ DialogueManager="*uid://c3rodes2l3gxb"
 [dialogue_manager]
 
 runtime/balloon_path="res://Dialogue/Balloons/Balloon.tscn"
-runtime/advanced/uses_dotnet=true
 
 [display]
 
-window/size/mode=3
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 
 [dotnet]
 

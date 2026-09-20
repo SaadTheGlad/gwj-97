@@ -321,8 +321,8 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(2, 2),
-"points": PackedFloat32Array(657.62, 0, 0, 0.46666667, -0.6199951, 0, -0.5416667, 5, 0.24998586, -2.3075616),
-"times": PackedFloat32Array(0.033333335, 0.8666667)
+"points": PackedFloat32Array(860, 0, 0, 0.46666667, -0.6199951, 0, -0.5416667, 5, 0.24998586, -2.3075616),
+"times": PackedFloat32Array(0, 0.8666667)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_npr82"]
@@ -423,7 +423,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 657.62
-offset_bottom = 657.6211
+offset_bottom = 657.62195
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_5tygf")
