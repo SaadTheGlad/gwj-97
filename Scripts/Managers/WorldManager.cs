@@ -76,7 +76,7 @@ public partial class WorldManager : Node
     {
         localTime += (float)delta * currentWorld.GetRelativeTimeFactor();
 
-        if (localTime >= 1f)
+        if (localTime >= 1f && !GameState.Instance.hasInvokedGameWon)
         {
             AudioManager.Instance.Play("ticktock");
             localTime = 0f;
@@ -90,7 +90,7 @@ public partial class WorldManager : Node
         //    + "\nControls:\nPickup: Space\nTalk: Z\nRestart: R"
         //    ;
 
-        timeLabel.Text = "Controls:\nPickup/ Drop: Space\nInteract: Z\nRestart: R";
+        timeLabel.Text = "Controls:\nPickup/ Drop: Space\nInteract: Z\nRestart: R\nMove: WASD/\n Arrow Keys";
     
     }
 
@@ -120,7 +120,7 @@ public partial class WorldManager : Node
         return null;
     }
 
-    void ChangeWorld(string targetWorldName)
+    void ChangeWorld(string targetWorldName, WorldPortal linkedUpPortal)
     {
         //change position
         World targetWorld = null;
@@ -133,8 +133,7 @@ public partial class WorldManager : Node
             }
         }
 
-        WorldPortal targetPortal = targetWorld.GetPortal(currentWorld.GetWorldName());
-        player.GlobalPosition = targetPortal.GetSpawnPos();
+        player.GlobalPosition = linkedUpPortal.GetSpawnPos();
 
         currentWorld = targetWorld;
 

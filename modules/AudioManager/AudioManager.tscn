@@ -16,7 +16,7 @@ stream_1/stream = ExtResource("3_6o2l2")
 script = ExtResource("4_f6ntu")
 name = "ticktock"
 AudioStream = SubResource("AudioStreamRandomizer_xw0pe")
-volume = -27.0
+volume = -24.0
 bus = 4
 metadata/_custom_type_script = "uid://2hdc4e5l7fuh"
 
@@ -24,10 +24,11 @@ metadata/_custom_type_script = "uid://2hdc4e5l7fuh"
 script = ExtResource("4_f6ntu")
 name = "Jingle"
 AudioStream = ExtResource("5_6o2l2")
-volume = -5.0
+volume = -10.0
 bus = 2
 metadata/_custom_type_script = "uid://2hdc4e5l7fuh"
 
 [node name="AudioManager" type="Node" unique_id=1921231180]
+process_mode = 3
 script = ExtResource("1_tbsdu")
 sounds = Array[Object]([SubResource("Resource_x8n3i"), SubResource("Resource_pdcff")])

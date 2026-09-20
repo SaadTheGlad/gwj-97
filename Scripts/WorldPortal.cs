@@ -6,6 +6,8 @@ public partial class WorldPortal : Area2D, IComponentable
 	[Export] private string targetWorldName;
     [Export] private Marker2D spawnPos;
 
+    [Export] private WorldPortal linkedUpPortal;
+
     #region Component Related Code
     [Export] private Node componentHolder;
     private BaseComponent[] components;
@@ -112,7 +114,7 @@ public partial class WorldPortal : Area2D, IComponentable
                 npcNode.SettingCurrentWorldName(targetWorld.GetWorldName());
             }
 
-            WorldPortal targetPortal = targetWorld.GetPortal(currentWorld.GetWorldName());
+            WorldPortal targetPortal = linkedUpPortal;
 
             node.GlobalPosition = targetPortal.GetSpawnPos();
             //we need to reparent for the time dilation component to work
@@ -153,5 +155,8 @@ public partial class WorldPortal : Area2D, IComponentable
         }
     }
 
-    private void EnterWorld() => EventManager.WorldEntered?.Invoke(targetWorldName);
+    private void EnterWorld()
+    {
+        EventManager.WorldEntered?.Invoke(targetWorldName, linkedUpPortal);
+    }
 }

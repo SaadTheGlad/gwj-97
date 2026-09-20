@@ -12,6 +12,7 @@ public partial class GameState : Node
     //conditions for wion
     public bool hasDefusedRobot = false;
     public bool hasSatiatedSlumpedMan = false;
+    public bool gameWon = false;
 
     public void EnablePlayerMove()
     {
@@ -25,6 +26,7 @@ public partial class GameState : Node
     {
         GetTree().ReloadCurrentScene();
         GetTree().Paused = true;
+        hasInvokedGameWon = false;
     }
 
     public override void _EnterTree()
@@ -45,7 +47,7 @@ public partial class GameState : Node
         GetTree().Paused = true;
     }
 
-    bool hasInvokedGameWon = false;
+    public bool hasInvokedGameWon = false;
 
     public override void _Process(double delta)
     {
@@ -55,7 +57,6 @@ public partial class GameState : Node
             GD.Print("Game won!");
 
             //do some panel here and pause the game
-            
             hasInvokedGameWon = true;
             GetTree().Paused = true;
         }

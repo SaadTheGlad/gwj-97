@@ -84,7 +84,7 @@ public partial class Robot : NPC
         //spawning effect
         OneShotParticleEffect particleEffect = explosionEffect.Instantiate() as OneShotParticleEffect;
         particleEffect.GlobalPosition = GlobalPosition;
-        GetParent().AddChild(particleEffect);
+        GetTree().Root.AddChild(particleEffect);
         particleEffect.EmitThenDestroy();
 
         //enabling the damage zone

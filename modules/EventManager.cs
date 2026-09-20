@@ -6,7 +6,7 @@ public static class EventManager
 {
     public static Action<string, int, float> ExampleEvent;
 
-    public static Action<string> WorldEntered;
+    public static Action<string, WorldPortal> WorldEntered;
     public static Action ChangedWorld;
 
     public static Action GameOver;

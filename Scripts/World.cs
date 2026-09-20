@@ -10,22 +10,22 @@ public partial class World : Node2D
 
     public string GetWorldName() => worldName;
 
-    public WorldPortal GetPortal(string worldName)
-    {
-        foreach(var portal in GetTree().GetNodesInGroup("Portals"))
-        {
-            if(portal is WorldPortal worldPortal && worldPortal.GetParent() == this)
-            {
-                if (worldPortal.GetTargetWorldName() == worldName)
-                {
-                    return worldPortal;
-                }
-            }
-        }
+    //public WorldPortal GetPortal(string worldName)
+    //{
+    //    foreach(var portal in GetTree().GetNodesInGroup("Portals"))
+    //    {
+    //        if(portal is WorldPortal worldPortal)
+    //        {
+    //            if (worldPortal.GetTargetWorldName() == worldName)
+    //            {
+    //                return worldPortal;
+    //            }
+    //        }
+    //    }
 
-        GD.Print($"Could not find portal with name {worldName}");
-        return null;
-    }
+    //    GD.Print($"Could not find portal with name {worldName}");
+    //    return null;
+    //}
 
 
 
