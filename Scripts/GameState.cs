@@ -27,6 +27,9 @@ public partial class GameState : Node
         GetTree().ReloadCurrentScene();
         GetTree().Paused = true;
         hasInvokedGameWon = false;
+        hasDefusedRobot = false;
+        hasSatiatedSlumpedMan = false;
+        gameWon = false;
     }
 
     public override void _EnterTree()
