@@ -7,6 +7,7 @@ public partial class WorldPortal : Area2D, IComponentable
     [Export] private Marker2D spawnPos;
 
     [Export] private WorldPortal linkedUpPortal;
+    [Export] private Sprite2D bg;
 
     #region Component Related Code
     [Export] private Node componentHolder;
@@ -153,7 +154,23 @@ public partial class WorldPortal : Area2D, IComponentable
         {
             CallDeferred("EnterWorld");
         }
+
+        ((ShaderMaterial)bg.Material).SetShaderParameter("enabled", CheckForOutline());
     }
+
+    bool CheckForOutline()
+    {
+        foreach(var node in GetOverlappingBodies())
+        {
+            if(node is Player)
+            {
+                GD.Print("Player");
+                return true;
+            }
+        }
+    
+        return false;
+    }   
 
     private void EnterWorld()
     {
