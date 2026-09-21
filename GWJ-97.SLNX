@@ -11,6 +11,9 @@
   <Project Path="GWJ-97.tests3/GWJ-97.tests3.csproj">
     <BuildType Project="Debug" />
   </Project>
+  <Project Path="GWJ-97.tests4/GWJ-97.tests4.csproj">
+    <BuildType Project="Debug" />
+  </Project>
   <Project Path="GWJ-97.web/GWJ-97.web.csproj">
     <BuildType Project="Debug" />
     <Build Project="false" />
