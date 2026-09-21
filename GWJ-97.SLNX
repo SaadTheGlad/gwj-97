@@ -1,0 +1,18 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="ExportDebug" />
+    <BuildType Name="ExportRelease" />
+  </Configurations>
+  <Project Path="GWJ-97.2dog/GWJ-97.2dog.csproj">
+    <BuildType Project="Debug" />
+  </Project>
+  <Project Path="GWJ-97.csproj" />
+  <Project Path="GWJ-97.tests3/GWJ-97.tests3.csproj">
+    <BuildType Project="Debug" />
+  </Project>
+  <Project Path="GWJ-97.web/GWJ-97.web.csproj">
+    <BuildType Project="Debug" />
+    <Build Project="false" />
+  </Project>
+</Solution>
