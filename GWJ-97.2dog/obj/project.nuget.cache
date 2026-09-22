@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "dgSpecHash": "qdp9YaM/mR4=",
+  "success": true,
+  "projectFilePath": "C:\\D Drive\\Workstuff\\Files\\Godot Projects\\gwj-97\\GWJ-97.2dog\\GWJ-97.2dog.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Saad\\.nuget\\packages\\2dog.engine\\4.7.2.86\\2dog.engine.4.7.2.86.nupkg.sha512",
+    "C:\\Users\\Saad\\.nuget\\packages\\2dog.linux-x64\\4.7.2.4\\2dog.linux-x64.4.7.2.4.nupkg.sha512",
+    "C:\\Users\\Saad\\.nuget\\packages\\2dog.linux-x64.debug\\4.7.2.4\\2dog.linux-x64.debug.4.7.2.4.nupkg.sha512",
+    "C:\\Users\\Saad\\.nuget\\packages\\2dog.linux-x64.editor\\4.7.2.4\\2dog.linux-x64.editor.4.7.2.4.nupkg.sha512",
+    "C:\\Users\\Saad\\.nuget\\packages\\2dog.linux-x64.release\\4.7.2.4\\2dog.linux-x64.release.4.7.2.4.nupkg.sha512",
+    "C:\\Users\\Saad\\.nuget\\packages\\2dog.osx-arm64\\4.7.2.4\\2dog.osx-arm64.4.7.2.4.nupkg.sha512",
+    "C:\\Users\\Saad\\.nuget\\packages\\2dog.osx-arm64.debug\\4.7.2.4\\2dog.osx-arm64.debug.4.7.2.4.nupkg.sha512",
+    "C:\\Users\\Saad\\.nuget\\packages\\2dog.osx-arm64.editor\\4.7.2.4\\2dog.osx-arm64.editor.4.7.2.4.nupkg.sha512",
+    "C:\\Users\\Saad\\.nuget\\packages\\2dog.osx-arm64.release\\4.7.2.4\\2dog.osx-arm64.release.4.7.2.4.nupkg.sha512",
+    "C:\\Users\\Saad\\.nuget\\packages\\2dog.tools\\4.7.2.4\\2dog.tools.4.7.2.4.nupkg.sha512",
+    "C:\\Users\\Saad\\.nuget\\packages\\2dog.win-x64\\4.7.2.4\\2dog.win-x64.4.7.2.4.nupkg.sha512",
+    "C:\\Users\\Saad\\.nuget\\packages\\2dog.win-x64.debug\\4.7.2.4\\2dog.win-x64.debug.4.7.2.4.nupkg.sha512",
+    "C:\\Users\\Saad\\.nuget\\packages\\2dog.win-x64.editor\\4.7.2.4\\2dog.win-x64.editor.4.7.2.4.nupkg.sha512",
+    "C:\\Users\\Saad\\.nuget\\packages\\2dog.win-x64.release\\4.7.2.4\\2dog.win-x64.release.4.7.2.4.nupkg.sha512",
+    "C:\\Users\\Saad\\.nuget\\packages\\godotsharp\\4.7.2\\godotsharp.4.7.2.nupkg.sha512",
+    "C:\\Users\\Saad\\.nuget\\packages\\godotsharpeditor\\4.7.2\\godotsharpeditor.4.7.2.nupkg.sha512",
+    "C:\\Users\\Saad\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\10.0.12\\microsoft.netcore.app.runtime.win-x64.10.0.12.nupkg.sha512",
+    "C:\\Users\\Saad\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\10.0.12\\microsoft.windowsdesktop.app.runtime.win-x64.10.0.12.nupkg.sha512",
+    "C:\\Users\\Saad\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\10.0.12\\microsoft.aspnetcore.app.runtime.win-x64.10.0.12.nupkg.sha512"
+  ],
+  "logs": []
+}
