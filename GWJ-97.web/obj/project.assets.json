@@ -171,6 +171,22 @@
           }
         }
       },
+      "GodotSharpEditor/4.7.2": {
+        "type": "package",
+        "dependencies": {
+          "GodotSharp": "4.7.2"
+        },
+        "compile": {
+          "lib/net8.0/GodotSharpEditor.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/GodotSharpEditor.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.NET.ILLink.Tasks/10.0.12": {
         "type": "package",
         "build": {
@@ -181,7 +197,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
-          "GodotSharp": "4.7.2"
+          "GodotSharp": "4.7.2",
+          "GodotSharpEditor": "4.7.2"
         },
         "compile": {
           "bin/placeholder/GWJ-97.dll": {}
@@ -307,6 +324,22 @@
           }
         }
       },
+      "GodotSharpEditor/4.7.2": {
+        "type": "package",
+        "dependencies": {
+          "GodotSharp": "4.7.2"
+        },
+        "compile": {
+          "lib/net8.0/GodotSharpEditor.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/GodotSharpEditor.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.NET.ILLink.Tasks/10.0.12": {
         "type": "package",
         "build": {
@@ -317,7 +350,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
-          "GodotSharp": "4.7.2"
+          "GodotSharp": "4.7.2",
+          "GodotSharpEditor": "4.7.2"
         },
         "compile": {
           "bin/placeholder/GWJ-97.dll": {}
@@ -685,6 +719,19 @@
         "lib/net8.0/GodotSharp.xml"
       ]
     },
+    "GodotSharpEditor/4.7.2": {
+      "sha512": "Fuf2rNvajla9N8Z+ksxsSIt326wsjpB2F2uZCtxkdfWIsApabCHy5fsE2EKxOlQ4NaINGdgMIv62D0n583qe1A==",
+      "type": "package",
+      "path": "godotsharpeditor/4.7.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "godotsharpeditor.4.7.2.nupkg.sha512",
+        "godotsharpeditor.nuspec",
+        "lib/net8.0/GodotSharpEditor.dll",
+        "lib/net8.0/GodotSharpEditor.xml"
+      ]
+    },
     "Microsoft.NET.ILLink.Tasks/10.0.12": {
       "sha512": "xi+BDjFpW+Sb+MHFHaH6Y/gV9I8BluFwRXc1QyCdoZbIK26eNiBeFuMTe/FMwc33G1wdHCyDg7CVTmb8OdQrMQ==",
       "type": "package",
@@ -756,11 +803,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\D Drive\\Workstuff\\Files\\Godot Projects\\gwj-97\\GWJ-97.web\\GWJ-97.web.csproj",
+      "projectUniqueName": "C:\\D DRIVE\\WORKSTUFF\\FILES\\GODOT PROJECTS\\GWJ-97\\GWJ-97.web\\GWJ-97.web.csproj",
       "projectName": "GWJ-97.web",
-      "projectPath": "C:\\D Drive\\Workstuff\\Files\\Godot Projects\\gwj-97\\GWJ-97.web\\GWJ-97.web.csproj",
+      "projectPath": "C:\\D DRIVE\\WORKSTUFF\\FILES\\GODOT PROJECTS\\GWJ-97\\GWJ-97.web\\GWJ-97.web.csproj",
       "packagesPath": "C:\\Users\\Saad\\.nuget\\packages\\",
-      "outputPath": "C:\\D Drive\\Workstuff\\Files\\Godot Projects\\gwj-97\\GWJ-97.web\\obj\\",
+      "outputPath": "C:\\D DRIVE\\WORKSTUFF\\FILES\\GODOT PROJECTS\\GWJ-97\\GWJ-97.web\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -783,8 +830,8 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\D Drive\\Workstuff\\Files\\Godot Projects\\gwj-97\\GWJ-97.csproj": {
-              "projectPath": "C:\\D Drive\\Workstuff\\Files\\Godot Projects\\gwj-97\\GWJ-97.csproj"
+            "C:\\D DRIVE\\WORKSTUFF\\FILES\\GODOT PROJECTS\\GWJ-97\\GWJ-97.csproj": {
+              "projectPath": "C:\\D DRIVE\\WORKSTUFF\\FILES\\GODOT PROJECTS\\GWJ-97\\GWJ-97.csproj"
             }
           }
         }

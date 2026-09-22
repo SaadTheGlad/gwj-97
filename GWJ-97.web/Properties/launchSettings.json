@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "GWJ-97.web": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:60791;http://localhost:60792"
+    }
+  }
+}
