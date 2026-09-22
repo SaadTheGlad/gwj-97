@@ -50,7 +50,7 @@ position = Vector2(563, 171)
 movementPenalty = 45.0
 
 [node name="CoffeeMachine" parent="." index="5" unique_id=88114331 instance=ExtResource("6_2eqo0")]
-position = Vector2(-374, 794)
+position = Vector2(-317, 793)
 
 [node name="Pickable" parent="CoffeeMachine/ComponentsHolder" parent_id_path=PackedInt32Array(88114331, 230629070) index="0" unique_id=535826786]
 movementPenalty = 35.0
