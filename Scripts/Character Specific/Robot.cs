@@ -8,7 +8,6 @@ public partial class Robot : NPC
     [Export] public float totalLifeTime = 12f;
 
     //This variable is purely for the dialogue manager to display correctly
-    public int timeRemainingInt;
     private float currentRemainingTime;
 
     [Export] private PackedScene explosionEffect;
@@ -45,7 +44,7 @@ public partial class Robot : NPC
         }
 
         currentRemainingTime -= (float)delta * timeScale;
-        timeRemainingInt = (int)currentRemainingTime;
+        GameState.Instance.timeRemainingInt = (int)currentRemainingTime;
     }
 
     public void AreaEntered(Area2D area)

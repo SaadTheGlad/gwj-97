@@ -13,6 +13,7 @@ public partial class GameState : Node
     public bool hasDefusedRobot = false;
     public bool hasSatiatedSlumpedMan = false;
     public bool gameWon = false;
+    public int timeRemainingInt;
 
     public void EnablePlayerMove()
     {

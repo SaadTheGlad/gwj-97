@@ -1,6 +1,6 @@
 ~ start
-if !robot.defused
-	Robot: SELF DESTRUCT SEQUENCE INITIATED. APPROXIMATELY {{robot.timeRemainingInt}} SECONDS REMAINING.
+if !GameState.Instance.hasDefusedRobot
+	Robot: SELF DESTRUCT SEQUENCE INITIATED. APPROXIMATELY {{GameState.Instance.timeRemainingInt}} SECONDS REMAINING.
 	Robot: Hello human. You have caught me at a bad time. As you can see I have initiated self destruct.
 	Robot: I suggest you move back.
 else

@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://d0ny4w3151qag" path="res://Scripts/Character Specific/Robot.cs" id="2_k18oe"]
 [ext_resource type="PackedScene" uid="uid://hbufimvf1n5q" path="res://Scenes/blow_up_effect.tscn" id="3_bvx5k"]
 [ext_resource type="Texture2D" uid="uid://bm6c5ochc5rpk" path="res://Art/Images/robot_updated.png" id="4_bx4vm"]
-[ext_resource type="Script" uid="uid://cd3222nx3y3k5" path="res://addons/dialogue_manager/nodes/context/dialogue_state_context.gd" id="4_k18oe"]
 [ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Components/Pickable.cs" id="6_ggc2j"]
 [ext_resource type="PackedScene" uid="uid://btgj55cyd56v5" path="res://Scenes/damage_zone.tscn" id="8_6cvnh"]
 [ext_resource type="Script" uid="uid://6ggdbwi8lhvs" path="res://Scripts/Components/HealthComponent.cs" id="9_fusnn"]
@@ -43,13 +42,7 @@ position = Vector2(0, -27)
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_6cvnh")
 
-[node name="DialogueStateContext" type="Node" parent="." index="3" unique_id=666998739 node_paths=PackedStringArray("target")]
-script = ExtResource("4_k18oe")
-alias = "robot"
-target = NodePath("..")
-metadata/_custom_type_script = "uid://cd3222nx3y3k5"
-
-[node name="DamageZone" parent="." index="4" unique_id=1752915568 instance=ExtResource("8_6cvnh")]
+[node name="DamageZone" parent="." index="3" unique_id=1752915568 instance=ExtResource("8_6cvnh")]
 position = Vector2(0, -27)
 monitoring = false
 worksWithAreas = true
