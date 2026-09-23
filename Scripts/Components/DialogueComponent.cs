@@ -7,7 +7,6 @@ public partial class DialogueComponent : BaseComponent
 {
 
     private Resource dialogueResource = null;
-
     /// <summary>
     /// The dialogue resource to use when starting dialogue.
     /// </summary>
