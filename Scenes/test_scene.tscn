@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dgktyivqfkbeq"]
+
+[ext_resource type="PackedScene" uid="uid://ck6ryp3m8mkvb" path="res://Scenes/NPCs/test_npc.tscn" id="2_50ct6"]
+[ext_resource type="PackedScene" uid="uid://cv7b0dhiqa6i6" path="res://Scenes/test_player.tscn" id="2_r5l72"]
+
+[node name="TestScene" type="Node2D" unique_id=1090772350]
+
+[node name="Player" parent="." unique_id=1201004403 instance=ExtResource("2_r5l72")]
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=160777549]
+
+[node name="NPC" parent="." unique_id=64990111 instance=ExtResource("2_50ct6")]
+position = Vector2(244, -3)

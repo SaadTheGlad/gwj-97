@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://ck6ryp3m8mkvb"]
+
+[ext_resource type="Script" uid="uid://dmnvbxixvfh32" path="res://Scripts/TestNPC.cs" id="1_dvngb"]
+[ext_resource type="PackedScene" uid="uid://bb3crtvugn41p" path="res://Scenes/interaction_area.tscn" id="2_atwpk"]
+[ext_resource type="Texture2D" uid="uid://c8a45pnlr6qb7" path="res://Art/Images/TestSlumpedOverMan/Slumped Over Man.png" id="2_cm7ms"]
+[ext_resource type="Script" uid="uid://yyafr3d043fc" path="res://Scripts/Components/TestDialogueComponent.cs" id="4_cm7ms"]
+[ext_resource type="Resource" uid="uid://d1pfg241pjl3v" path="res://Dialogue/Dialogue Resources/slumped_man.dialogue" id="5_j80vo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_atwpk"]
+size = Vector2(128, 47)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cm7ms"]
+size = Vector2(157, 178)
+
+[node name="SlumpedMan" type="StaticBody2D" unique_id=64990111 node_paths=PackedStringArray("interactArea", "componentHolder") groups=["NPC"]]
+script = ExtResource("1_dvngb")
+interactArea = NodePath("InteractionArea")
+componentHolder = NodePath("ComponentsHolder")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=969637244]
+scale = Vector2(0.5714286, 0.57142866)
+texture = ExtResource("2_cm7ms")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=503925633]
+position = Vector2(4, 53.5)
+shape = SubResource("RectangleShape2D_atwpk")
+
+[node name="InteractionArea" parent="." unique_id=253216721 instance=ExtResource("2_atwpk")]
+
+[node name="CollisionShape2D" parent="InteractionArea" index="0" unique_id=72547211]
+position = Vector2(1.5, 0)
+shape = SubResource("RectangleShape2D_cm7ms")
+
+[node name="ComponentsHolder" type="Node" parent="." unique_id=230629070]
+
+[node name="TestDialogueComponent" type="Node" parent="ComponentsHolder" unique_id=2100644629]
+script = ExtResource("4_cm7ms")
+DialogueResource = ExtResource("5_j80vo")
+metadata/_custom_type_script = "uid://yyafr3d043fc"
+
+[editable path="InteractionArea"]
