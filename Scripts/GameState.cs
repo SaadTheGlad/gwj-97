@@ -58,7 +58,6 @@ public partial class GameState : Node
         if(hasDefusedRobot && hasSatiatedSlumpedMan && !hasInvokedGameWon)
         {
             EventManager.GameWon?.Invoke();
-            GD.Print("Game won!");
 
             //do some panel here and pause the game
             hasInvokedGameWon = true;

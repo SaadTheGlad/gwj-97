@@ -164,7 +164,6 @@ public partial class WorldPortal : Area2D, IComponentable
         {
             if(node is Player)
             {
-                GD.Print("Player");
                 return true;
             }
         }

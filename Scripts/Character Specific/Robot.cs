@@ -68,7 +68,6 @@ public partial class Robot : NPC
 
         GameState.Instance.hasDefusedRobot = true;
         AudioManager.Instance.Play("Jingle");
-        GD.Print("defused");
 
     }
 
