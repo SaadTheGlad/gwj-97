@@ -52,8 +52,6 @@ public partial class DialogueComponent : BaseComponent
         if (!mute)
         {
             balloon = (DialogueBalloon)DialogueManager.ShowDialogueBalloon(dialogueResource, "start");
-            //NOT IMPLEMENTED YET
-            EventManager.ResetVelocity?.Invoke();
         }
     }
 

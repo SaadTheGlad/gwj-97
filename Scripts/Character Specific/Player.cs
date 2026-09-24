@@ -20,9 +20,7 @@ public partial class Player : CharacterBody2D, IComponentable
 
     //interaction points
     [Export] public Area2D leftPoint, rightPoint, downPoint, topPoint;
-
     public Vector2 GetLatestLookDirection() => latestDirection;
-
     public void SetHoldingSomething(bool flag) => isHoldingSomething = flag;
 
     #region Component Related Code
@@ -70,26 +68,35 @@ public partial class Player : CharacterBody2D, IComponentable
     }
     #endregion
 
-
-    public override void _EnterTree()
-    {
-        EventManager.ResetVelocity += ResetDirection;
-    }
-
-    public override void _ExitTree()
-    {
-        EventManager.ResetVelocity -= ResetDirection;
-    }
-
     public override void _Ready()
     {
-        currentSpeed = maxSpeed;
-
         InitComponents();
         BindComponents();
 
-        latestDirection = Vector2.Right;
+        currentSpeed = maxSpeed;
+        latestDirection = Vector2.Down;
     }
+
+    private void InteractBasedOnDirection(Action<Area2D> interactMethod)
+    {
+        if (latestDirection == Vector2.Left)
+        {
+            interactMethod(leftPoint);
+        }
+        else if (latestDirection == Vector2.Right)
+        {
+            interactMethod(rightPoint);
+        }
+        else if (latestDirection == Vector2.Down)
+        {
+            interactMethod(downPoint);
+        }
+        else if (latestDirection == Vector2.Up)
+        {
+            interactMethod(topPoint);
+        }
+    }
+
 
     public override void _UnhandledInput(InputEvent @event)
     {
@@ -99,29 +106,21 @@ public partial class Player : CharacterBody2D, IComponentable
         {
             if (Input.IsActionJustPressed("action1"))
             {
-                InitiateDialogue();
+                if (direction != Vector2.Zero) return;
+
+                InteractBasedOnDirection(SpeakWithOverlappedInteractables);
             }
             else if (Input.IsActionJustPressed("action2") && !isHoldingSomething)
             {
-                PickUp();
+                InteractBasedOnDirection(PickUpOverlappedInteractables);
+            } 
+            else if (Input.IsActionJustPressed("action2") && canDropObject)
+            {
+                DropObject();
             }
 
             direction = Input.GetVector("left", "right", "forward", "backward").Normalized();
         }
-    }
-
-
-    public override void _Process(double delta)
-    {
-        if (Input.IsActionJustPressed("action2") && canDropObject)
-        {
-            DropObject();
-        }
-    }
-
-    void ResetDirection()
-    {
-        //do stuff and things
     }
 
     private void SpeakWithOverlappedInteractables(Area2D areaToCheck)
@@ -142,26 +141,6 @@ public partial class Player : CharacterBody2D, IComponentable
             }
 
             break;
-        }
-    }
-
-    private void InitiateDialogue()
-    {
-        if (latestDirection == Vector2.Left)
-        {
-            SpeakWithOverlappedInteractables(leftPoint);
-        }
-        else if (latestDirection == Vector2.Right)
-        {
-            SpeakWithOverlappedInteractables(rightPoint);
-        }
-        else if (latestDirection == Vector2.Down)
-        {
-            SpeakWithOverlappedInteractables(downPoint);
-        }
-        else if (latestDirection == Vector2.Up)
-        {
-            SpeakWithOverlappedInteractables(topPoint);
         }
     }
 
@@ -186,26 +165,6 @@ public partial class Player : CharacterBody2D, IComponentable
             }
 
             break;
-        }
-    }
-
-    private void PickUp()
-    {
-        if (latestDirection == Vector2.Left)
-        {
-            PickUpOverlappedInteractables(leftPoint);
-        }
-        else if (latestDirection == Vector2.Right)
-        {
-            PickUpOverlappedInteractables(rightPoint);
-        }
-        else if (latestDirection == Vector2.Down)
-        {
-            PickUpOverlappedInteractables(downPoint);
-        }
-        else if (latestDirection == Vector2.Up)
-        {
-            PickUpOverlappedInteractables(topPoint);
         }
     }
 
@@ -236,8 +195,6 @@ public partial class Player : CharacterBody2D, IComponentable
 
 	public override void _PhysicsProcess(double delta)
 	{
-		Vector2 oldDir = Vector2.Down;
-
 		if (direction == Vector2.Left)
 		{
 			animatedSprite.Frame = 2;

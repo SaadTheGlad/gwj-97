@@ -21,10 +21,9 @@ buses/default_bus_layout="uid://qede3b75qmtt"
 
 [autoload]
 
-SceneManager="*uid://dp0fikctft4vb"
 GameState="*uid://dxfldm4f6xqj5"
-AudioManager="*uid://c1lwo60pp5m84"
 DialogueManager="*uid://c3rodes2l3gxb"
+AudioManager="*uid://c1lwo60pp5m84"
 
 [dialogue_manager]
 
@@ -33,7 +32,6 @@ runtime/advanced/uses_dotnet=true
 
 [display]
 
-window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [dotnet]
