@@ -39,20 +39,18 @@ public partial class Pickable : BaseComponent
             player.ApplyMovementPenalty(movementPenalty);
 
             //Sets the initial position
-            if (actor is Node2D actor2D)
+            if (actor is Node2D node2D)
             {
-                actor2D.GlobalPosition = picker.GlobalPosition - new Vector2(0f, pickUpOffset);
+                node2D.GlobalPosition = picker.GlobalPosition - new Vector2(0f, pickUpOffset);
             }
         }
 
-
-        IComponentable componentable = actor as IComponentable;
 
         //changing the parent of the object to be the picker's child
         actor.Reparent(picker);
 
         //Stop being able to talk with this object while it's picked up if it has a dialogue component
-        var dialogueComponent = componentable.GetComponent<DialogueComponent>();
+        var dialogueComponent = actor.GetComponent<DialogueComponent>();
         if (dialogueComponent != null)
         {
             dialogueComponent.Mute();
@@ -92,8 +90,6 @@ public partial class Pickable : BaseComponent
             dropDownDirection = _dropDownDirection;
         }
 
-        IComponentable componentable = actor as IComponentable;
-
         //change its parent to be the current world
         World currentWorld = WorldManager.Instance.GetCurrentWorldForPlayer();
 
@@ -101,7 +97,7 @@ public partial class Pickable : BaseComponent
             actor.Reparent(currentWorld);
 
         //makes you able to talk to the object
-        var dialogueComponent = componentable.GetComponent<DialogueComponent>();
+        var dialogueComponent = actor.GetComponent<DialogueComponent>();
         if (dialogueComponent != null)
         {
             dialogueComponent.Unmute();

@@ -4,10 +4,13 @@ using System;
 [GlobalClass]
 public partial class BaseComponent : Node
 {
-    protected Node actor;
+    protected GameObject actor;
 
     public virtual void Bind(Node _actor)
     {
-        actor = _actor;
+        if (_actor is GameObject gameObject)
+            actor = gameObject;
+        else
+            GD.PrintErr("Actor is not GameObject!");
     }
 }
