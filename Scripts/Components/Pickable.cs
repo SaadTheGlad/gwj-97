@@ -50,8 +50,7 @@ public partial class Pickable : BaseComponent
         actor.Reparent(picker);
 
         //Stop being able to talk with this object while it's picked up if it has a dialogue component
-        var dialogueComponent = actor.GetComponent<DialogueComponent>();
-        if (dialogueComponent != null)
+        if (actor.TryGetComponent<DialogueComponent>(out var dialogueComponent))
         {
             dialogueComponent.Mute();
         }
@@ -97,10 +96,10 @@ public partial class Pickable : BaseComponent
             actor.Reparent(currentWorld);
 
         //makes you able to talk to the object
-        var dialogueComponent = actor.GetComponent<DialogueComponent>();
-        if (dialogueComponent != null)
+        if(actor.TryGetComponent<DialogueComponent>(out var dialogueComponent))
         {
             dialogueComponent.Unmute();
+
         }
 
         //TODO: Should probably check if there is a collider here so you can't place it inside colliders

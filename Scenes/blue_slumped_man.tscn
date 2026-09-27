@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://bdgs86fb40ttp" path="res://Scenes/NPCs/gameobject_npc.tscn" id="1_qtaeq"]
 [ext_resource type="Texture2D" uid="uid://c8a45pnlr6qb7" path="res://Art/Images/TestSlumpedOverMan/Slumped Over Man.png" id="2_gcvou"]
 [ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Components/Pickable.cs" id="3_npglj"]
+[ext_resource type="Script" uid="uid://dw687ssjn0exb" path="res://Scripts/Components/DialogueComponent.cs" id="4_nodyw"]
+[ext_resource type="Resource" uid="uid://d1pfg241pjl3v" path="res://Dialogue/Dialogue Resources/slumped_man.dialogue" id="5_wfa0u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gcvou"]
 size = Vector2(165, 51)
@@ -28,5 +30,10 @@ shape = SubResource("RectangleShape2D_npglj")
 script = ExtResource("3_npglj")
 colliderShapes = [NodePath("../Body/CollisionShape2D"), NodePath("../InteractionArea/CollisionShape2D")]
 metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
+
+[node name="DialogueComponent" type="Node" parent="." index="4" unique_id=1088407279]
+script = ExtResource("4_nodyw")
+DialogueResource = ExtResource("5_wfa0u")
+metadata/_custom_type_script = "uid://dw687ssjn0exb"
 
 [editable path="InteractionArea"]

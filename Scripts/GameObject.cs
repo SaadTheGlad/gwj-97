@@ -42,6 +42,21 @@ public partial class GameObject : Node2D
         return default(T);
     }
 
+    public bool TryGetComponent<T>(out T _component)
+    {
+        foreach (BaseComponent component in components)
+        {
+            if (component is T confirmedComponent)
+            {
+                _component = confirmedComponent;
+                return true;
+            }
+        }
+
+        _component = default(T);
+        return false;
+    }
+
     public override void _EnterTree()
     {
         InitComponents();

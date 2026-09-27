@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using System.Security;
 
 public partial class Player : CharacterBody2D, IComponentable
 {
@@ -130,10 +129,9 @@ public partial class Player : CharacterBody2D, IComponentable
             if (area is InteractionArea interact)
             {
                 Node owner = interact.GetActor();
-                if (owner is IComponentable componentable)
+                if (owner is GameObject gameObject)
                 {
-                    var dialogueComponent = componentable.GetComponent<DialogueComponent>();
-                    if (dialogueComponent != null)
+                    if(gameObject.TryGetComponent<DialogueComponent>(out var dialogueComponent))
                     {
                         dialogueComponent.StartDialogue();
                     }
@@ -153,27 +151,15 @@ public partial class Player : CharacterBody2D, IComponentable
                 Node owner = interact.GetActor();
                 if(owner is GameObject gameObject)
                 {
-                    pickable = gameObject.GetComponent<Pickable>();
-                    if (pickable != null)
+                    if(gameObject.TryGetComponent<Pickable>(out var _pickable))
                     {
+                        pickable = _pickable;
                         pickable.PickUpBy(this);
                         //This is to make sure that we don't pick up the object then drop it immediately. 
                         canDropObject = false;
                         StartDropGraceTimer();
                     }
                 }
-
-                //if (owner is IComponentable componentable)
-                //{
-                //    pickable = componentable.GetComponent<Pickable>();
-                //    if (pickable != null)
-                //    {
-                //        pickable.PickUpBy(this);
-                //        //This is to make sure that we don't pick up the object then drop it immediately. 
-                //        canDropObject = false;
-                //        StartDropGraceTimer();
-                //    }
-                //}
             }
 
             break;
