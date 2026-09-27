@@ -37,8 +37,7 @@ public partial class Robot : NPC
             CallDeferred("BlowUp");         
         }
 
-        var timeDilationComponent = GetComponent<TimeDilationComponent>();
-        if(timeDilationComponent != null)
+        if(TryGetComponent<TimeDilationComponent>(out var timeDilationComponent))
         {
             timeScale = timeDilationComponent.GetTimeScale();
         }
@@ -58,8 +57,7 @@ public partial class Robot : NPC
     void Defuse(Area2D area)
     {
         defused = true;
-        var pickable = GetComponent<Pickable>();
-        if (pickable != null)
+        if (TryGetComponent<Pickable>(out var pickable))
         {
             pickable.DropDown(true, area.GlobalPosition, Vector2.Zero);
         }
@@ -73,8 +71,7 @@ public partial class Robot : NPC
 
     private void BlowUp()
     {
-        var dialogueComponent = GetComponent<DialogueComponent>();
-        if(dialogueComponent != null)
+        if(TryGetComponent<DialogueComponent>(out var dialogueComponent))
         {
             dialogueComponent.DeleteBalloon();
         }

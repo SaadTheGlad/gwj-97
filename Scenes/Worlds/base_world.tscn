@@ -615,13 +615,13 @@ material = SubResource("ShaderMaterial_kv6hh")
 
 [node name="BlueWorld" parent="." unique_id=20036312 instance=ExtResource("3_pq8du")]
 
-[node name="OrangePortal" parent="BlueWorld" index="2" unique_id=1584393610 node_paths=PackedStringArray("linkedUpPortal")]
+[node name="OrangePortal" parent="BlueWorld" index="1" unique_id=1584393610 node_paths=PackedStringArray("linkedUpPortal")]
 linkedUpPortal = NodePath("../../OrangeWorld/BluePortal")
 
 [node name="BG" parent="BlueWorld/OrangePortal" index="2" unique_id=2090716909]
 material = SubResource("ShaderMaterial_tkhp8")
 
-[node name="CrimsonPortal" parent="BlueWorld" index="3" unique_id=505939663 node_paths=PackedStringArray("linkedUpPortal")]
+[node name="CrimsonPortal" parent="BlueWorld" index="2" unique_id=505939663 node_paths=PackedStringArray("linkedUpPortal")]
 linkedUpPortal = NodePath("../../CrimsonWorld/BluePortal")
 
 [node name="BG" parent="BlueWorld/CrimsonPortal" index="2" unique_id=2090716909]
@@ -642,19 +642,10 @@ material = SubResource("ShaderMaterial_npr82")
 [editable path="OrangeWorld/BluePortal"]
 [editable path="OrangeWorld/BluePortal/InteractionArea"]
 [editable path="BlueWorld"]
-[editable path="BlueWorld/Terminal"]
-[editable path="BlueWorld/Terminal/InteractionArea"]
 [editable path="BlueWorld/OrangePortal"]
 [editable path="BlueWorld/OrangePortal/InteractionArea"]
 [editable path="BlueWorld/CrimsonPortal"]
 [editable path="BlueWorld/CrimsonPortal/InteractionArea"]
-[editable path="BlueWorld/Robot"]
-[editable path="BlueWorld/Robot/InteractionArea"]
-[editable path="BlueWorld/Robot/DamageZone"]
-[editable path="BlueWorld/CoffeeMachine"]
-[editable path="BlueWorld/CoffeeMachine/InteractionArea"]
-[editable path="BlueWorld/SlumpedMan"]
-[editable path="BlueWorld/SlumpedMan/InteractionArea"]
 [editable path="CrimsonWorld"]
 [editable path="CrimsonWorld/BluePortal"]
 [editable path="CrimsonWorld/BluePortal/InteractionArea"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bdgs86fb40ttp"]
 
-[ext_resource type="Script" uid="uid://bum0keijtfw3r" path="res://Scripts/GameobjectNPC.cs" id="1_4g1y7"]
+[ext_resource type="Script" uid="uid://bum0keijtfw3r" path="res://Scripts/NPC.cs" id="1_4g1y7"]
 [ext_resource type="PackedScene" uid="uid://bb3crtvugn41p" path="res://Scenes/interaction_area.tscn" id="2_5bmtx"]
 
 [node name="NPC" type="Node2D" unique_id=1427698843 node_paths=PackedStringArray("interactArea")]

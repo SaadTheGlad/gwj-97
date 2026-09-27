@@ -3,7 +3,7 @@ using Godot;
 using System;
 
 [GlobalClass]
-public partial class NPC : StaticBody2D, IComponentable
+public partial class OLDNPC : StaticBody2D, IComponentable
 {
     [Export] private InteractionArea interactArea;
     [Export] public string currentWorldName;

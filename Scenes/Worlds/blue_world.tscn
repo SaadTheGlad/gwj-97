@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dbnr15k3atkp3" path="res://Scenes/world_portal.tscn" id="3_vesm1"]
 [ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Components/Pickable.cs" id="4_vesm1"]
 [ext_resource type="PackedScene" uid="uid://tfxcnmjibats" path="res://Scenes/NPCs/terminal.tscn" id="5_gs30c"]
+[ext_resource type="PackedScene" uid="uid://bxtvg4mtboby5" path="res://Scenes/robot.tscn" id="6_vesm1"]
 [ext_resource type="PackedScene" uid="uid://pdnh4m3u0kfx" path="res://Scenes/NPCs/slumped_man.tscn" id="8_h2gxt"]
 
 [node name="BlueWorld" unique_id=2101248957 instance=ExtResource("1_v04rg")]
@@ -43,6 +44,9 @@ position = Vector2(610, 427)
 
 [node name="Terminal" parent="." index="4" unique_id=1766910858 instance=ExtResource("5_gs30c")]
 position = Vector2(2342, 384)
+
+[node name="Robot" parent="." index="5" unique_id=977679728 instance=ExtResource("6_vesm1")]
+position = Vector2(439, 116)
 
 [editable path="OrangePortal"]
 [editable path="OrangePortal/InteractionArea"]

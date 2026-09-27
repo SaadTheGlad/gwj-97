@@ -24,12 +24,12 @@ public partial class DamageZone : Area2D
 
     private void DealDamage(Node detectedNode)
     {
-        if (detectedNode is IComponentable componentable)
+        //we need to get the parent cuz the body will always be a child of gameobject
+        if (detectedNode.GetParent() is GameObject gameObject)
         {
-            var canTakeDamage = componentable.GetComponent<HealthComponent>();
-            if (canTakeDamage != null)
+            if (gameObject.TryGetComponent<HealthComponent>(out var healthComponent))
             {
-                canTakeDamage.TakeDamage(damage);
+                healthComponent.TakeDamage(damage);
             }
         }
     }

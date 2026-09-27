@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://bxtvg4mtboby5"]
+
+[ext_resource type="PackedScene" uid="uid://bdgs86fb40ttp" path="res://Scenes/NPCs/npc.tscn" id="1_lp65t"]
+[ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Components/Pickable.cs" id="2_8s4wd"]
+[ext_resource type="Texture2D" uid="uid://bm6c5ochc5rpk" path="res://Art/Images/robot_updated.png" id="2_dcvsp"]
+[ext_resource type="Script" uid="uid://d0ny4w3151qag" path="res://Scripts/Character Specific/Robot.cs" id="2_m0m82"]
+[ext_resource type="Script" uid="uid://6ggdbwi8lhvs" path="res://Scripts/Components/HealthComponent.cs" id="3_7cjo4"]
+[ext_resource type="PackedScene" uid="uid://hbufimvf1n5q" path="res://Scenes/blow_up_effect.tscn" id="3_pwfsi"]
+[ext_resource type="Script" uid="uid://dw687ssjn0exb" path="res://Scripts/Components/DialogueComponent.cs" id="4_dcvsp"]
+[ext_resource type="Resource" uid="uid://clyej8il0xv5p" path="res://Dialogue/Dialogue Resources/dying_robot.dialogue" id="5_m0m82"]
+[ext_resource type="Script" uid="uid://ci8try848mskg" path="res://Scripts/Components/TimeDilationComponent.cs" id="6_pwfsi"]
+[ext_resource type="PackedScene" uid="uid://btgj55cyd56v5" path="res://Scenes/damage_zone.tscn" id="7_7cjo4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dcvsp"]
+size = Vector2(94, 104)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0m82"]
+size = Vector2(76, 25)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rnk85"]
+radius = 75.00667
+
+[node name="Robot" unique_id=1427698843 node_paths=PackedStringArray("damageZone") instance=ExtResource("1_lp65t")]
+script = ExtResource("2_m0m82")
+totalLifeTime = 12.0
+explosionEffect = ExtResource("3_pwfsi")
+damageZone = NodePath("DamageZone")
+
+[node name="Sprite2D" parent="." index="0" unique_id=969637244]
+scale = Vector2(0.26402643, 0.26402628)
+texture = ExtResource("2_dcvsp")
+
+[node name="CollisionShape2D" parent="InteractionArea" parent_id_path=PackedInt32Array(253216721) index="0" unique_id=72547211]
+shape = SubResource("RectangleShape2D_dcvsp")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="2" unique_id=1969632377]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0" unique_id=1867013570]
+position = Vector2(0, 31.5)
+shape = SubResource("RectangleShape2D_m0m82")
+
+[node name="DamageZone" parent="." index="3" unique_id=1752915568 instance=ExtResource("7_7cjo4")]
+monitoring = false
+worksWithAreas = true
+
+[node name="CollisionShape2D" parent="DamageZone" index="0" unique_id=694617257]
+shape = SubResource("CircleShape2D_rnk85")
+
+[node name="Pickable" type="Node" parent="." index="4" unique_id=393714166 node_paths=PackedStringArray("colliderShapes")]
+script = ExtResource("2_8s4wd")
+colliderShapes = [NodePath("../InteractionArea/CollisionShape2D"), NodePath("../StaticBody2D/CollisionShape2D")]
+movementPenalty = 42.0
+metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
+
+[node name="HealthComponent" type="Node" parent="." index="5" unique_id=1444957056]
+script = ExtResource("3_7cjo4")
+metadata/_custom_type_script = "uid://6ggdbwi8lhvs"
+
+[node name="DialogueComponent" type="Node" parent="." index="6" unique_id=1642980682]
+script = ExtResource("4_dcvsp")
+DialogueResource = ExtResource("5_m0m82")
+metadata/_custom_type_script = "uid://dw687ssjn0exb"
+
+[node name="TimeDilationComponent" type="Node" parent="." index="7" unique_id=690242091]
+script = ExtResource("6_pwfsi")
+metadata/_custom_type_script = "uid://ci8try848mskg"
+
+[editable path="InteractionArea"]
+[editable path="DamageZone"]
