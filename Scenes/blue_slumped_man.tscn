@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://pdnh4m3u0kfx"]
+
+[ext_resource type="PackedScene" uid="uid://bdgs86fb40ttp" path="res://Scenes/NPCs/gameobject_npc.tscn" id="1_qtaeq"]
+[ext_resource type="Texture2D" uid="uid://c8a45pnlr6qb7" path="res://Art/Images/TestSlumpedOverMan/Slumped Over Man.png" id="2_gcvou"]
+[ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Components/Pickable.cs" id="3_npglj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gcvou"]
+size = Vector2(165, 51)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_npglj"]
+size = Vector2(198, 218)
+
+[node name="BlueSlumpedMan" unique_id=1427698843 instance=ExtResource("1_qtaeq")]
+
+[node name="CollisionShape2D" parent="Body" parent_id_path=PackedInt32Array(64990111) index="0" unique_id=503925633]
+position = Vector2(4.5, 70.5)
+shape = SubResource("RectangleShape2D_gcvou")
+
+[node name="Sprite2D" parent="." index="1" unique_id=969637244]
+modulate = Color(0.050000012, 0.35083354, 1, 1)
+scale = Vector2(0.7210884, 0.72108847)
+texture = ExtResource("2_gcvou")
+
+[node name="CollisionShape2D" parent="InteractionArea" parent_id_path=PackedInt32Array(253216721) index="0" unique_id=72547211]
+shape = SubResource("RectangleShape2D_npglj")
+
+[node name="Pickable" type="Node" parent="." index="3" unique_id=1485117057 node_paths=PackedStringArray("colliderShapes")]
+script = ExtResource("3_npglj")
+colliderShapes = []
+metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
+
+[editable path="InteractionArea"]

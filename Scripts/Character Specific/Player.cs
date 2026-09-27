@@ -151,9 +151,9 @@ public partial class Player : CharacterBody2D, IComponentable
             if (area is InteractionArea interact)
             {
                 Node owner = interact.GetActor();
-                if (owner is IComponentable componentable)
+                if(owner is GameObject gameObject)
                 {
-                    pickable = componentable.GetComponent<Pickable>();
+                    pickable = gameObject.GetComponent<Pickable>();
                     if (pickable != null)
                     {
                         pickable.PickUpBy(this);
@@ -162,6 +162,18 @@ public partial class Player : CharacterBody2D, IComponentable
                         StartDropGraceTimer();
                     }
                 }
+
+                //if (owner is IComponentable componentable)
+                //{
+                //    pickable = componentable.GetComponent<Pickable>();
+                //    if (pickable != null)
+                //    {
+                //        pickable.PickUpBy(this);
+                //        //This is to make sure that we don't pick up the object then drop it immediately. 
+                //        canDropObject = false;
+                //        StartDropGraceTimer();
+                //    }
+                //}
             }
 
             break;

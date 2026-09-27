@@ -53,7 +53,7 @@ public partial class Pickable : BaseComponent
 
         //Stop being able to talk with this object while it's picked up if it has a dialogue component
         var dialogueComponent = componentable.GetComponent<DialogueComponent>();
-        if(dialogueComponent != null)
+        if (dialogueComponent != null)
         {
             dialogueComponent.Mute();
         }
