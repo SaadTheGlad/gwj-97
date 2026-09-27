@@ -3,7 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://c7f3mkf52uia0" path="res://Scenes/Worlds/template_world.tscn" id="1_v04rg"]
 [ext_resource type="PackedScene" uid="uid://dbnr15k3atkp3" path="res://Scenes/world_portal.tscn" id="3_vesm1"]
 [ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Components/Pickable.cs" id="4_vesm1"]
-[ext_resource type="PackedScene" uid="uid://pdnh4m3u0kfx" path="res://Scenes/blue_slumped_man.tscn" id="8_h2gxt"]
+[ext_resource type="PackedScene" uid="uid://tfxcnmjibats" path="res://Scenes/NPCs/terminal.tscn" id="5_gs30c"]
+[ext_resource type="PackedScene" uid="uid://pdnh4m3u0kfx" path="res://Scenes/NPCs/slumped_man.tscn" id="8_h2gxt"]
 
 [node name="BlueWorld" unique_id=2101248957 instance=ExtResource("1_v04rg")]
 worldName = "BlueWorld"
@@ -39,6 +40,9 @@ metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
 
 [node name="BlueSlumpedMan" parent="." index="3" unique_id=1427698843 instance=ExtResource("8_h2gxt")]
 position = Vector2(610, 427)
+
+[node name="Terminal" parent="." index="4" unique_id=1766910858 instance=ExtResource("5_gs30c")]
+position = Vector2(2342, 384)
 
 [editable path="OrangePortal"]
 [editable path="OrangePortal/InteractionArea"]

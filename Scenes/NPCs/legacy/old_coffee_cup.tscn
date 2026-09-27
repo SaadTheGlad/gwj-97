@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c218jj1chtiw"]
 
-[ext_resource type="PackedScene" uid="uid://bh31cordtv8w1" path="res://Scenes/NPCs/character_body_npc.tscn" id="1_b3xyv"]
+[ext_resource type="PackedScene" uid="uid://bh31cordtv8w1" path="res://Scenes/NPCs/legacy/old_character_body_npc.tscn" id="1_b3xyv"]
 [ext_resource type="Texture2D" uid="uid://c3m1ia2ceag8m" path="res://Art/Images/Coffee.png" id="2_3o25a"]
 [ext_resource type="Script" uid="uid://cbx0sk3ykea57" path="res://Scripts/CoffeeCup.cs" id="2_6o4wv"]
 [ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Components/Pickable.cs" id="3_i8uiu"]

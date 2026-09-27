@@ -1,45 +1,43 @@
-[gd_scene format=3 uid="uid://c06bbsoplf7co"]
+[gd_scene format=3 uid="uid://pdnh4m3u0kfx"]
 
-[ext_resource type="PackedScene" uid="uid://cp16mh07f6430" path="res://Scenes/NPCs/npc.tscn" id="1_a73dr"]
+[ext_resource type="PackedScene" uid="uid://bdgs86fb40ttp" path="res://Scenes/NPCs/npc.tscn" id="1_a73dr"]
 [ext_resource type="Resource" uid="uid://d1pfg241pjl3v" path="res://Dialogue/Dialogue Resources/slumped_man.dialogue" id="2_8wcyi"]
-[ext_resource type="Script" uid="uid://c5cultxirhr0y" path="res://Scripts/Character Specific/SlumpedMan.cs" id="2_88nv4"]
 [ext_resource type="Texture2D" uid="uid://c8a45pnlr6qb7" path="res://Art/Images/TestSlumpedOverMan/Slumped Over Man.png" id="2_vl8pb"]
 [ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Components/Pickable.cs" id="4_p5sug"]
-[ext_resource type="Script" uid="uid://6ggdbwi8lhvs" path="res://Scripts/Components/HealthComponent.cs" id="5_571my"]
 [ext_resource type="Script" uid="uid://dw687ssjn0exb" path="res://Scripts/Components/DialogueComponent.cs" id="5_qwhxx"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vl8pb"]
-size = Vector2(107, 39)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_npglj"]
+size = Vector2(144, 152)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wcyi"]
-size = Vector2(126, 140)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nodyw"]
+size = Vector2(127, 37)
 
-[node name="SlumpedMan" unique_id=64990111 groups=["SlumpedMan"] instance=ExtResource("1_a73dr")]
-script = ExtResource("2_88nv4")
+[node name="SlumpedMan" unique_id=1427698843 instance=ExtResource("1_a73dr")]
 
 [node name="Sprite2D" parent="." index="0" unique_id=969637244]
-scale = Vector2(0.462585, 0.46258503)
+position = Vector2(0, -28.622444)
+scale = Vector2(0.5510204, 0.55102044)
 texture = ExtResource("2_vl8pb")
 
-[node name="CollisionShape2D" parent="." index="1" unique_id=503925633]
-position = Vector2(2.5, 39.5)
-shape = SubResource("RectangleShape2D_vl8pb")
+[node name="InteractionArea" parent="." index="1" unique_id=253216721]
+position = Vector2(0, -28.622444)
 
-[node name="CollisionShape2D" parent="InteractionArea" parent_id_path=PackedInt32Array(253216721) index="0" unique_id=72547211]
-shape = SubResource("RectangleShape2D_8wcyi")
+[node name="CollisionShape2D" parent="InteractionArea" index="0" unique_id=72547211]
+shape = SubResource("RectangleShape2D_npglj")
 
-[node name="Pickable" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="0" unique_id=392428602 node_paths=PackedStringArray("colliderShapes")]
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="2" unique_id=1580941038]
+position = Vector2(0, -28.622444)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0" unique_id=605106278]
+position = Vector2(3.5, 54.5)
+shape = SubResource("RectangleShape2D_nodyw")
+
+[node name="Pickable" type="Node" parent="." index="3" unique_id=1485117057 node_paths=PackedStringArray("colliderShapes")]
 script = ExtResource("4_p5sug")
-colliderShapes = [NodePath("../../CollisionShape2D")]
-movementPenalty = 40.0
+colliderShapes = [NodePath("../InteractionArea/CollisionShape2D"), NodePath("../StaticBody2D/CollisionShape2D")]
 metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
 
-[node name="HealthComponent" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="1" unique_id=1423633904]
-script = ExtResource("5_571my")
-maxHealth = 1.0
-metadata/_custom_type_script = "uid://6ggdbwi8lhvs"
-
-[node name="DialogueComponent" type="Node" parent="ComponentsHolder" parent_id_path=PackedInt32Array(230629070) index="2" unique_id=74696244]
+[node name="DialogueComponent" type="Node" parent="." index="4" unique_id=1088407279]
 script = ExtResource("5_qwhxx")
 DialogueResource = ExtResource("2_8wcyi")
 metadata/_custom_type_script = "uid://dw687ssjn0exb"

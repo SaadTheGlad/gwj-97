@@ -1,20 +1,16 @@
-[gd_scene format=3 uid="uid://cp16mh07f6430"]
+[gd_scene format=3 uid="uid://bdgs86fb40ttp"]
 
-[ext_resource type="Script" uid="uid://dhh8yqb5c8bdq" path="res://Scripts/Character Specific/NPC.cs" id="1_g6unj"]
-[ext_resource type="PackedScene" uid="uid://bb3crtvugn41p" path="res://Scenes/interaction_area.tscn" id="3_q0ilr"]
+[ext_resource type="Script" uid="uid://bum0keijtfw3r" path="res://Scripts/GameobjectNPC.cs" id="1_4g1y7"]
+[ext_resource type="PackedScene" uid="uid://bb3crtvugn41p" path="res://Scenes/interaction_area.tscn" id="2_5bmtx"]
 
-[node name="NPC" type="StaticBody2D" unique_id=64990111 node_paths=PackedStringArray("interactArea", "componentHolder") groups=["NPC"]]
-script = ExtResource("1_g6unj")
+[node name="NPC" type="Node2D" unique_id=1427698843 node_paths=PackedStringArray("interactArea")]
+script = ExtResource("1_4g1y7")
 interactArea = NodePath("InteractionArea")
-componentHolder = NodePath("ComponentsHolder")
+metadata/_custom_type_script = "uid://dqb012imoj3ym"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=969637244]
 scale = Vector2(0.04479167, 0.044791672)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=503925633]
-
-[node name="InteractionArea" parent="." unique_id=253216721 instance=ExtResource("3_q0ilr")]
-
-[node name="ComponentsHolder" type="Node" parent="." unique_id=230629070]
+[node name="InteractionArea" parent="." unique_id=253216721 instance=ExtResource("2_5bmtx")]
 
 [editable path="InteractionArea"]

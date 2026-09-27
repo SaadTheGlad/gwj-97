@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://d1eja3r2u6ptk"]
 
-[ext_resource type="PackedScene" uid="uid://cp16mh07f6430" path="res://Scenes/NPCs/npc.tscn" id="1_bxena"]
+[ext_resource type="PackedScene" uid="uid://cp16mh07f6430" path="res://Scenes/NPCs/legacy/old_npc.tscn" id="1_bxena"]
 [ext_resource type="Script" uid="uid://b28oxds4vcoym" path="res://Scripts/CoffeeMachine.cs" id="2_axxsa"]
 [ext_resource type="Texture2D" uid="uid://n02udegcolwd" path="res://Art/Images/Coffee Machine/coffee_machine.png" id="2_e33a5"]
-[ext_resource type="PackedScene" uid="uid://c218jj1chtiw" path="res://Scenes/NPCs/CoffeeCup.tscn" id="3_kvyg6"]
+[ext_resource type="PackedScene" uid="uid://c218jj1chtiw" path="res://Scenes/NPCs/legacy/old_coffee_cup.tscn" id="3_kvyg6"]
 [ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Components/Pickable.cs" id="3_n224d"]
 [ext_resource type="Texture2D" uid="uid://oxmb1dvlwx6a" path="res://Art/Images/Coffee Machine/coffee_machine_back.png" id="4_kdqgd"]
 [ext_resource type="Texture2D" uid="uid://v564y3xmkhon" path="res://Art/Images/Coffee Machine/coffee_machine_side.png" id="5_b8fqa"]
