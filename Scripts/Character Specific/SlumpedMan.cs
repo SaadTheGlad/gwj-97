@@ -40,17 +40,4 @@ public partial class SlumpedMan : NPC
         }
     }
 
-    //public void CalculateRateOfCoffeesDrunk(double delta)
-    //{
-    //    totalTimeSinceSpawn += (float)delta;
-    //    coffeesDrunkPerSecond = (coffeesDrunk / totalTimeSinceSpawn);
-    //    //GD.Print($"Rate is: {coffeesDrunkPerSecond} coffees drunk per second!");
-    //    if(coffeesDrunkPerSecond >= 2f && !satiated)
-    //    {
-    //        AudioManager.Instance.Play("Jingle");
-    //        GameState.Instance.hasSatiatedSlumpedMan = true;
-    //        satiated = true;
-    //    }
-    //}
-
 }

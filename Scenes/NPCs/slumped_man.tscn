@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bdgs86fb40ttp" path="res://Scenes/NPCs/npc.tscn" id="1_a73dr"]
 [ext_resource type="Resource" uid="uid://d1pfg241pjl3v" path="res://Dialogue/Dialogue Resources/slumped_man.dialogue" id="2_8wcyi"]
+[ext_resource type="Script" uid="uid://c5cultxirhr0y" path="res://Scripts/Character Specific/SlumpedMan.cs" id="2_qwhxx"]
 [ext_resource type="Texture2D" uid="uid://c8a45pnlr6qb7" path="res://Art/Images/TestSlumpedOverMan/Slumped Over Man.png" id="2_vl8pb"]
 [ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/ComponentRelated/Pickable.cs" id="4_p5sug"]
 [ext_resource type="Script" uid="uid://dw687ssjn0exb" path="res://Scripts/ComponentRelated/DialogueComponent.cs" id="5_qwhxx"]
@@ -13,6 +14,7 @@ size = Vector2(144, 152)
 size = Vector2(127, 37)
 
 [node name="SlumpedMan" unique_id=1427698843 instance=ExtResource("1_a73dr")]
+script = ExtResource("2_qwhxx")
 
 [node name="Sprite2D" parent="." index="0" unique_id=969637244]
 position = Vector2(0, -28.622444)

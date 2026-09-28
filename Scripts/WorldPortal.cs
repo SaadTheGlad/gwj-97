@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class WorldPortal : Area2D, IComponentable
+public partial class WorldPortal : NPC
 {
 	[Export] private string targetWorldName;
     [Export] private Marker2D spawnPos;
@@ -9,58 +9,22 @@ public partial class WorldPortal : Area2D, IComponentable
     [Export] private WorldPortal linkedUpPortal;
     [Export] private Sprite2D bg;
 
-    #region Component Related Code
-    [Export] private Node componentHolder;
-    private BaseComponent[] components;
-
-    //! Put InitComponents and BindComponents() in _Ready() or _EnterTree(), also add the IComponentable interface!
-
-    public override void _Ready()
-    {
-        InitComponents();
-        BindComponents();
-    }
-
-    public void InitComponents()
-    {
-        int componentCount = componentHolder.GetChildCount();
-
-        if (componentCount > 0)
-            components = new BaseComponent[componentCount];
-
-        for (int i = 0; i < componentCount; ++i)
-        {
-            components[i] = componentHolder.GetChild(i) as BaseComponent;
-        }
-    }
-
-    public void BindComponents()
-    {
-        if (components == null) return;
-
-        foreach (BaseComponent component in components)
-        {
-            component.Bind(this);
-        }
-    }
-
-    public T GetComponent<T>()
-    {
-        if (components == null) return default(T);
-
-        foreach (BaseComponent component in components)
-        {
-            if (component is T confirmedComponent)
-            {
-                return confirmedComponent;
-            }
-        }
-
-        return default(T);
-    }
-    #endregion
-
     private bool playerNear = false;
+
+    public override void _EnterTree()
+    {
+        base._EnterTree();
+        interactArea.BodyEntered += EnteredBody;
+        interactArea.BodyExited += ExitedBody;
+
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        interactArea.BodyEntered -= EnteredBody;
+        interactArea.BodyExited -= ExitedBody;
+    }
 
     public Vector2 GetSpawnPos()
     {
@@ -79,7 +43,6 @@ public partial class WorldPortal : Area2D, IComponentable
 
     private void EnteredBody(Node2D node)
 	{
-
 		if (node.IsInGroup("Player"))
 		{
 			playerNear = true;
@@ -169,7 +132,7 @@ public partial class WorldPortal : Area2D, IComponentable
 
     bool CheckForOutline()
     {
-        foreach(var node in GetOverlappingBodies())
+        foreach(var node in interactArea.GetOverlappingBodies())
         {
             if(node is Player)
             {
