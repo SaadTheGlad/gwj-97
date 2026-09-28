@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Player : CharacterBody2D, IComponentable
+public partial class Player : CharacterBody2D
 {
 	[Export] private AnimatedSprite2D animatedSprite;
 

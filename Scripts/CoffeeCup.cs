@@ -48,8 +48,6 @@ public partial class CoffeeCup : NPC
     {
         if (area is InteractionArea interactArea)
         {
-            GD.Print(interactArea.GetOwner().Name);
-
             if(interactArea.GetActor() is SlumpedMan slumpedMan)
             {
                 slumpedMan.DrinkCoffee();

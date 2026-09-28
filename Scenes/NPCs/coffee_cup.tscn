@@ -31,6 +31,7 @@ scale = Vector2(0.09009009, 0.0900901)
 texture = ExtResource("3_57vt6")
 
 [node name="InteractionArea" parent="CharacterBody2D" unique_id=253216721 instance=ExtResource("3_i1t00")]
+collision_mask = 3
 
 [node name="CollisionShape2D" parent="CharacterBody2D/InteractionArea" index="0" unique_id=72547211]
 position = Vector2(0, 0.5)

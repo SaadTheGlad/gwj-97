@@ -11,6 +11,6 @@ public partial class BaseComponent : Node
         if (_actor is GameObject gameObject)
             actor = gameObject;
         else
-            GD.PrintErr("Actor is not GameObject!");
+            GD.PrintErr($"{GetParent().GetPath()} is not GameObject!");
     }
 }
