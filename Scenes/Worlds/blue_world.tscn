@@ -28,7 +28,7 @@ movementPenalty = 5.0
 metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
 
 [node name="CrimsonPortal" parent="." index="2" unique_id=505939663 instance=ExtResource("3_vesm1")]
-position = Vector2(274, 1253)
+position = Vector2(-363, 1253)
 targetWorldName = "CrimsonWorld"
 
 [node name="BG" parent="CrimsonPortal" index="2" unique_id=2090716909]

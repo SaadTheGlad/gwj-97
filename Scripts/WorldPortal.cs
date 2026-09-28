@@ -89,12 +89,21 @@ public partial class WorldPortal : Area2D, IComponentable
         string currentWorldName = currentWorld.GetWorldName();
 
         PortalableComponent portalableComponent = null;
-        if (node is IComponentable componentable)
+
+        GameObject gameObject = null;
+        if(node.GetParent() is GameObject _gameObject)
         {
-            portalableComponent = componentable.GetComponent<PortalableComponent>();
+            gameObject = _gameObject;
+
+            if(gameObject.TryGetComponent<PortalableComponent>(out var _portalableComponent))
+            {
+                portalableComponent = _portalableComponent;
+            }
         }
 
-        if (node.IsInGroup("GoesThroughPortals") && portalableComponent.canTeleport)
+        if (gameObject == null) return;
+
+        if (gameObject.IsInGroup("GoesThroughPortals") && portalableComponent.canTeleport)
         {
             portalableComponent.SetTimeOut();
 
@@ -110,16 +119,16 @@ public partial class WorldPortal : Area2D, IComponentable
             }
 
             //When changing the world of the object we change its world too
-            if(node is CharacterBodyNPC npcNode)
+            if(gameObject is NPC npc)
             {
-                npcNode.SettingCurrentWorldName(targetWorld.GetWorldName());
+                npc.SettingCurrentWorldName(targetWorld.GetWorldName());
             }
 
             WorldPortal targetPortal = linkedUpPortal;
 
             node.GlobalPosition = targetPortal.GetSpawnPos();
             //we need to reparent for the time dilation component to work
-            CallDeferred("Reparent", node, targetWorld);
+            CallDeferred("Reparent", gameObject, targetWorld);
         }
     }
 
@@ -127,16 +136,16 @@ public partial class WorldPortal : Area2D, IComponentable
     {
         toBeParented.Reparent(newParent, keepGlobalTransform: true);
 
-        if (toBeParented is IComponentable componentable)
+        if(toBeParented is GameObject gameObject)
         {
-            var timeDilationComponent = componentable.GetComponent<TimeDilationComponent>();
-            if (timeDilationComponent != null)
+            if(gameObject.TryGetComponent<TimeDilationComponent>(out var timeDilationComponent))
             {
                 timeDilationComponent.CheckIfActorIsInSameWorldAsPlayer();
-
             }
             else
+            {
                 GD.Print("No time dilation component");
+            }
         }
     }
 

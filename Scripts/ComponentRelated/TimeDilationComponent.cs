@@ -36,17 +36,15 @@ public partial class TimeDilationComponent : BaseComponent
 
         // TO DO fix thsi shit
         World actorCurrentWorld = null;
-        //if (actor is CoffeeCup coffee)
-        //{
-        //    actorCurrentWorld = WorldManager.Instance.GetWorld(coffee.GetCurrentWorldName());
-        //}
-        //else
-        //{
-        //    //Here we assume that current world is always the one that the player is in.
-        //    actorCurrentWorld = actor.GetParent() as World;
-        //}
-
-        actorCurrentWorld = actor.GetParent() as World;
+        if (actor is CoffeeCup coffee)
+        {
+            actorCurrentWorld = WorldManager.Instance.GetWorld(coffee.GetCurrentWorldName());
+        }
+        else
+        {
+            //Here we assume that current world is always the one that the player is in.
+            actorCurrentWorld = actor.GetParent() as World;
+        }
 
         if (WorldManager.Instance.GetCurrentWorldForPlayer().GetWorldName() != actorCurrentWorld.GetWorldName())
         {

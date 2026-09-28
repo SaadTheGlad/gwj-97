@@ -1,14 +1,14 @@
 using Godot;
 using System;
 
-public partial class CoffeeCup : CharacterBodyNPC
+public partial class CoffeeCup : NPC
 {
     [Export] public float speed = 150f;
     Vector2 direction = Vector2.Right;
 
     Pickable pickableComponent;
-    [Export] InteractionArea interactionArea;
     HealthComponent healthComponent;
+    [Export] CharacterBody2D body;
 
     Vector2 movementDirection;
     public void SetMovementDirection(Vector2 _movementDirection) => movementDirection = _movementDirection;
@@ -18,14 +18,14 @@ public partial class CoffeeCup : CharacterBodyNPC
     public override void _EnterTree()
     {
         base._EnterTree();
-        interactionArea.BodyEntered += EnterBody;
-        interactionArea.AreaEntered += EnterArea;
+        interactArea.BodyEntered += EnterBody;
+        interactArea.AreaEntered += EnterArea;
     }
 
     public override void _ExitTree()
     {
-        interactionArea.BodyEntered -= EnterBody;
-        interactionArea.AreaEntered -= EnterArea;
+        interactArea.BodyEntered -= EnterBody;
+        interactArea.AreaEntered -= EnterArea;
 
     }
 
@@ -61,13 +61,13 @@ public partial class CoffeeCup : CharacterBodyNPC
         if(!pickableComponent.isPickedUp)
         {
             if(canMove)
-                Velocity = movementDirection * speed;
+                body.Velocity = movementDirection * speed;
         }
         else
         {
-            Velocity = Vector2.Zero;
+            body.Velocity = Vector2.Zero;
             canMove = false;
         }
-        MoveAndSlide();
+        body.MoveAndSlide();
     }
 }

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bdgs86fb40ttp" path="res://Scenes/NPCs/npc.tscn" id="1_bxena"]
 [ext_resource type="Script" uid="uid://b28oxds4vcoym" path="res://Scripts/CoffeeMachine.cs" id="2_e33a5"]
 [ext_resource type="Texture2D" uid="uid://n02udegcolwd" path="res://Art/Images/Coffee Machine/coffee_machine.png" id="3_6pyrq"]
-[ext_resource type="PackedScene" uid="uid://c218jj1chtiw" path="res://Scenes/NPCs/legacy/old_coffee_cup.tscn" id="3_ha04b"]
+[ext_resource type="PackedScene" uid="uid://cd87fta15yd3c" path="res://Scenes/NPCs/coffee_cup.tscn" id="3_ha04b"]
 [ext_resource type="Texture2D" uid="uid://oxmb1dvlwx6a" path="res://Art/Images/Coffee Machine/coffee_machine_back.png" id="4_kdqgd"]
 [ext_resource type="Texture2D" uid="uid://v564y3xmkhon" path="res://Art/Images/Coffee Machine/coffee_machine_side.png" id="5_b8fqa"]
 [ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/ComponentRelated/Pickable.cs" id="6_jtssr"]

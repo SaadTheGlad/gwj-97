@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://cd87fta15yd3c"]
+
+[ext_resource type="Script" uid="uid://cbx0sk3ykea57" path="res://Scripts/CoffeeCup.cs" id="2_ap6f2"]
+[ext_resource type="Texture2D" uid="uid://c3m1ia2ceag8m" path="res://Art/Images/Coffee.png" id="3_57vt6"]
+[ext_resource type="PackedScene" uid="uid://bb3crtvugn41p" path="res://Scenes/interaction_area.tscn" id="3_i1t00"]
+[ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/ComponentRelated/Pickable.cs" id="4_i1t00"]
+[ext_resource type="Script" uid="uid://ci8try848mskg" path="res://Scripts/ComponentRelated/TimeDilationComponent.cs" id="5_v1v5q"]
+[ext_resource type="Script" uid="uid://6ggdbwi8lhvs" path="res://Scripts/ComponentRelated/HealthComponent.cs" id="6_7d11u"]
+[ext_resource type="Script" uid="uid://dgnhl5jnntw51" path="res://Scripts/ComponentRelated/PortalableComponent.cs" id="7_sxjbh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57vt6"]
+size = Vector2(14, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gdd2g"]
+size = Vector2(18, 25)
+
+[node name="CoffeeCup" type="Node2D" unique_id=1427698843 node_paths=PackedStringArray("body", "interactArea") groups=["GoesThroughPortals"]]
+script = ExtResource("2_ap6f2")
+body = NodePath("CharacterBody2D")
+interactArea = NodePath("CharacterBody2D/InteractionArea")
+metadata/_custom_type_script = "uid://dqb012imoj3ym"
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=929985364]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1596174821]
+position = Vector2(0, 7.5)
+shape = SubResource("RectangleShape2D_57vt6")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=969637244]
+scale = Vector2(0.09009009, 0.0900901)
+texture = ExtResource("3_57vt6")
+
+[node name="InteractionArea" parent="CharacterBody2D" unique_id=253216721 instance=ExtResource("3_i1t00")]
+
+[node name="CollisionShape2D" parent="CharacterBody2D/InteractionArea" index="0" unique_id=72547211]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_gdd2g")
+
+[node name="Pickable" type="Node" parent="." unique_id=997667396 node_paths=PackedStringArray("colliderShapes")]
+script = ExtResource("4_i1t00")
+colliderShapes = [null, null]
+metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
+
+[node name="TimeDilationComponent" type="Node" parent="." unique_id=2040169998]
+script = ExtResource("5_v1v5q")
+metadata/_custom_type_script = "uid://ci8try848mskg"
+
+[node name="HealthComponent" type="Node" parent="." unique_id=133758607]
+script = ExtResource("6_7d11u")
+metadata/_custom_type_script = "uid://6ggdbwi8lhvs"
+
+[node name="PortalableComponent" type="Node" parent="." unique_id=1262121366]
+script = ExtResource("7_sxjbh")
+metadata/_custom_type_script = "uid://dgnhl5jnntw51"
+
+[editable path="CharacterBody2D/InteractionArea"]

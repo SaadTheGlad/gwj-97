@@ -599,7 +599,7 @@ theme_override_font_sizes/font_size = 35
 text = "PLAY AGAIN"
 
 [node name="Player" parent="." unique_id=1201004403 instance=ExtResource("2_aqfjg")]
-position = Vector2(282, 270)
+position = Vector2(-174, 990)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1663197869]
 position = Vector2(5, 3)
