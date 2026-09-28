@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://cm6jgd38s4kmn"]
+
+[ext_resource type="PackedScene" uid="uid://bdgs86fb40ttp" path="res://Scenes/NPCs/npc.tscn" id="1_bxena"]
+[ext_resource type="Script" uid="uid://b28oxds4vcoym" path="res://Scripts/CoffeeMachine.cs" id="2_e33a5"]
+[ext_resource type="Texture2D" uid="uid://n02udegcolwd" path="res://Art/Images/Coffee Machine/coffee_machine.png" id="3_6pyrq"]
+[ext_resource type="PackedScene" uid="uid://c218jj1chtiw" path="res://Scenes/NPCs/legacy/old_coffee_cup.tscn" id="3_ha04b"]
+[ext_resource type="Texture2D" uid="uid://oxmb1dvlwx6a" path="res://Art/Images/Coffee Machine/coffee_machine_back.png" id="4_kdqgd"]
+[ext_resource type="Texture2D" uid="uid://v564y3xmkhon" path="res://Art/Images/Coffee Machine/coffee_machine_side.png" id="5_b8fqa"]
+[ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/ComponentRelated/Pickable.cs" id="6_jtssr"]
+[ext_resource type="Script" uid="uid://ci8try848mskg" path="res://Scripts/ComponentRelated/TimeDilationComponent.cs" id="7_ha04b"]
+[ext_resource type="Script" uid="uid://dw687ssjn0exb" path="res://Scripts/ComponentRelated/DialogueComponent.cs" id="8_sboys"]
+[ext_resource type="Resource" uid="uid://bwvp7igmp20ga" path="res://coffee.dialogue" id="9_3mda1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5tygf"]
+size = Vector2(88, 35)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e33a5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_6pyrq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kdqgd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_b8fqa")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jtssr"]
+size = Vector2(113, 156)
+
+[node name="CoffeeMachine" unique_id=1427698843 node_paths=PackedStringArray("animatedSprite", "left", "right", "bottom", "top") instance=ExtResource("1_bxena")]
+script = ExtResource("2_e33a5")
+animatedSprite = NodePath("AnimatedSprite2D")
+coffeeScene = ExtResource("3_ha04b")
+spawnInterval = 1.0
+left = NodePath("SpawnPoints/Left")
+right = NodePath("SpawnPoints/Right")
+bottom = NodePath("SpawnPoints/Bottom")
+top = NodePath("SpawnPoints/Top")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="0" unique_id=1220166388]
+position = Vector2(0, -32.720947)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0" unique_id=1118357863]
+position = Vector2(-3, 50.5)
+shape = SubResource("RectangleShape2D_5tygf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1" unique_id=1184931327]
+position = Vector2(0, -32.720947)
+scale = Vector2(0.13953489, 0.13953485)
+sprite_frames = SubResource("SpriteFrames_e33a5")
+
+[node name="Sprite2D" parent="." index="2" unique_id=969637244]
+position = Vector2(0, -32.720947)
+
+[node name="InteractionArea" parent="." index="3" unique_id=253216721]
+position = Vector2(0, -32.720947)
+
+[node name="CollisionShape2D" parent="InteractionArea" index="0" unique_id=72547211]
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_jtssr")
+
+[node name="Pickable" type="Node" parent="." index="4" unique_id=1649778869 node_paths=PackedStringArray("colliderShapes")]
+script = ExtResource("6_jtssr")
+colliderShapes = [NodePath("../StaticBody2D/CollisionShape2D"), NodePath("../InteractionArea/CollisionShape2D")]
+movementPenalty = 20.0
+metadata/_custom_type_script = "uid://u4jmnpqsqu3b"
+
+[node name="TimeDilationComponent" type="Node" parent="." index="5" unique_id=1512909885]
+script = ExtResource("7_ha04b")
+metadata/_custom_type_script = "uid://ci8try848mskg"
+
+[node name="DialogueComponent" type="Node" parent="." index="6" unique_id=165927593]
+script = ExtResource("8_sboys")
+DialogueResource = ExtResource("9_3mda1")
+metadata/_custom_type_script = "uid://dw687ssjn0exb"
+
+[node name="SpawnPoints" type="Node2D" parent="." index="7" unique_id=732718209]
+
+[node name="Left" type="Marker2D" parent="SpawnPoints" index="0" unique_id=1424294692]
+position = Vector2(-47, -3)
+
+[node name="Right" type="Marker2D" parent="SpawnPoints" index="1" unique_id=1913440308]
+position = Vector2(59, -3)
+
+[node name="Bottom" type="Marker2D" parent="SpawnPoints" index="2" unique_id=666357850]
+position = Vector2(0, 28)
+
+[node name="Top" type="Marker2D" parent="SpawnPoints" index="3" unique_id=371835029]
+position = Vector2(0, -38)
+
+[editable path="InteractionArea"]

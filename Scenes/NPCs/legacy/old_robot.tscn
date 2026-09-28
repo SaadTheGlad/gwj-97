@@ -5,11 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://hbufimvf1n5q" path="res://Scenes/blow_up_effect.tscn" id="3_qm6x8"]
 [ext_resource type="Texture2D" uid="uid://bm6c5ochc5rpk" path="res://Art/Images/robot_updated.png" id="4_2cr8k"]
 [ext_resource type="PackedScene" uid="uid://btgj55cyd56v5" path="res://Scenes/damage_zone.tscn" id="5_xh5bi"]
-[ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Components/Pickable.cs" id="6_4jsf1"]
-[ext_resource type="Script" uid="uid://6ggdbwi8lhvs" path="res://Scripts/Components/HealthComponent.cs" id="7_2kool"]
-[ext_resource type="Script" uid="uid://dw687ssjn0exb" path="res://Scripts/Components/DialogueComponent.cs" id="8_pxdg0"]
+[ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/ComponentRelated/Pickable.cs" id="6_4jsf1"]
+[ext_resource type="Script" uid="uid://6ggdbwi8lhvs" path="res://Scripts/ComponentRelated/HealthComponent.cs" id="7_2kool"]
+[ext_resource type="Script" uid="uid://dw687ssjn0exb" path="res://Scripts/ComponentRelated/DialogueComponent.cs" id="8_pxdg0"]
 [ext_resource type="Resource" uid="uid://clyej8il0xv5p" path="res://Dialogue/Dialogue Resources/dying_robot.dialogue" id="9_f8enk"]
-[ext_resource type="Script" uid="uid://ci8try848mskg" path="res://Scripts/Components/TimeDilationComponent.cs" id="10_d0g4r"]
+[ext_resource type="Script" uid="uid://ci8try848mskg" path="res://Scripts/ComponentRelated/TimeDilationComponent.cs" id="10_d0g4r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_byqip"]
 size = Vector2(86, 34)

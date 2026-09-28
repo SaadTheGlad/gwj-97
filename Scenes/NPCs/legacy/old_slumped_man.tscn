@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://cp16mh07f6430" path="res://Scenes/NPCs/legacy/old_npc.tscn" id="1_y6eyq"]
 [ext_resource type="Script" uid="uid://c5cultxirhr0y" path="res://Scripts/Character Specific/SlumpedMan.cs" id="2_aynwp"]
 [ext_resource type="Texture2D" uid="uid://c8a45pnlr6qb7" path="res://Art/Images/TestSlumpedOverMan/Slumped Over Man.png" id="3_6hibv"]
-[ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/Components/Pickable.cs" id="4_y4w61"]
-[ext_resource type="Script" uid="uid://6ggdbwi8lhvs" path="res://Scripts/Components/HealthComponent.cs" id="5_gmois"]
-[ext_resource type="Script" uid="uid://dw687ssjn0exb" path="res://Scripts/Components/DialogueComponent.cs" id="6_2ashl"]
+[ext_resource type="Script" uid="uid://u4jmnpqsqu3b" path="res://Scripts/ComponentRelated/Pickable.cs" id="4_y4w61"]
+[ext_resource type="Script" uid="uid://6ggdbwi8lhvs" path="res://Scripts/ComponentRelated/HealthComponent.cs" id="5_gmois"]
+[ext_resource type="Script" uid="uid://dw687ssjn0exb" path="res://Scripts/ComponentRelated/DialogueComponent.cs" id="6_2ashl"]
 [ext_resource type="Resource" uid="uid://d1pfg241pjl3v" path="res://Dialogue/Dialogue Resources/slumped_man.dialogue" id="7_eqnew"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vl8pb"]
@@ -16,6 +16,7 @@ size = Vector2(126, 140)
 
 [node name="SlumpedMan" unique_id=64990111 groups=["SlumpedMan"] instance=ExtResource("1_y6eyq")]
 script = ExtResource("2_aynwp")
+currentWorldName = ""
 
 [node name="Sprite2D" parent="." index="0" unique_id=969637244]
 scale = Vector2(0.462585, 0.46258503)
